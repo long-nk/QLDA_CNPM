@@ -24,7 +24,7 @@
     <link href='favicon.ico' rel='icon' type='image/x-icon'/>
     <meta content='#00afce' name='theme-color'/>
     <meta content='#00afce' name='msapplication-navbutton-color'/>
-    <link href='index.html' rel='canonical'/>
+    <link href={{route('home')}} rel='canonical'/>
     <link rel="alternate" type="application/atom+xml" title="2020 - Nula Cosmetic Premium - Atom"
           href="feeds/posts/default"/>
     <link rel="alternate" type="application/rss+xml" title="2020 - Nula Cosmetic Premium - RSS"
@@ -82,6 +82,7 @@
         content='https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/w1200-h630-p-k-no-nu/g.jpg'
         name='twitter:image'/>
     <link rel="StyleSheet" href="{{asset('resouce/css/style.css')}}">
+    <link rel="stylesheet" href="{{assert('resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css')}}" media="all">
 
 </head>
 <body class='page-index'>
@@ -99,7 +100,7 @@
                     <div class='section' id='logo-mobile' name='Logo mobile'>
                         <div class='widget Header' data-version='2' id='Header2'>
                             <div class='header-widget'>
-                                <a class='logo-wrapper' href='index.html'>
+                                <a class='logo-wrapper' href={{route('home')}}>
                                     <img alt='2020 - Nula Cosmetic Premium'
                                          src='/resouce/temp/2.bp.blogspot.com/-AaykUlWGAfw/YJkg2rv8QlI/AAAAAAAAS2E/1MciRu0uk5A34GV5_kW6VtWEcLa6hprmQCK4BGAYYCw/s1600/logo.png'/>
                                 </a>
@@ -133,7 +134,7 @@
                             <div class='widget Header' data-version='2' id='Header1'>
                                 <div class='header-widget'>
                                     <div class='logos section hidden-xs hidden-sm hidden-md'>
-                                        <a class='logo-wrapper ' href='index.html'>
+                                        <a class='logo-wrapper ' href={{route('home')}}>
                                             <img alt='2020 - Nula Cosmetic Premium'
                                                  src='/resouce/temp/1.bp.blogspot.com/-i8TF1s6I6EQ/YJkNrxRaLgI/AAAAAAAAS14/XXVSPOoYpCgiw7qswA-Z2Imoohj02fi9wCK4BGAYYCw/s1600/logo.png'/>
                                         </a>
@@ -143,7 +144,7 @@
                         </div>
                         <div class='cart_header_new'>
                             <div class='icon_cart'>
-                                <a class='img_hover_cart' href='p/cart.html' title='Giỏ hàng'>
+                                <a class='img_hover_cart' href={{route('cart.index')}} title='Giỏ hàng'>
                                     <div class='icon_hotline'>
                                         <i class='fas fa-shopping-basket iconcart'>
                                         </i>
