@@ -25,4 +25,8 @@ Route::group(array('prefix' => 'customer'), function (){
     Route::get('register', 'CustomerController@register')->name('customer.register');
 });
 
+Route::get('gio-hang', 'CartController@index')->name('cart.index');
+
+Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
+
 

@@ -8,7 +8,7 @@
                             <div class='widget Image' data-version='2' id='Image3'>
                                 <div class='widget-ft'>
                                     <div class='section firstmenu'>
-                                        <a class='logo-footer' href='index.html'>
+                                        <a class='logo-footer' href={{route('home')}}>
                                             <img alt='Nula Cosmetic'
                                                  src='/resouce/temp/4.bp.blogspot.com/-InTfLK3qHiw/YJnRvOTIvqI/AAAAAAAAS2o/hf2yAuZopvUtOg6OZ9xfIKXmFpQmAZLyQCK4BGAYYCw/s1600/logo.png'/>
                                         </a>
@@ -34,20 +34,20 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu01'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href='index.html'>Trang
+                                                    <li class='li_menu'><a href={{route('home')}}>Trang
                                                             chủ</a></li>
-                                                    <li class='li_menu'><a href='p/gioi-thieu.html'>Về
+                                                    <li class='li_menu'><a href={{route('intro')}}>Về
                                                             chúng tôi</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/san-pham.html'>Sản
+                                                            href={{route('product.index')}}>Sản
                                                             phẩm</a></li>
                                                     <li class='li_menu'><a
-                                                            href='p/he-thong-cua-hang.html'>Hệ thống cửa
+                                                            href={{route('shop.index')}}>Hệ thống cửa
                                                             hàng</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/tin-tuc.html'>Tin tức</a>
+                                                            href={{route('news')}}>Tin tức</a>
                                                     </li>
-                                                    <li class='li_menu'><a href='p/lien-he.html'>Liên
+                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
                                                             hệ</a></li>
                                                 </ul>
                                             </div>
@@ -70,20 +70,20 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu02'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href='index.html'>Trang
+                                                    <li class='li_menu'><a href={{route('home')}}>Trang
                                                             chủ</a></li>
-                                                    <li class='li_menu'><a href='p/gioi-thieu.html'>Về
+                                                    <li class='li_menu'><a href={{route('intro')}}>Về
                                                             chúng tôi</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/san-pham.html'>Sản
+                                                            href={{route('product.index')}}>Sản
                                                             phẩm</a></li>
                                                     <li class='li_menu'><a
-                                                            href='p/he-thong-cua-hang.html'>Hệ thống cửa
+                                                            href={{route('shop.index')}}>Hệ thống cửa
                                                             hàng</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/tin-tuc.html'>Tin tức</a>
+                                                            href={{route('news')}}>Tin tức</a>
                                                     </li>
-                                                    <li class='li_menu'><a href='p/lien-he.html'>Liên
+                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
                                                             hệ</a></li>
                                                 </ul>
                                             </div>
@@ -106,20 +106,20 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu03'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href='index.html'>Trang
+                                                    <li class='li_menu'><a href={{route('home')}}>Trang
                                                             chủ</a></li>
-                                                    <li class='li_menu'><a href='p/gioi-thieu.html'>Về
+                                                    <li class='li_menu'><a href={{route('intro')}}>Về
                                                             chúng tôi</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/san-pham.html'>Sản
+                                                            href={{route('product.index')}}>Sản
                                                             phẩm</a></li>
                                                     <li class='li_menu'><a
-                                                            href='p/he-thong-cua-hang.html'>Hệ thống cửa
+                                                            href={{route('shop.index')}}>Hệ thống cửa
                                                             hàng</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/tin-tuc.html'>Tin tức</a>
+                                                            href={{route('news')}}>Tin tức</a>
                                                     </li>
-                                                    <li class='li_menu'><a href='p/lien-he.html'>Liên
+                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
                                                             hệ</a></li>
                                                 </ul>
                                             </div>
@@ -142,20 +142,20 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu04'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href='index.html'>Trang
+                                                    <li class='li_menu'><a href={{route('home')}}>Trang
                                                             chủ</a></li>
-                                                    <li class='li_menu'><a href='p/gioi-thieu.html'>Về
+                                                    <li class='li_menu'><a href={{route('intro')}}>Về
                                                             chúng tôi</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/san-pham.html'>Sản
+                                                            href={{route('product.index')}}>Sản
                                                             phẩm</a></li>
                                                     <li class='li_menu'><a
-                                                            href='p/he-thong-cua-hang.html'>Hệ thống cửa
+                                                            href={{route('shop.index')}}>Hệ thống cửa
                                                             hàng</a></li>
                                                     <li class='li_menu'><a
-                                                            href='search/label/tin-tuc.html'>Tin tức</a>
+                                                            href={{route('news')}}>Tin tức</a>
                                                     </li>
-                                                    <li class='li_menu'><a href='p/lien-he.html'>Liên
+                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
                                                             hệ</a></li>
                                                 </ul>
                                             </div>
@@ -187,7 +187,7 @@
                                             </span>
                         </div>
                         <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12 icon_footer f-right a-center'>
-                            <a class='bocongthuong' href='index.html'>
+                            <a class='bocongthuong' href={{route('home')}}>
                                 <img alt='Bộ công thương'
                                      src='/resouce/temp/1.bp.blogspot.com/-hFQawJOwJW8/XsugFJ0VGLI/AAAAAAAAMJs/fYs8w4a-jkgdeUfnYtBj3SB6hg3M8tLuQCLcBGAsYHQ/s1600/bocongthuong.png'/>
                             </a>
