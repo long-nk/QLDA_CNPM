@@ -3,6 +3,7 @@
 
 <meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
 <head>
+    
     <meta charset='UTF-8'/>
     <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
     <title>2020 - Nula Cosmetic Premium</title>
@@ -16,6 +17,8 @@
     <link href='http://pagead2.googlesyndication.com/' rel='dns-prefetch'/>
     <link href='http://www.googletagmanager.com/' rel='dns-prefetch'/>
     <link href='http://www.google-analytics.com/' rel='dns-prefetch'/>
+    <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=166822035310348&autoLogAppEvents=1" nonce="9c4TLzsR"></script>
     <link href='http://connect.facebook.net/' rel='dns-prefetch'/>
     <link href='http://c.disquscdn.com/' rel='dns-prefetch'/>
     <link href='http://disqus.com/' rel='dns-prefetch'/>
@@ -81,8 +84,8 @@
     <meta
         content='https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/w1200-h630-p-k-no-nu/g.jpg'
         name='twitter:image'/>
-    <link rel="StyleSheet" href="{{asset('resouce/css/style.css')}}">
-    <link rel="stylesheet" href="{{assert('resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css')}}" media="all">
+    <link rel="StyleSheet" href='/resouce/css/style.css'>
+    <link rel="stylesheet" href='/resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css' media="all">
 
 </head>
 <body class='page-index'>
