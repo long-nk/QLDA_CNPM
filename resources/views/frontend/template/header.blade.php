@@ -82,7 +82,7 @@
         content='https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/w1200-h630-p-k-no-nu/g.jpg'
         name='twitter:image'/>
     <link rel="StyleSheet" href="{{asset('resouce/css/style.css')}}">
-    <link rel="stylesheet" href="{{assert('resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css')}}" media="all">
+    <link rel="stylesheet" href="{{asset('resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css')}}" media="all">
 
 </head>
 <body class='page-index'>
