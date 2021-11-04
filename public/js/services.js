@@ -168,7 +168,7 @@ sv.data.sticky = function (afunction, async) {
  */
 sv.data.article = function (cat_id, art_id, afunction, async) {
     var data = {
-        category_id: cat_id,
+        C_id: cat_id,
         article_id: art_id
     };
     if (typeof async == 'undefined')
@@ -187,7 +187,7 @@ sv.data.article = function (cat_id, art_id, afunction, async) {
  */
 sv.data.other_article = function (cat_id, art_id, afunction, async) {
     var data = {
-        category_id: cat_id,
+        C_id: cat_id,
         article_id: art_id
     };
     if (typeof async == 'undefined')
@@ -201,7 +201,7 @@ sv.data.other_article = function (cat_id, art_id, afunction, async) {
  */
 sv.data.art_of_cat = function (page, cat_id, key_word, afunction, async) {
     var data = {
-        category_id: cat_id,
+        C_id: cat_id,
         page: page,
         key_word: key_word
     };
@@ -293,7 +293,7 @@ sv.data.updatePersonInfo = function (data, afunction, async, objMethod) {
 
 
 /**
- * ------------------------------------------------------- captcha ------------------------------------------------------- 
+ * ------------------------------------------------------- captcha -------------------------------------------------------
  */
 
 sv.captcha.getInfo = function (afunction, async, objMethod) {

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Categories;
 
 class Product extends Model
 {
@@ -14,7 +15,7 @@ class Product extends Model
         'Id',
         'Pro_name',
         'Pro_content',
-        'Pro_category_id',
+        'Pro_C_id',
         'Pro_sale',
         'Pro_avatar',
         'Pro_view',
@@ -24,9 +25,11 @@ class Product extends Model
         'Pro_number_import'
     ];
 
-    public function category(){
-        return $this->belongsTo('App/Models/Categories', 'Pro_category_id');
+    public function categories(){
+        return $this->belongsTo(Categories::class);
     }
+
+
 
 
 }

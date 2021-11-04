@@ -32,18 +32,7 @@ Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
 
 
 //---------Backend--------
-//Route::get('/admin', function () {
-//    return redirect('/dashboard');
-//})->name('dashboard');
-//Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
-
-//----------Login--------
-//Route::get('login', 'Auth\LoginController@getLogin')->name('login');
-//Route::group(array('prefix' => 'admin/'), function () {
-//    Route::post('postLogin', 'Auth\LoginController@postLogin');
-//    Route::get('logout', 'Auth\LoginController@logout');
-//    Route::get('forgotPassword', 'Auth\LoginController@forgotPassword');
-//});
+Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
 
 Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
     Route::resource('banners', 'BannersController');
@@ -51,10 +40,7 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
     Route::get('products_list/{slug}', 'ProductsController@list_all')->name('products.list');
     Route::resource('contacts', 'ContactsController');
     Route::resource('news', 'NewsController');
-    Route::resource('services', 'ServicesController');
     Route::resource('categories', 'CategoriesController');
-    Route::resource('info', 'PageInfoController');
-    Route::resource('contents_single', "ContentsSingleController");
     Route::resource('address', 'ShopAddressController');
 
     Route::get('sitemap', 'CategoriesController@sitemap')->name('categories.sitemap');
@@ -70,24 +56,4 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
     Route::get('changeStatusContact/{id}', 'ContactsController@changeStatus')->name('contact.changeStatus');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-//-------------Admin----------
-//Register
-Route::get('register', 'Auth\RegisterController@register');
-Route::post('register', 'Auth\RegisterController@store')->name('register');
-
-//Login
-Route::get('login', 'Auth\LoginController@login')->name('login');
-Route::post('login', 'Auth\LoginController@authenticate');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
-Route::get('admin', 'AdminController@index')->name('admin');
-//Route::get('home', 'AdminController@index')->name('home');
-
-Route::get('forget-password', 'Auth\ForgotPasswordController@getEmail');
-Route::post('forget-password', 'Auth\ForgotPasswordController@postEmail');
-
-Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
-Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
+Auth::routes();

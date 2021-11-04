@@ -16,4 +16,9 @@ class Comment extends Model
         'Cmt_user_id',
         'Cmt_disk_like'
     ];
+
+    public function User(){
+        return $this->belongsTo('App/Models/User');
+    }
+
 }

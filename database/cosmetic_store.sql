@@ -204,7 +204,7 @@ CREATE TABLE `product` (
   `Pro_name` varchar(255) DEFAULT NULL,
   `Pro_price` int(11) NOT NULL,
   `Pro_content` int(11) NOT NULL,
-  `Pro_category_id` int(11) NOT NULL,
+  `Pro_C_id` int(11) NOT NULL,
   `Created_at` timestamp NULL DEFAULT NULL,
   `Update_at` timestamp NULL DEFAULT NULL,
   `Pro_admin_id` bigint(20) NOT NULL,
@@ -217,8 +217,8 @@ CREATE TABLE `product` (
   `Pro_number_import` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `test` (`Pro_admin_id`),
-  KEY `Belongs` (`Pro_category_id`),
-  CONSTRAINT `Belongs` FOREIGN KEY (`Pro_category_id`) REFERENCES `categories` (`Id`),
+  KEY `Belongs` (`Pro_C_id`),
+  CONSTRAINT `Belongs` FOREIGN KEY (`Pro_C_id`) REFERENCES `categories` (`Id`),
   CONSTRAINT `test` FOREIGN KEY (`Pro_admin_id`) REFERENCES `admin` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
