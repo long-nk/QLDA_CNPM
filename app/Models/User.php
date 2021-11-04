@@ -19,7 +19,7 @@ class User extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'phone', 'content'
     ];
 
     /**
@@ -30,4 +30,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Comment(){
+        return $this->hasOne('App/Models/Comment');
+    }
 }

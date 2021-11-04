@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Contact;
+use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::latest('created_at','desc')->get();
+        $contacts = User::latest('created_at','desc')->get();
 
         return view('backend.contacts.index', compact('contacts'));
     }

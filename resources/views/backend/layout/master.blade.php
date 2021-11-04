@@ -37,11 +37,11 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="{{url('/')}}/images/user.png" alt="" class="img-circle profile_img">
+                        <img src="{{url('/')}}/images/user.png" alt="{{Auth::user()->name}}" class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>admin</h2>
+                        <h2>{{Auth::user()->name}}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -65,18 +65,12 @@
                                 <a><i class="fa fa-table"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     @foreach($categories as $category)
-                                        <li><a href="{{route('products.list', ['slug' => $category->slug])}}">{{$category->name}}</a></li>
+                                        <li><a href="{{route('products.list', ['Pro_category_id' => $category->Id])}}">{{$category->C_name}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
                             <li>
                                 <a href="{{route('news.index')}}"><i class="fa fa-newspaper-o"></i> Quản lý tin tức</a>
-                            </li>
-                            <li>
-                                <a href="{{route('services.index')}}"><i class="fa fa-newspaper-o"></i> Quản lý dịch vụ</a>
-                            </li>
-                            <li>
-                                <a href="{{route('contents_single.index')}}"><i class="fa fa-newspaper-o"></i> Quản lý bài viết</a>
                             </li>
                             <li>
                                 <a href="{{route('contacts.index')}}"><i class="fa fa-user"></i> Quản lý liên hệ</a>
@@ -88,7 +82,6 @@
                         <h3>Thông tin cửa hàng</h3>
                         <ul class="nav side-menu">
                             <li><a href="{{url('admin/users')}}"><i class="fa fa-users"></i> Quản lý người dùng</a></li>
-                            <li><a href="{{route('info.index')}}"><i class="fa fa-gears"></i> Cài đặt</a></li>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +98,7 @@
                     <a data-toggle="tooltip" data-placement="top" title="Lock">
                         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                     </a>
-                    <a href="{{url('admin/logout')}}" data-toggle="tooltip" data-placement="top" title="Logout">
+                    <a href="{{route('logout')}}" method="POST" data-toggle="tooltip" data-placement="top" title="Logout">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -124,11 +117,10 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{url('/')}}/images/user.png" alt="">
+                                <img src="{{url('/')}}/images/user.png" alt="{{Auth::user()->name}}">{{Auth::user()->name}}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="{{url('/admin/profile')}}"> Profile</a></li>
                                 <li><a href="{{url('/')}}" target="_blank">Customer View</a></li>
                                 <li>
                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#modalChangePassword">Change Password</a>
@@ -140,7 +132,12 @@
                                 {{--</a>--}}
                                 {{--</li>--}}
                                 <li>
-                                    <a href="{{url('admin/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <a href="{{url('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out pull-right"></i> Log Out
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </li>
                             </ul>
                             <div id="modalChangePassword" class="modal fade" role="dialog">
@@ -192,7 +189,7 @@
 
         <footer>
             <div class="pull-right">
-                Đại Phát - Admin Dashboard
+                Nula Cosmetic - Admin Dashboard
             </div>
             <div class="clearfix"></div>
         </footer>

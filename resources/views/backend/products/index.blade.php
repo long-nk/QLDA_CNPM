@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title', 'Nula Cosmetic | Dashboard')
+@section('title', 'Đại Phát | Dashboard')
 
 @section('content')
     <!-- page content -->
@@ -44,81 +44,72 @@
                         <ul class="nav nav-tabs">
                             @foreach($categories as $key => $category)
                                 <li class="{{$key== 0 ?"active" : "" }}">
-                                    <a data-toggle="tab" href="#{{$category->slug}}">{{$category->name}}</a>
+                                    <a data-toggle="tab" href="#{{$category->Id}}">{{$category->C_name}}</a>
                                 </li>
                             @endforeach
                         </ul>
 
                         <div class="tab-content">
                             @foreach($categories as $i => $category)
-                                <div id="{{$category->slug}}" class="tab-pane fade {{$i== 0 ?"in active" : "" }}">
+                                <div id="{{$category->Id}}" class="tab-pane fade {{$i== 0 ?"in active" : "" }}">
                                     <div class="x_content">
                                         <table id="dat"
                                                class="table table-striped jambo_table table-bordered table-responsive bulk_action">
                                             <thead>
                                             <tr>
                                                 <th class="text-center" style="width:5%">STT</th>
-                                                <th class="text-center" style="width:15%">Hình ảnh</th>
-                                                <th class="text-center" style="width:15%">Tên sản phẩm</th>
-                                                <th class="text-center" style="width:15%">Giá cũ</th>
-                                                <th class="text-center" style="width:15%">Giá mới</th>
-                                                <th class="text-center" style="width:15%">Loại sản phẩm</th>
+                                                <th class="text-center" style="width:20%">Hình ảnh</th>
+                                                <th class="text-center" style="width:20%">Tên sản phẩm</th>
+                                                <th class="text-center" style="width:20%">Loại sản phẩm</th>
                                                 <th class="text-center" style="width:15%">Trạng thái</th>
-                                                <th class="text-center" style="width:15%">Hành động</th>
+                                                <th class="text-center" style="width:20%">Hành động</th>
                                             </tr>
                                             </thead>
 
                                             <tbody>
                                             @php $count = 0; @endphp
                                             @foreach ($products as $key => $value)
-                                                @if($value->category->slug == $category->slug)
                                                     <tr>
                                                         <td class="text-center">{{$count + 1}}</td>
                                                         <td class="text-center">
-                                                            <a href="{{route('products.edit', $value->id)}}"><img
-                                                                    src="{{@$value->fileItem->urlThumbs}}"
-                                                                    alt="{{$value->name}}" title="{{$value->name}}"
+                                                            <a href="{{route('products.edit', $value->Id)}}"><img
+                                                                    src="{{$value->Pro_avatar}}"
+                                                                    alt="{{$value->Pro_name}}" title="{{$value->Pro_name}}"
                                                                     width="150"></a>
                                                         </td>
-                                                        <input type="hidden" value="{{$value->name}}">
+                                                        <input type="hidden" value="{{$value->Pro_name}}">
                                                         <td class="text-center">
-                                                            <a href="{{route('products.edit', $value->id)}}">{{$value->name}}</a>
+                                                            <a href="{{route('products.edit', $value->Id)}}">{{$value->Pro_name}}</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{@$value->old_price ? @$value->old_price : 0}}
+                                                            {{$value->Pro_category_id}}
                                                         </td>
                                                         <td class="text-center">
-                                                            {{@$value->price ? @$value->price : 0}}
-                                                        </td>
-                                                        <td class="text-center">
-                                                            {{$value->category->name}}
-                                                        </td>
-                                                        <td class="text-center">
-                                                            @if($value->status)
+                                                            @if($value->Pro_status)
                                                                 <button type="button"
-                                                                        class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->id . '"
-                                                                        onclick="btnChangeStatus(' . $value->id . ')">
+                                                                        class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->Id . '"
+                                                                        onclick="btnChangeStatus(' . $value->Id . ')">
                                                                     Hiển thị
                                                                 </button>
                                                             @else
                                                                 <button type="button"
                                                                         class="btn btn-round btn-danger btn-xs btnChangeStatus' . $value->id . '"
-                                                                        onclick="btnChangeStatus(' . $value->id . ')">
+                                                                        onclick="btnChangeStatus(' . $value->Id . ')">
                                                                     Không hiển thị
                                                                 </button>
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
-                                                            <a href="{{route('products.edit', $value->id)}}"
+                                                            <a href="{{route('products.edit', $value->Id)}}"
                                                                class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
                                                                 Edit</a>
-                                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->id]]) }}
-                                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}
-                                                            {{ Form::close() }}
+{{--                                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->Id]]) }}--}}
+{{--                                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}--}}
+{{--                                                            {{ Form::close() }}--}}
                                                         </td>
                                                     </tr>
                                                     @php $count++;@endphp
-                                                @endif
+
                                             @endforeach
                                             </tbody>
                                         </table>
@@ -174,6 +165,5 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.js')}}"></script>
-    <script src="{{asset('backend/js/products.js')}}"></script>
 
 @endpush
