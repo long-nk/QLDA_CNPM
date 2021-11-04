@@ -55,9 +55,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($bannerList as $key => $value)
+                                    @foreach ($bannerList as $value)
                                         <tr>
-                                            <td class="text-center">{{$key + 1}}</td>
+                                            <td class="text-center">{{$value->id}}</td>
                                             <td class="text-left">
                                                 {{$value->Sd_title}}
                                             </td>
@@ -82,9 +82,9 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{route('banners.edit', $value->Id)}}" style="min-width:100px;"
+                                                <a href="{{route('banners.edit', $value->id)}}" style="min-width:100px;"
                                                    class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
-                                                <form action="{{route('banners.destroy', $value->Id)}}" method="post">
+                                                <form action="{{route('banners.destroy', $value->id)}}" method="post">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     {{csrf_field()}}
                                                     <button type="submit" onclick="return ConfirmDelete()"

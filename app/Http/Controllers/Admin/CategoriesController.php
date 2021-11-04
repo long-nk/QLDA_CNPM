@@ -21,7 +21,7 @@ class CategoriesController extends Controller
 
     public function sitemap()
     {
-        $categories = Category::get();
+        $categories = Categories::get();
 
         return view('backend.categories.sitemap', compact('categories'));
     }
@@ -64,9 +64,9 @@ class CategoriesController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            Category::create($data);
+            Categories::create($data);
 
-            $categories = Category::get();
+            $categories = Categories::get();
             Cache::put('categories', $categories, 60);
 
             return redirect()->route('categories.index');
@@ -92,7 +92,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Categories::where('id', $id)->first();
 
         return view('backend.categories.edit', compact('category'));
     }
@@ -126,7 +126,7 @@ class CategoriesController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $category = Category::where('id', $id)->first();
+            $category = Categories::where('id', $id)->first();
             $category->name = $data['name'];
 //            $category->parent_id = $data['parent_id'];
             $category->intro = $data['intro'];
@@ -134,7 +134,7 @@ class CategoriesController extends Controller
             $category->status = $data['status'];
             $category->save();
 
-            $categories = Category::get();
+            $categories = Categories::get();
             Cache::put('categories', $categories, 60);
 
             return redirect()->route('categories.index');
@@ -149,9 +149,9 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
+        $category = Categories::find($id)->delete();
 
-        $categories = Category::get();
+        $categories = Categories::get();
         Cache::put('categories', $categories, 60);
 
         return redirect()->route('categories.index');

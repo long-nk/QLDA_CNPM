@@ -11,10 +11,13 @@ class Product extends Model
 
     public $timestamps = false;
 
+    const WIDTH_THUMBS = 450;
+
     protected $fillable = [
-        'Id',
         'Pro_name',
         'Pro_content',
+        'Pro_price',
+        'Pro_category_id',
         'Pro_C_id',
         'Pro_sale',
         'Pro_avatar',
@@ -25,11 +28,8 @@ class Product extends Model
         'Pro_number_import'
     ];
 
-    public function categories(){
-        return $this->belongsTo(Categories::class);
+    public function category(){
+        return $this->belongsTo(Categories::class, 'Pro_category_id');
     }
-
-
-
 
 }

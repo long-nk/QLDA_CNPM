@@ -36,31 +36,23 @@
                                     <th class="text-center" style="width:5%">STT</th>
                                     <th class="text-center" style="width:15%">Họ tên</th>
                                     <th class="text-center" style="width:15%">Số điện thoại</th>
-                                    <th class="text-center" style="width:20%">Tiêu đề</th>
                                     <th class="text-center" style="width:20%">Nội dung</th>
-                                    <th class="text-center" style="width:10%">Gửi lúc</th>
                                     <th class="text-center" style="width:15%">Trạng thái</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($contacts as $key => $value)
+                                @foreach ($contacts as $value)
                                     <tr>
-                                        <td class="text-center">{{$key + 1}}</td>
+                                        <td class="text-center">{{$value->id}}</td>
                                         <td class="text-center">
                                             {{$value->name}}
                                         </td>
                                         <td class="text-center">
-                                            {{$value->phone_number}}
-                                        </td>
-                                        <td class="text-center">
-                                            {{$value->title}}
+                                            {{$value->phone}}
                                         </td>
                                         <td class="text-center">
                                             {{$value->message}}
-                                        </td>
-                                        <td class="text-center">
-                                            {{$value->created}}
                                         </td>
                                         <td class="text-center">
                                             @if($value->status == 0)

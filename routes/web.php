@@ -37,7 +37,7 @@ Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
 Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
     Route::resource('banners', 'BannersController');
     Route::resource('products', 'ProductsController');
-    Route::get('products_list/{slug}', 'ProductsController@list_all')->name('products.list');
+    Route::get('products_list/{id}', 'ProductsController@list_all')->name('products.list');
     Route::resource('contacts', 'ContactsController');
     Route::resource('news', 'NewsController');
     Route::resource('categories', 'CategoriesController');

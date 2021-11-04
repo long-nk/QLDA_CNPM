@@ -39,12 +39,12 @@ class AppServiceProvider extends ServiceProvider
             Cache::put('product_news', $product_news, $minutes);
 //            }
 
-            $banners = Cache::get('banners');
+//            $banners = Cache::get('banners');
 //            if (!Cache::has('banners')) {
-            $banners = Banner::orderBy('Sd_sort', 'asc')->get();
-
-            View::share('banners', $banners);
-            Cache::put('banners', $banners, $minutes);
+//            $banners = Banner::orderBy('Sd_sort', 'asc')->get();
+//
+//            View::share('banners', $banners);
+//            Cache::put('banners', $banners, $minutes);
 //            }
 
             $singleProduct = Cache::get('singleProduct');
@@ -57,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
 
 
             $view->with('singleProduct', $singleProduct);
-            $view->with('banners', $banners);
+//            $view->with('banners', $banners);
             $view->with('categories', $categories);
             $view->with('product_news', $product_news);
         });
