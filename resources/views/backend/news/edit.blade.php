@@ -62,12 +62,12 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <select name="category" id="" class="form-control" {{$content->category_id}}>
-                                            <option value="-1" {{$content->category_id=="Null"?"selected":""}}>
+                                        <select name="category" id="" class="form-control" {{$content->C_id}}>
+                                            <option value="-1" {{$content->C_id=="Null"?"selected":""}}>
                                                 --None--
                                             </option>
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}" {{$content->category_id==$category->id?"selected":""}}>{{$category->name}}</option>
+                                                <option value="{{$category->id}}" {{$content->C_id==$category->id?"selected":""}}>{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -59,19 +59,19 @@
                                         <tr>
                                             <td class="text-center">{{$key + 1}}</td>
                                             <td class="text-left">
-                                                {{$value->name}}
+                                                {{$value->Sd_title}}
                                             </td>
                                             <td class="text-center">
-                                                <img src="{{$value->url_image}}" alt="" style="max-width: 100%;">
+                                                <img src="{{url('/')}}/{{$value->Sd_image}}" alt="" style="max-width: 100%;">
                                             </td>
                                             <td class="text-left">
-                                                <a href="{{$value->link}}" target="_blank">{{$value->link}}</a>
+                                                <a href="{{$value->Sd_link}}" target="_blank">{{$value->link}}</a>
                                             </td>
                                             <td class="text-center">
-                                                {{$value->sort}}
+                                                {{$value->Sd_sort}}
                                             </td>
                                             <td class="text-center">
-                                                @if($value->status)
+                                                @if($value->Sd_active)
                                                     <button type="button"
                                                             class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->id . '">Hiển thị
                                                     </button>
@@ -82,9 +82,9 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{route('banners.edit', $value->id)}}" style="min-width:100px;"
+                                                <a href="{{route('banners.edit', $value->Id)}}" style="min-width:100px;"
                                                    class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
-                                                <form action="{{route('banners.destroy', $value->id)}}" method="post">
+                                                <form action="{{route('banners.destroy', $value->Id)}}" method="post">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     {{csrf_field()}}
                                                     <button type="submit" onclick="return ConfirmDelete()"

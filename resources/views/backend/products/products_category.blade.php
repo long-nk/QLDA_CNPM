@@ -8,7 +8,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h3>{{$category->name}}</h3>
+                        <h3>{{$category->C_name}}</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -28,7 +28,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>{{$category->name}}</h2>
+                            <h2>{{$category->C_name}}</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -58,41 +58,41 @@
                                 @foreach ($products as $key => $value)
 
                                     <tr>
-                                        <td class="text-center">{{$key + 1}}</td>
+                                        <td class="text-center">{{$key}}</td>
                                         <td class="text-center">
-                                            <a href="{{route('products.edit', $value->id)}}"><img
-                                                        src="{{@$value->fileItem->urlThumbs}}"
-                                                        alt="{{$value->name}}" title="{{$value->name}}"
+                                            <a href="{{route('products.edit', $value->Id)}}"><img
+                                                        src=""
+                                                        alt="{{$value->Pro_name}}" title="{{$value->Pro_name}}"
                                                         width="150"></a>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('products.edit', $value->id)}}">{{$value->name}}</a>
+                                            <a href="{{route('products.edit', $value->Id)}}">{{$value->Pro_name}}</a>
                                         </td>
                                         <td class="text-center">
-                                            {{@$value->category->name}}
+                                            {{$value->Pro_category_id}}
                                         </td>
                                         <td class="text-center">
-                                            @if($value->status)
+                                            @if($value->Pro_active)
                                                 <button type="button"
-                                                        class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->id . '"
-                                                        onclick="btnChangeStatus(' . $value->id . ')">
+                                                        class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->Id . '"
+                                                        onclick="btnChangeStatus(' . $value->Id . ')">
                                                     Hiển thị
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                        class="btn btn-round btn-danger btn-xs btnChangeStatus' . $value->id . '"
-                                                        onclick="btnChangeStatus(' . $value->id . ')">
+                                                        class="btn btn-round btn-danger btn-xs btnChangeStatus' . $value->Id . '"
+                                                        onclick="btnChangeStatus(' . $value->Id . ')">
                                                     Không hiển thị
                                                 </button>
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('products.edit', $value->id)}}"
+                                            <a href="{{route('products.edit', $value->Id)}}"
                                                class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
                                                 Edit</a>
-                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->id]]) }}
-                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}
-                                            {{ Form::close() }}
+{{--                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->Id]]) }}--}}
+{{--                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}--}}
+{{--                                            {{ Form::close() }}--}}
                                         </td>
                                     </tr>
                                 @endforeach

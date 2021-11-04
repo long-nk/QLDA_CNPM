@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\FileItem;
+use App\Models\Categories;
 use App\Models\Product;
 use Carbon\Carbon;
 use File;
@@ -15,18 +14,7 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::with('fileItem', 'category')
-            ->orderBy('category_id')->get();
-//
-//        foreach($products as $item){
-//            $filePath = public_path('images/uploads/' . $item->fileItem->path . '/' . $item->fileItem->name);
-//            $descPath = public_path('images/uploads/thumbs_new/' . $item->fileItem->name);
-//
-//            if(File::exists($filePath)) {
-//                $thumbPath = public_path('images/uploads/thumbs/' . $item->fileItem->name);
-//                File::copy($thumbPath, $descPath);
-//            }
-//        }
+        $products = Product::get();
         return view('backend.products.index', compact('products'));
     }
 
@@ -37,7 +25,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Category::get();
+        $categories = Categories::get();
         return view('backend.products.create', compact('categories'));
     }
 
@@ -49,17 +37,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->name == "") {
-            $name = Product::setNameProduct($request->category);
-        } else {
-            $name = $request->name;
-        }
 
         $data = [
-            'name' => $name,
-            'category_id' => $request->category,
-            'slug' => str_slug($name, '-'),
-            'status' => $request->status,
+            'Pro_name' => $request->name,
+            'Pro_category_id' => $request->category,
+            'Pro_active' => $request->status,
+            'Pro_price' => $request->price,
+            'Pro_sale' => $request->sale,
+            'Pro_description' => $request->description,
+            'Pro_hot' => $request->rank
         ];
         $file = $request->image;
 
@@ -68,7 +54,7 @@ class ProductsController extends Controller
         }
 
         $extension = $file->extension();
-        $file_name = "cong_nhom_duc_dai_phat_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
+        $file_name = "my_pham_nula_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
         $fileItem = [
             'name' => $file_name,
             'mime' => $file->getClientMimeType(),
@@ -152,7 +138,7 @@ class ProductsController extends Controller
                 $fileItem = FileItem::create($fileItem);
                 $fileItem->product()->create($data);
 
-                $category = Category::find($request->category);
+                $category = Categories::find($request->category);
 
                 \DB::commit();
                 return redirect()->route('products.list', ['slug' => $category->slug]);
@@ -203,7 +189,7 @@ class ProductsController extends Controller
         }
         $data = [
             'name' => $name,
-            'category_id' => $request->category,
+            'C_id' => $request->category,
             'slug' => str_slug($name, '-'),
             'status' => $request->status,
         ];
@@ -286,7 +272,7 @@ class ProductsController extends Controller
                     $fileCreate = FileItem::create($fileItem);
                     $product->name = $data['name'];
                     $product->file_item_id = $fileCreate->id;
-                    $product->category_id = $data['category_id'];
+                    $product->C_id = $data['C_id'];
                     $product->slug = $data['slug'];
                     $product->status = $data['status'];
                     $product->save();
@@ -331,14 +317,9 @@ class ProductsController extends Controller
 
     public function list_all($category)
     {
-        $products = Product::whereHas('category', function ($query) use ($category) {
-                $query->where('categories.slug', $category);
-            })
-            ->with('fileItem')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $products = Product::with('categories')->find($category);
 
-        $category = Category::where('slug', 'like', $category)->first();
+        $category = Categories::where('Id', 'like', $category)->first();
 
         if ($products) {
             return view('backend.products.products_category', compact('products', 'category'));

@@ -58,7 +58,7 @@
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <select name="category" id="" class="form-control" {{old('category')}}>
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option value="{{$category->C_id}}">{{$category->C_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -75,6 +75,54 @@
                                             {{--Chọn hình ảnh--}}
                                             <input type="file" class="hide_file" name="image" onchange="show_img_selected(this)">
                                         {{--</div>--}}
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Giới thiệu <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea name="description" id="editor1" value="{{old('description')}}" class="form-control" cols="30" rows="5" placeholder="Giới thiệu" required>
+
+                                        </textarea>
+                                        @if ($errors->has('description'))
+                                            <div id="formMessage" class="alert alert-danger">
+                                                <strong>{{ $errors->first('description') }}</strong>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Giá bán <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="price" value="{{old('price')}}" class="form-control col-md-7 col-xs-12"  name="price" type="text">
+                                        @if ($errors->has('price'))
+                                            <div id="formMessage" class="alert alert-danger">
+                                                <strong>{{ $errors->first('price') }}</strong>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phần trăm giảm giá <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="name" value="{{old('sale')}}" class="form-control col-md-7 col-xs-12"  name="sale" type="text">
+                                        @if ($errors->has('sale'))
+                                            <div id="formMessage" class="alert alert-danger">
+                                                <strong>{{ $errors->first('sale') }}</strong>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Xếp loại sản phẩm <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <select name="rank" id="" class="form-control" {{old('rank')}}>
+                                            <option value="1">Sản phẩm mới</option>
+                                            <option value="2">Sản phẩm bán chạy</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="item form-group">
