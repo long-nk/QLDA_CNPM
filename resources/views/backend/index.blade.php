@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title', 'Nhôm đúc Đại Phát | Dashboard')
+@section('title', 'Nula Cosmetic | Dashboard')
 <!-- page content -->
 @section('content')
 

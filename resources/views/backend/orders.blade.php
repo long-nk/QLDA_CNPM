@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title', 'Nhôm đúc Đại Phát | Dashboard')
+@section('title', 'Nula Cosmetic | Dashboard')
 @section('content')
 <!-- page content -->
 <div class="right_col" role="main">
@@ -93,7 +93,7 @@
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                                             <h5>
-                                                                Male: <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required /> 
+                                                                Male: <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required />
                                                                 Female: <input type="radio" class="flat" name="gender" id="genderF" value="F" />
                                                             </h5>
                                                         </div>

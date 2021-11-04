@@ -8,6 +8,8 @@ class Categories extends Model
 {
     protected $table = 'categories';
 
+    public const UPDATED_AT = null;
+
     protected $fillable = [
         'Id',
         'C_name',
