@@ -37,7 +37,7 @@
                                 </thead>
 
                                 <tbody>
-                                <?php foreach ($list_users as $key => $value): ?>
+                                <?php foreach ($list_users as $value): ?>
                                 <tr>
                                     <td class="text-center"><input type="checkbox" class="flat checkbox"
                                                                    name="table_records"></td>
@@ -45,7 +45,7 @@
                                     </td>
                                     </td>
                                     <td class="text-center"><?php echo $value->email; ?></td>
-                                    <td class="text-center"><?php echo $value->phone_number; ?></td>
+                                    <td class="text-center"><?php echo $value->phone; ?></td>
                                     <td class="text-center">
                                         @if($value->status)
                                             <form action="" method="post">
