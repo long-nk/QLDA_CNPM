@@ -28,11 +28,7 @@
                                 <tr>
                                     <th class="text-center" width="5%"><input type="checkbox" id="check-all"
                                                                               class="flat" name="table_records"></th>
-                                    <th class="text-center" width="15%">Họ tên</th>
-                                    <th class="text-center" width="10%">Tên đăng nhập</th>
-                                    <th class="text-center" width="10%">Giới tính</th>
-                                    <th class="text-center" width="10%">Địa chỉ</th>
-                                    <th class="text-center" width="10%">Ngày sinh</th>
+                                    <th class="text-center" width="15%">Tên đăng nhập</th>
                                     <th class="text-center" width="10%">Email</th>
                                     <th class="text-center" width="10%">Số điện thoại</th>
                                     <th class="text-center" width="10%">Trạng thái</th>
@@ -46,21 +42,6 @@
                                     <td class="text-center"><input type="checkbox" class="flat checkbox"
                                                                    name="table_records"></td>
                                     <td class="text-center"><a href="javascript:void(0)" style="font-weight: bold;" ><?php echo $value->name; ?></a>
-                                    </td>
-                                    <td class="text-center">{{$value->username}}</td>
-                                    <td class="text-center">
-                                        @if($value->gender == 1)
-                                            Nam
-                                        @else
-                                            Nữ
-                                        @endif
-                                    </td>
-                                    <td class="text-center">{{$value->address}}</td>
-                                    <td class="text-center">
-                                        <?php
-                                        $date = date_create($value->birth_date);
-                                        echo date_format($date, 'd-m-Y');
-                                        ?>
                                     </td>
                                     </td>
                                     <td class="text-center"><?php echo $value->email; ?></td>

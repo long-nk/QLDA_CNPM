@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BannersRequest;
 use App\Models\Banner;
 //use Illuminate\Support\Facades\File;
+use App\Models\Categories;
 use Mockery\Exception;
 use File;
 use Image;
@@ -19,7 +20,7 @@ class BannersController extends Controller
      */
     public function index()
     {
-        $bannerList = Banner::orderBy('sort')->get();
+        $bannerList = Banner::orderBy('Sd_sort')->get();
 
         return view('backend.banners.index', compact('bannerList'));
     }
@@ -31,7 +32,8 @@ class BannersController extends Controller
      */
     public function create()
     {
-        return view('backend.banners.create');
+        $categories = Categories::all();
+        return view('backend.banners.create', compact('categories'));
     }
 
     /**
@@ -50,20 +52,18 @@ class BannersController extends Controller
             $file_path = "";
             if ($request->image) {
                 $extension = $image->extension();
-                $file_name = "daiphat_banners_" . time() .  '.' . $extension;
+                $file_name = "nula_cosmetic_banners_" . time() .  '.' . $extension;
                 $file_path = $path . '/' . $file_name;
                 $image->move($path . '/', $file_name);
             }
 
             $data = [
-                'name' => $request->name,
-                'link' => $request->link,
-                'image' => $file_path,
-                'type' => $request->type,
-                'sort' => $request->sort,
-                'is_popup' => $request->is_popup,
-                'status' => $request->status,
+                'Sd_title' => $request->name,
+                'Sd_image' => $file_path,
+                'Sd_sort' => $request->sort,
+                'Sd_active' => $request->status,
             ];
+
             Banner::create($data);
             \DB::commit();
 
@@ -95,7 +95,8 @@ class BannersController extends Controller
     public function edit($id)
     {
         $banner = Banner::find($id);
-        return view('backend.banners.edit', compact('banner'));
+        $categories = Categories::get();
+        return view('backend.banners.edit', compact('banner', 'categories'));
     }
 
     /**
@@ -117,20 +118,17 @@ class BannersController extends Controller
 
             $path = "images/banners";
             $image = $request->image;
-            if ($image && $banner->image != "") {
-                File::delete($banner->image);
+            if ($image && $banner->Sd_image != "") {
                 $extension = $image->extension();
-                $file_name = "daiphat_banners_" . time() . '.' . $extension;
+                $file_name = "nula_cosmetic_banners_" . time() . '.' . $extension;
                 $file_path = $path . '/' . $file_name;
                 $image->move($path . '/', $file_name);
-                $banner->image = $file_path;
+                $banner->Sd_image = $file_path;
             }
-            $banner->name = $request->name;
-            $banner->link = $request->link;
-            $banner->sort = $request->sort;
-            $banner->type = $request->type;
-            $banner->is_popup = $request->is_popup;
-            $banner->status = $request->status;
+            $banner->Sd_title = $request->name;
+            $banner->Sd_link = $request->link;
+            $banner->Sd_sort = $request->sort;
+            $banner->Sd_active = $request->status;
             $banner->save();
 
             \DB::commit();

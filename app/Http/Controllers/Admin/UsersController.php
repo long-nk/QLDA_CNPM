@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\FileItem;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Models;
+use App\Models\Categories;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +22,7 @@ class UsersController extends Controller
     public function index()
     {
         $data['list_users'] = User::get();
+
         return view('backend.users.index')->with($data);
     }
 

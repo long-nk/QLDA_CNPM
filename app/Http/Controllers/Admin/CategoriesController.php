@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Category;
+use App\Models\Categories;
 use App\Models\FileItem;
 use Faker\Provider\File;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::get();
+        $categories = Categories::get();
 
         return view('backend.categories.index', compact('categories'));
     }
