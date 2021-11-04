@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductsRequest;
 use App\Models\Categories;
 use App\Models\Product;
 use Carbon\Carbon;
 use File;
 use Illuminate\Http\Request;
 use Image;
+use Mockery\CountValidator\Exact;
 
 class ProductsController extends Controller
 {
     public function index()
     {
+        $categories = Categories::get();
         $products = Product::get();
-        return view('backend.products.index', compact('products'));
+        return view('backend.products.index', compact('products', 'categories'));
     }
 
     /**
@@ -35,117 +38,49 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
-
-        $data = [
-            'Pro_name' => $request->name,
-            'Pro_category_id' => $request->category,
-            'Pro_active' => $request->status,
-            'Pro_price' => $request->price,
-            'Pro_sale' => $request->sale,
-            'Pro_description' => $request->description,
-            'Pro_hot' => $request->rank
-        ];
         $file = $request->image;
-
         if (!$file) {
-            return null;
+            return new \Exception('Image is required!');
         }
 
-        $extension = $file->extension();
-        $file_name = "my_pham_nula_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
-        $fileItem = [
-            'name' => $file_name,
-            'mime' => $file->getClientMimeType(),
-            'size' => $file->getSize(),
-            'path' => 'products'
-        ];
+        try {
+            \DB::beginTransaction();
 
-        $validator = \Validator::make($data, [
-            'name' => 'required|max:255',
-        ]);
+            $extension = $file->extension();
+            $file_name = "my_pham_nula_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
+            $file->move('images/uploads/products/', $file_name);
 
-        $category = '';
-        if ($validator->fails()) {
-            return redirect('admin/products/create')
-                ->withErrors($validator)
-                ->withInput();
-        } else {
-            try {
-                \DB::beginTransaction();
+            $imagePath = public_path('images/uploads/products/' . $file_name);
 
-                $file->move('images/uploads/products/', $fileItem['name']);
+            //Create thumbs
+            $thumbsPath = public_path('images/uploads/thumbs/' . $file_name);
+            $image = Image::make($imagePath);
+            $widthImg = $image->width();
+            $heightImg = $image->height();
+            $wResize = Product::WIDTH_THUMBS;
+            $hResize = ($wResize * $heightImg) / $widthImg;
+            $image->resize($wResize, $hResize)->save($thumbsPath);
 
-                $imagePath = public_path('images/uploads/products/' . $file_name);
-//                $filePath = $imagePath;
-//                try {
-//                    \Tinify\setKey(env("TINIFY_DEVELOPER_KEY"));
-//                    $source = \Tinify\fromFile($filePath);
-//                    $source->toFile($filePath);
-//                } catch(\Tinify\AccountException $e) {
-//                    // Verify your API key and account limit.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(\Tinify\ClientException $e) {
-//                    // Check your source image and request options.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(\Tinify\ServerException $e) {
-//                    // Temporary issue with the Tinify API.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(\Tinify\ConnectionException $e) {
-//                    // A network connection error occurred.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(Exception $e) {
-//                    // Something else went wrong, unrelated to the Tinify API.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                }
+            $data = [
+                'Pro_name' => $request->name,
+                'Pro_avatar' => $image,
+                'Pro_category_id' => $request->category,
+                'Pro_active' => $request->status,
+                'Pro_price' => $request->price,
+                'Pro_sale' => $request->sale,
+                'Pro_description' => $request->description,
+                'Pro_hot' => $request->rank
+            ];
 
-                //Create thumbs
-                $thumbsPath = public_path('images/uploads/thumbs/' . $file_name);
-                $image = Image::make($imagePath);
-                $widthImg = $image->width();
-                $heightImg = $image->height();
-                $wResize = Product::WIDTH_THUMBS;
-                $hResize = ($wResize * $heightImg) / $widthImg;
-                $image->resize($wResize, $hResize)->save($thumbsPath);
+            Product::create($data);
 
-                //Write text to image
-//                $img = Image::make(public_path('images/uploads/products/'.$fileItem['name']));
-//                $widthImg = $img->width();
-//                $heightImg = $img->height();
-//                $size_1 = 45;
-//                $size_2 = 60;
-//                if($widthImg < 800){
-//                    $size_1 = 30;
-//                    $size_2 = 40;
-//                }
-//                $img->text('nhomducdaiphat.com', $widthImg/2, $heightImg/2, function($font) use ($size_1) {
-//                    $font->file(public_path('fonts/OpenSans-Bold.ttf'));
-//                    $font->size($size_1);
-//                    $font->color('#fff');
-//                    $font->align('center');
-//                    $font->valign('bottom');
-//                });
-//                $img->text('0948.65.66.88', $widthImg/2, $heightImg/2 + 50, function($font) use ($size_2)  {
-//                    $font->file(public_path('fonts/OpenSans-Bold.ttf'));
-//                    $font->size($size_2);
-//                    $font->color('#ff0000');
-//                    $font->align('center');
-//                    $font->valign('bottom');
-//                });
-//                $img->save(public_path('images/uploads/products/'. $fileItem['name']));
-
-                $fileItem = FileItem::create($fileItem);
-                $fileItem->product()->create($data);
-
-                $category = Categories::find($request->category);
-
-                \DB::commit();
-                return redirect()->route('products.list', ['slug' => $category->slug]);
-            } catch (Exception $e) {
-                \Log::error($e->getMessage());
-                \DB::rollback();
-            }
+            \DB::commit();
+            return redirect()->route('products.list', ['id' => $request->category]);
+        } catch (Exception $e) {
+            \Log::error($e->getMessage());
+            \DB::rollback();
         }
     }
 
@@ -168,7 +103,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::where('id', $id)->with('fileItem')->first();
+        $product = Product::where('id', $id)->first();
 
         return view('backend.products.edit', compact('product'));
     }
@@ -230,27 +165,7 @@ class ProductsController extends Controller
                 $file->move('images/uploads/products/', $fileItem['name']);
 
                 $imagePath = public_path('images/uploads/products/' . $file_name);
-//                $filePath = $imagePath;
-//                try {
-//                    \Tinify\setKey(env("TINIFY_DEVELOPER_KEY"));
-//                    $source = \Tinify\fromFile($filePath);
-//                    $source->toFile($filePath);
-//                } catch(\Tinify\AccountException $e) {
-//                    // Verify your API key and account limit.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(\Tinify\ClientException $e) {
-//                    // Check your source image and request options.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(\Tinify\ServerException $e) {
-//                    // Temporary issue with the Tinify API.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(\Tinify\ConnectionException $e) {
-//                    // A network connection error occurred.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                } catch(Exception $e) {
-//                    // Something else went wrong, unrelated to the Tinify API.
-//                    return redirect('images/create')->with('error', $e->getMessage());
-//                }
+//
 
                 //Create thumbs
                 $thumbsPath = public_path('images/uploads/thumbs/' . $file_name);
@@ -300,7 +215,7 @@ class ProductsController extends Controller
         try {
             \DB::beginTransaction();
 
-            $product = Product::where('id', $id)->first();
+            $product = Product::where('Id', $id)->first();
             $category = $product->category->slug;
             $product->fileItem()->delete();
             $product->delete();
@@ -315,11 +230,15 @@ class ProductsController extends Controller
         }
     }
 
-    public function list_all($category)
+    public function list_all($id)
     {
-        $products = Product::with('categories')->find($category);
+        $products = Product::whereHas('category', function ($query) use ($id) {
+            $query->where('categories.id', $id);
+        })
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        $category = Categories::where('Id', 'like', $category)->first();
+        $category = Categories::where('id', $id)->first();
 
         if ($products) {
             return view('backend.products.products_category', compact('products', 'category'));

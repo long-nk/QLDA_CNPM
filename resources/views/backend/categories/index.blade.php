@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title', "Chuyên mục | " . config('app.name'))
+@section('title', "Chuyên mục | Dashboard")
 
 @section('content')
     <!-- page content -->
@@ -49,35 +49,37 @@
                                 <tr>
                                     <th class="text-center" style="width:5%">STT</th>
                                     <th class="text-center" style="width:20%">Tên chuyên mục</th>
-                                    <th class="text-center" style="width:20%">Alias</th>
                                     <th class="text-center" style="width:15%">Trạng thái</th>
                                     <th class="text-center" style="width:20%">Hành động</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach ($categories as $key => $value)
+                                @foreach ($categories as $value)
                                     <tr>
-                                        <td class="text-center">{{$key + 1}}</td>
+                                        <td class="text-center">{{$value->id}}</td>
                                         <td>
-                                            {{$value->name}}
-                                        </td>
-                                        <td>
-                                            {{$value->slug}}
+                                            {{$value->C_name}}
                                         </td>
                                         <td class="text-center">
-                                            @if($value->status)
+                                            @if($value->C_active)
                                                 <button type="button" class="btn btn-round btn-success btn-xs btnChangeStatus" >Hiển thị</button>
                                             @else
                                                 <button type="button" class="btn btn-round btn-danger btn-xs btnChangeStatus">Không hiển thị</button>
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('categories.edit', $value->id)}}"
-                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                                            {{ Form::open(['method' => 'DELETE', 'route' => ['categories.destroy', $value->id]]) }}
-                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) }}
-                                            {{ Form::close() }}
+                                            <a href="{{route('categories.edit', $value->id)}}" style="min-width:100px;"
+                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                            <form action="{{route('categories.destroy', $value->id)}}" method="post">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                {{csrf_field()}}
+                                                <button type="submit" onclick="return ConfirmDelete()"
+                                                        class="btn btn-danger btn-xs" name="actiondelete" value="1"
+                                                        style="min-width:100px;"><i
+                                                        class="fa fa-trash"></i> Xóa
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

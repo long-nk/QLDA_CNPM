@@ -62,7 +62,7 @@
                                         <div class="box_upload">
                                             <span class="fa fa-upload"></span> Chọn banner
                                             <input type="file" class="hide_file" name="image"
-                                                   onchange="show_img_selected(this)" {{$banner->url_logo == ""?"required":""}}>
+                                                   onchange="show_img_selected(this)" {{$banner->Sd_image == ""?"required":""}}>
                                         </div>
                                     </div>
                                 </div>

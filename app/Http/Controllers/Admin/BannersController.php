@@ -110,7 +110,6 @@ class BannersController extends Controller
     {
         try {
             \DB::beginTransaction();
-
             $banner = Banner::find($id);
             if(!isset($banner)){
                 throw new Exception("Not found!");

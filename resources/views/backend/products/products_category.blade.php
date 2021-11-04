@@ -1,5 +1,5 @@
 @extends('backend.layout.master')
-@section('title', 'Đại Phát | Dashboard')
+@section('title', 'Nula Cosmetic | Dashboard')
 
 @section('content')
     <!-- page content -->
@@ -55,18 +55,18 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach ($products as $key => $value)
-
+                                @foreach ($products as $value)
+                                    {{$count = 0}}
                                     <tr>
-                                        <td class="text-center">{{$key}}</td>
+                                        <td class="text-center">{{$count+1}}</td>
                                         <td class="text-center">
-                                            <a href="{{route('products.edit', $value->Id)}}"><img
+                                            <a href="{{route('products.edit', $value->id)}}"><img
                                                         src=""
                                                         alt="{{$value->Pro_name}}" title="{{$value->Pro_name}}"
                                                         width="150"></a>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('products.edit', $value->Id)}}">{{$value->Pro_name}}</a>
+                                            <a href="{{route('products.edit', $value->id)}}">{{$value->Pro_name}}</a>
                                         </td>
                                         <td class="text-center">
                                             {{$value->Pro_category_id}}
@@ -74,23 +74,23 @@
                                         <td class="text-center">
                                             @if($value->Pro_active)
                                                 <button type="button"
-                                                        class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->Id . '"
-                                                        onclick="btnChangeStatus(' . $value->Id . ')">
+                                                        class="btn btn-round btn-success btn-xs btnChangeStatus' . {{$value->id}} . '"
+                                                        onclick="btnChangeStatus(' . $value->id . ')">
                                                     Hiển thị
                                                 </button>
                                             @else
                                                 <button type="button"
-                                                        class="btn btn-round btn-danger btn-xs btnChangeStatus' . $value->Id . '"
-                                                        onclick="btnChangeStatus(' . $value->Id . ')">
+                                                        class="btn btn-round btn-danger btn-xs btnChangeStatus' . {{$value->id}} . '"
+                                                        onclick="btnChangeStatus(' . $value->id . ')">
                                                     Không hiển thị
                                                 </button>
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('products.edit', $value->Id)}}"
+                                            <a href="{{route('products.edit', $value->id)}}"
                                                class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
                                                 Edit</a>
-{{--                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->Id]]) }}--}}
+{{--                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->id]]) }}--}}
 {{--                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}--}}
 {{--                                            {{ Form::close() }}--}}
                                         </td>
