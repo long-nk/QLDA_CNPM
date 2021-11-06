@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductsRequest;
+use App\Models\Banner;
 use App\Models\Categories;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -11,6 +12,7 @@ use File;
 use Illuminate\Http\Request;
 use Image;
 use Mockery\CountValidator\Exact;
+use Mockery\Exception;
 
 class ProductsController extends Controller
 {
@@ -48,24 +50,19 @@ class ProductsController extends Controller
         try {
             \DB::beginTransaction();
 
-            $extension = $file->extension();
-            $file_name = "my_pham_nula_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
-            $file->move('images/uploads/products/', $file_name);
-
-            $imagePath = public_path('images/uploads/products/' . $file_name);
-
-            //Create thumbs
-            $thumbsPath = public_path('images/uploads/thumbs/' . $file_name);
-            $image = Image::make($imagePath);
-            $widthImg = $image->width();
-            $heightImg = $image->height();
-            $wResize = Product::WIDTH_THUMBS;
-            $hResize = ($wResize * $heightImg) / $widthImg;
-            $image->resize($wResize, $hResize)->save($thumbsPath);
+            $path = "images/uploads/products";
+            $image = $request->image;
+            $file_path = "";
+            if ($request->image) {
+                $extension = $image->extension();
+                $file_name = "nula_cosmetic_product_" . time() .  '.' . $extension;
+                $file_path = $path . '/' . $file_name;
+                $image->move($path . '/', $file_name);
+            }
 
             $data = [
                 'Pro_name' => $request->name,
-                'Pro_avatar' => $image,
+                'Pro_avatar' => $file_path,
                 'Pro_category_id' => $request->category,
                 'Pro_active' => $request->status,
                 'Pro_price' => $request->price,
@@ -115,87 +112,42 @@ class ProductsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductsRequest $request, $id)
     {
         if ($request->name == "") {
             $name = Product::setNameProduct($request->category);
         } else {
             $name = $request->name;
         }
-        $data = [
-            'name' => $name,
-            'C_id' => $request->category,
-            'slug' => str_slug($name, '-'),
-            'status' => $request->status,
-        ];
-        $file = $request->image;
+        $path = "images/uploads/products";
+        $image = $request->image;
         $category = '';
         try {
             \DB::beginTransaction();
 
-            $product = Product::with('fileItem')->whereId($id)->first();
+            $product = Product::find($id);
 
-            $category = $product->category->slug;
-
-            if ($file) {
-                //Remove old image
-                if(isset($product->fileItem->path)){
-                    $filePath = public_path('images/uploads/' . $product->fileItem->path . '/' . $product->fileItem->name);
-                    if (File::exists($filePath)) {
-                        File::delete($filePath);
-                    }
-
-                    //Remove old image
-                    $thumbsPath = public_path('images/uploads/thumbs/' . $product->fileItem->name);
-                    if (File::exists($thumbsPath)) {
-                        File::delete($thumbsPath);
-                    }
-                }
-
-                $extension = $file->extension();
-                $file_name = "cong_nhom_duc_dai_phat_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
-
-                $fileItem = [
-                    'name' => $file_name,
-                    'mime' => $file->getClientMimeType(),
-                    'size' => $file->getSize(),
-                    'path' => 'products'
-                ];
-
-                $file->move('images/uploads/products/', $fileItem['name']);
-
-                $imagePath = public_path('images/uploads/products/' . $file_name);
-//
-
-                //Create thumbs
-                $thumbsPath = public_path('images/uploads/thumbs/' . $file_name);
-                $image = Image::make($imagePath);
-                $widthImg = $image->width();
-                $heightImg = $image->height();
-                $wResize = Product::WIDTH_THUMBS;
-                $hResize = ($wResize * $heightImg) / $widthImg;
-                $image->resize($wResize, $hResize)->save($thumbsPath);
-
-                if(isset($product->fileItem->path)){
-                    $file = FileItem::find($product->file_item_id);
-                    $file->name = $fileItem['name'];
-                    $file->mime = $fileItem['mime'];
-                    $file->size = $fileItem['size'];
-                    $file->path = $fileItem['path'];
-                    $file->save();
-                } else {
-                    $fileCreate = FileItem::create($fileItem);
-                    $product->name = $data['name'];
-                    $product->file_item_id = $fileCreate->id;
-                    $product->C_id = $data['C_id'];
-                    $product->slug = $data['slug'];
-                    $product->status = $data['status'];
-                    $product->save();
-                }
+            $category = $product->category->id;
+            if ($image && $product->Pro_avatar != "") {
+                $extension = $image->extension();
+                $file_name = "nula_cosmetic_product_" . time() . '.' . $extension;
+                $file_path = $path . '/' . $file_name;
+                $image->move($path . '/', $file_name);
+                $product->Pro_avatar = $file_path;
             }
 
+            $product->Pro_name = $request->name;
+            $product->Pro_category_id = $request->category;
+            $product->Pro_active = $request->status;
+            $product->Pro_price = $request->price;
+            $product->Pro_sale = $request->sale;
+            $product->Pro_description = $request->description;
+            $product->Pro_hot = $request->rank;
+
+            $product->save();
+
             \DB::commit();
-            return redirect()->route('products.list', ['slug' => $category]);
+            return redirect()->route('products.list', ['id' => $category]);
         } catch (Exception $e) {
             \Log::error($e->getMessage());
             \DB::rollback();
@@ -212,22 +164,13 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            \DB::beginTransaction();
+        $product = Product::find($id);
 
-            $product = Product::where('Id', $id)->first();
-            $category = $product->category->slug;
-            $product->fileItem()->delete();
-            $product->delete();
-
-            \DB::commit();
-            return redirect()->route('products.list', ['slug' => $category]);
-        } catch (Exception $e) {
-            \Log::error($e->getMessage());
-            \DB::rollback();
-
-            return redirect()->route('dashboard');
+        if (empty($product)) {
+            return redirect()->back();
         }
+        $product->delete();
+        return redirect()->back();
     }
 
     public function list_all($id)

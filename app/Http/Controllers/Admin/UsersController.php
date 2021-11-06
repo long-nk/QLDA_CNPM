@@ -23,7 +23,9 @@ class UsersController extends Controller
     {
         $data['list_users'] = User::get();
 
-        return view('backend.users.index')->with($data);
+        $categories = Categories::get();
+
+        return view('backend.users.index')->with($data, $categories);
     }
 
     public function profile(Request $request)
@@ -36,7 +38,7 @@ class UsersController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'username' => 'required|max:255',
-            'password' => 'required|max:255',
+            'password' => 'required|min:8',
         ];
         $validator = \Validator::make($request->all(), $rules);
 
@@ -47,30 +49,10 @@ class UsersController extends Controller
         }
         $data = [
             'name' => $request->name,
-            'username' => $request->username,
             'password' => bcrypt($request->password),
-            'address' => $request->address,
             'email' => $request->email,
-            'gender' => $request->gender,
-            'phone_number' => $request->phone_number,
-//            'birth_date' => Carbon::createFromFormat('d/m/Y', $request->birth_date)->format('Y/m/d'),
+            'phone' => $request->phone,
         ];
-        $file = $request->image;
-
-        if ($file) {
-            $extension = $file->extension();
-            $file_name = "profile_" . rand(10000, mt_getrandmax()) . '_' . rand(10000, mt_getrandmax()) . '.' . $extension;
-            $path = 'images/uploads/profile';
-            $dataFileItem = [
-                'name' => $file_name,
-                'mime' => $file->getClientMimeType(),
-                'size' => $file->getSize(),
-                'path' => $path
-            ];
-            $file->move(public_path($path), $file_name);
-            $fileItemId = FileItem::insertGetId($dataFileItem);
-            $data['file_item_id'] = $fileItemId;
-        }
 
         $result = User::where('id', Auth::user()->id)->update($data);
         if ($result) {
@@ -124,19 +106,15 @@ class UsersController extends Controller
     {
         $data = [
             'name' => $request->name,
-            'username' => $request->username,
             'password' => bcrypt($request->password),
-            'address' => $request->address,
             'email' => $request->email,
-            'gender' => $request->gender,
-            'phone_number' => $request->phone_number,
-//            'birth_date' => (string)Carbon::createFromFormat('d/m/Y',$request->birth_date)->format('Y-m-d'),
+            'phone' => $request->phone,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ];
         $rules = [
             'name' => 'required|max:255',
-            'username' => 'required|max:255',
+            'password' => 'required|min:8',
         ];
         $validator = \Validator::make($request->all(), $rules);
 
@@ -147,7 +125,6 @@ class UsersController extends Controller
         } else {
             try {
                 \DB::beginTransaction();
-
                 $result = User::create($data);
 
                 \DB::commit();
@@ -197,7 +174,7 @@ class UsersController extends Controller
     {
         $rules = [
             'name' => 'required|max:255',
-            'username' => 'required|max:255',
+            'password' => 'required|min:8',
         ];
         $validator = \Validator::make($request->all(), $rules);
 
@@ -208,13 +185,9 @@ class UsersController extends Controller
         }
         $data = [
             'name' => $request->name,
-            'username' => $request->username,
             'password' => bcrypt($request->password),
-            'address' => $request->address,
             'email' => $request->email,
-            'gender' => $request->gender,
-            'phone_number' => $request->phone_number,
-//            'birth_date' => Carbon::createFromFormat('d/m/Y', $request->birth_date)->format('Y/m/d'),
+            'phone' => $request->phone,
             'updated_at' => Carbon::now()
         ];
         $result = User::where('id', $id)->update($data);

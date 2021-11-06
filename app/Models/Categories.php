@@ -13,6 +13,7 @@ class Categories extends Model
     protected $fillable = [
         'Id',
         'C_name',
+        'C_type',
         'C_active',
         'C_hot',
         'C_sort'
