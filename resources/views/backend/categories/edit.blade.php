@@ -35,7 +35,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="name" value="{{$category->name}}"
+                                        <input id="name" value="{{$category->C_name}}"
                                                class="form-control col-md-7 col-xs-12" name="name" type="text">
                                         @if ($errors->has('name'))
                                             <div id="formMessage" class="alert alert-danger">
@@ -44,24 +44,19 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Chuyên mục cha--}}
-                                    {{--</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="parent_id" id="" class="form-control">--}}
-                                            {{--<option value="0" >-- None --</option>--}}
-                                            {{--@foreach($categories as $item)--}}
-                                                {{--<option value="{{$item->id}}" {{$item->id == $category->id?"selected":""}}>{{$item->name}}</option>--}}
-                                            {{--@endforeach--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Mô tả
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Loại danh mục
+                                        <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea name="intro" id="editor1" cols="10" rows="3"
-                                                  class="form-control">{{$category->intro}}</textarea>
+                                        <input id="type" value="{{$category->C_type}}"
+                                               class="form-control col-md-7 col-xs-12"
+                                               name="type" type="number">
+                                        @if ($errors->has('type'))
+                                            <div id="formMessage" class="alert alert-danger">
+                                                <strong>{{ $errors->first('type') }}</strong>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="item form-group">
@@ -69,11 +64,11 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <select name="status" id="status" value="{{$category->status}}"
+                                        <select name="status" id="status" value="{{$category->C_active}}"
                                                 class="form-control">
-                                            <option value="1" {{$category->status == 1?"selected":""}}>Hiển thị
+                                            <option value="1" {{$category->C_active == 1?"selected":""}}>Hiển thị
                                             </option>
-                                            <option value="0" {{$category->status == 0?"selected":""}}>Không hiển
+                                            <option value="0" {{$category->C_active == 0?"selected":""}}>Không hiển
                                                 thị
                                             </option>
                                         </select>

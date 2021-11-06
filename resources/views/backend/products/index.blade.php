@@ -43,9 +43,10 @@
                         </div>
                         <ul class="nav nav-tabs">
                             @foreach($categories as $key => $category)
-                                <li class="{{$key== 0 ?"active" : "" }}">
-                                    <a data-toggle="tab" href="#{{$category->Id}}">{{$category->C_name}}</a>
-                                </li>
+                                <li><a href="{{route('products.list', $category->C_type)}}">{{$category->C_name}}</a></li>
+{{--                                <li class="{{$key== 0 ?"active" : "" }}">--}}
+{{--                                    <a data-toggle="tab" href="#{{$category->id}}">{{$category->C_name}}</a>--}}
+{{--                                </li>--}}
                             @endforeach
                         </ul>
 
@@ -60,7 +61,7 @@
                                                 <th class="text-center" style="width:5%">STT</th>
                                                 <th class="text-center" style="width:20%">Hình ảnh</th>
                                                 <th class="text-center" style="width:20%">Tên sản phẩm</th>
-                                                <th class="text-center" style="width:20%">Loại sản phẩm</th>
+                                                <th class="text-center" style="width:20%">Giới thiệu</th>
                                                 <th class="text-center" style="width:15%">Trạng thái</th>
                                                 <th class="text-center" style="width:20%">Hành động</th>
                                             </tr>
@@ -82,7 +83,7 @@
                                                             <a href="{{route('products.edit', $value->id)}}">{{$value->Pro_name}}</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{$value->Pro_category_id}}
+                                                            {{$value->Pro_description}}
                                                         </td>
                                                         <td class="text-center">
                                                             @if($value->Pro_active)
@@ -100,12 +101,17 @@
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
-                                                            <a href="{{route('products.edit', $value->id)}}"
-                                                               class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
-                                                                Edit</a>
-{{--                                                            {{ Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $value->id]]) }}--}}
-{{--                                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}--}}
-{{--                                                            {{ Form::close() }}--}}
+                                                            <a href="{{route('products.edit', $value->id)}}" style="min-width:100px;"
+                                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                                            <form action="{{route('products.destroy', $value->id)}}" method="post">
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                {{csrf_field()}}
+                                                                <button type="submit" onclick="return ConfirmDelete()"
+                                                                        class="btn btn-danger btn-xs" name="actiondelete" value="1"
+                                                                        style="min-width:100px;"><i
+                                                                        class="fa fa-trash"></i> Xóa
+                                                                </button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                     @php $count++;@endphp
@@ -165,5 +171,25 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.js')}}"></script>
+    <script type="text/javascript">
+        //----------------Datatables-----------
+        var $datatable = $('#datatable-buttons');
+
+        $datatable.dataTable({
+            'order': [[1, 'asc']],
+            'columnDefs': [
+                {orderable: true, targets: [0]}
+            ]
+        });
+
+        $(":input").inputmask();
+        function ConfirmDelete() {
+            var x = confirm("Bạn có thực sự muốn xóa sản phẩm này?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 
 @endpush

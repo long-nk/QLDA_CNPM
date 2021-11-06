@@ -46,35 +46,27 @@
                                     <th class="text-center" width="5%">STT</th>
                                     <th class="text-center" width="15%">Hình ảnh</th>
                                     <th class="text-center" width="25%">Tiêu đề</th>
-                                    <th class="text-center" width="10%">Chuyên mục</th>
                                     <th class="text-center" width="25%">Tóm tắt</th>
-                                    <th class="text-center" width="10%">Đã tạo lúc</th>
                                     <th class="text-center" width="10%">Trạng thái</th>
                                     <th class="text-center" width="10%">Hành động</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach ($contents as $key => $value)
+                                @foreach ($contents as $value)
                                     <tr>
-                                        <td class="text-center">{{$key + 1}}</td>
+                                        <td class="text-center">{{$value->id}}</td>
                                         <td class="text-center">
-                                            <img src="{{$value->fileItem->url}}" alt="" style="max-width: 100%;">
+                                            <img src="{{url('/')}}/{{$value->A_Avatar}}" alt="" style="max-width: 100%;">
                                         </td>
                                         <td class="text-left">
-                                            {{$value->title}}
-                                        </td>
-                                        <td class="text-center">
-                                            {{$value->cat_name == ""?"Tin tức":$value->cat_name}}
+                                            {{$value->A_Name}}
                                         </td>
                                         <td class="text-left">
-                                            {!! $value->summary !!}
+                                            {!! $value->A_Description !!}
                                         </td>
                                         <td class="text-center">
-                                            {{$value->created}}
-                                        </td>
-                                        <td class="text-center">
-                                            @if($value->status)
+                                            @if($value->A_Active)
                                                 <button type="button"
                                                         class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->id . '"
                                                         onclick="btnChangeStatus(' . $value->id . ')">Hiển thị
@@ -87,11 +79,17 @@
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('news.edit', $value->id)}}"
-                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                                            {{ Form::open(['method' => 'DELETE', 'route' => ['news.destroy', $value->id]]) }}
-                                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) }}
-                                            {{ Form::close() }}
+                                            <a href="{{route('news.edit', $value->id)}}" style="min-width:100px;"
+                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                            <form action="{{route('news.destroy', $value->id)}}" method="post">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                {{csrf_field()}}
+                                                <button type="submit" onclick="return ConfirmDelete()"
+                                                        class="btn btn-danger btn-xs" name="actiondelete" value="1"
+                                                        style="min-width:100px;"><i
+                                                        class="fa fa-trash"></i> Xóa
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -145,5 +143,14 @@
                 {orderable: true, targets: [0]}
             ]
         });
+
+        $(":input").inputmask();
+        function ConfirmDelete() {
+            var x = confirm("Bạn có thực sự muốn xóa bài viết này?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
     </script>
 @endpush

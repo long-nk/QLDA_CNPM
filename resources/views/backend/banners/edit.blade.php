@@ -30,7 +30,7 @@
                         </div>
                         <div class="x_content">
                             <form class="form-horizontal form-label-left"
-                                  action="{{route('banners.update', $banner->Id)}}" enctype="multipart/form-data"
+                                  action="{{route('banners.update', $banner->id)}}" enctype="multipart/form-data"
                                   autocomplete="off" method="post">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input name="_method" type="hidden" value="PUT">

@@ -39,39 +39,30 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Chuyên mục cha--}}
-                                        {{--<span class="required">*</span>--}}
-                                    {{--</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="parent_id" id="" class="form-control" {{old('parent_id')}}>--}}
-                                            {{--<option value="0" selected>-- None --</option>--}}
-                                            {{--@foreach($categories as $item)--}}
-                                                {{--<option value="{{$item->id}}">{{$item->name}}</option>--}}
-                                            {{--@endforeach--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Mô tả <span
-                                                class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">Loại chuyên mục
+                                        <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea name="intro" id="editor1" cols="10" rows="3"
-                                                  class="form-control"></textarea>
+                                        <input id="type" value="{{old('type')}}"
+                                               class="form-control col-md-7 col-xs-12"
+                                               name="type" type="number">
+                                        @if ($errors->has('type'))
+                                            <div id="formMessage" class="alert alert-danger">
+                                                <strong>{{ $errors->first('type') }}</strong>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Có bài viết?--}}
-                                    {{--</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="is_contents" id="is_contents" value="{{old('is_contents')}}"--}}
-                                                {{--class="form-control">--}}
-                                            {{--<option value="0">Không</option>--}}
-                                            {{--<option value="1">Có</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+{{--                                <div class="item form-group">--}}
+{{--                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Mô tả <span--}}
+{{--                                                class="required">*</span>--}}
+{{--                                    </label>--}}
+{{--                                    <div class="col-md-6 col-sm-6 col-xs-12">--}}
+{{--                                        <textarea name="intro" id="editor1" cols="10" rows="3"--}}
+{{--                                                  class="form-control"></textarea>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Trạng thái
                                         <span class="required">*</span>
