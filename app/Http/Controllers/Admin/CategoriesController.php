@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Categories;
 use App\Models\FileItem;
 use Faker\Provider\File;
@@ -14,15 +15,13 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Categories::get();
-
+        $categories = Categories::where('C_active', '=', 1)->orderBy('id')->get();
         return view('backend.categories.index', compact('categories'));
     }
 
     public function sitemap()
     {
         $categories = Categories::get();
-
         return view('backend.categories.sitemap', compact('categories'));
     }
 
@@ -33,8 +32,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-//        $categories = Category::where('status', Category::ACTIVE)->get();
-        return view('backend.categories.create');
+        $categories = Categories::get();
+        return view('backend.categories.create', compact('categories'));
     }
 
     /**
@@ -45,32 +44,35 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->name;
+        $count = count(Categories::get());
+        if($request->type <= $count){
+            return new \Exception('Category type must be greater than ' . $count);
+        } else{
+            $name = $request->name;
+            $data = [
+                'C_name' => $name,
+                'C_type' => $request->type,
+                'C_active' => $request->status
+            ];
 
-        $data = [
-            'name' => $name,
-//            'parent_id' => $request->parent_id,
-            'intro' => $request->intro,
-            'slug' => str_slug($name, '-'),
-            'status' => $request->status
-        ];
+            $validator = \Validator::make($data, [
+                'C_name' => 'required|max:255',
+            ]);
 
-        $validator = \Validator::make($data, [
-            'name' => 'required|max:255',
-        ]);
+            if ($validator->fails()) {
+                return redirect('admin/categories/create')
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                Categories::create($data);
 
-        if ($validator->fails()) {
-            return redirect('admin/categories/create')
-                ->withErrors($validator)
-                ->withInput();
-        } else {
-            Categories::create($data);
+                $categories = Categories::get();
+                Cache::put('categories', $categories, 60);
 
-            $categories = Categories::get();
-            Cache::put('categories', $categories, 60);
-
-            return redirect()->route('categories.index');
+                return redirect()->route('categories.index');
+            }
         }
+
     }
 
     /**
@@ -109,15 +111,13 @@ class CategoriesController extends Controller
         $name = $request->name;
 
         $data = [
-            'name' => $name,
-//            'parent_id' => $request->parent_id,
-            'intro' => $request->intro,
-            'slug' => str_slug($name, '-'),
-            'status' => $request->status
+            'C_name' => $name,
+            'C_type' => $request->type,
+            'C_active' => $request->status
         ];
 
         $validator = \Validator::make($data, [
-            'name' => 'required|max:255',
+            'C_name' => 'required|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -127,11 +127,9 @@ class CategoriesController extends Controller
                 ->withInput();
         } else {
             $category = Categories::where('id', $id)->first();
-            $category->name = $data['name'];
-//            $category->parent_id = $data['parent_id'];
-            $category->intro = $data['intro'];
-            $category->slug = $data['slug'];
-            $category->status = $data['status'];
+            $category->C_name = $data['C_name'];
+            $category->C_type = $data['C_type'];
+            $category->C_active = $data['C_active'];
             $category->save();
 
             $categories = Categories::get();

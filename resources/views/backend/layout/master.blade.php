@@ -65,7 +65,7 @@
                                 <a><i class="fa fa-table"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     @foreach($categories as $category)
-                                        <li><a href="{{route('products.list', $category->id)}}">{{$category->C_name}}</a></li>
+                                        <li><a href="{{route('products.list', $category->C_type)}}">{{$category->C_name}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>

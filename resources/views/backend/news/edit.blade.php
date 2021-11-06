@@ -47,7 +47,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="title" value="{{$content->title}}"
+                                        <input id="title" value="{{$content->A_Name}}"
                                                class="form-control col-md-7 col-xs-12" name="title" type="text"
                                                required>
                                         @if ($errors->has('title'))
@@ -58,27 +58,12 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Loại bài viết
-                                        <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <select name="category" id="" class="form-control" {{$content->C_id}}>
-                                            <option value="-1" {{$content->C_id=="Null"?"selected":""}}>
-                                                --None--
-                                            </option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}" {{$content->C_id==$category->id?"selected":""}}>{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Hình ảnh <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="box_show_img">
-                                            <img src="{{$content->fileItem->url}}" alt="" id="img_show">
+                                            <img src="{{url('/')}}/{{$content->A_Avatar}}" alt="" id="img_show">
                                             <i class="">+</i>
                                         </div>
                                         {{--<div class="box_upload">--}}
@@ -93,10 +78,10 @@
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea name="summary" id="editor1" value="{{old('summary')}}"
+                                        <textarea name="summary" id="editor1" value="{{$content->A_Description}}"
                                                   class="form-control editor1" cols="30" rows="5" placeholder="Tóm tắt"
                                                   required>
-                                            {!! $content->summary!!}
+                                            {!! $content->A_Description!!}
                                         </textarea>
                                         @if ($errors->has('summary'))
                                             <div id="formMessage" class="alert alert-danger">
@@ -110,10 +95,10 @@
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea name="content_news" id="editor2" value="{{old('content')}}"
+                                        <textarea name="content_news" id="editor2" value="{{$content->A_Content}}"
                                                   class="form-control editor2" cols="30" rows="30"
                                                   placeholder="Nội dung" required>
-                                            {!! $content->content!!}
+                                            {!! $content->A_Content!!}
                                         </textarea>
                                         @if ($errors->has('content_news'))
                                             <div id="formMessage" class="alert alert-danger">
@@ -127,10 +112,10 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <select name="status" id="status" value="{{$content->status}}"
+                                        <select name="status" id="status" value="{{$content->A_Active}}"
                                                 class="form-control" required>
-                                            <option value="1" {{$content->status==1?"selected":""}}>Hiển thị</option>
-                                            <option value="0" {{$content->status==0?"selected":""}}>Không hiển thị
+                                            <option value="1" {{$content->A_Active==1?"selected":""}}>Hiển thị</option>
+                                            <option value="0" {{$content->A_Active==0?"selected":""}}>Không hiển thị
                                             </option>
                                         </select>
                                     </div>
