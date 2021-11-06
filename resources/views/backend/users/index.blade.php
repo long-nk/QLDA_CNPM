@@ -1,5 +1,6 @@
 @extends('backend.layout.master')
-@section('title', 'Quản lý người dùng | ' . config('app.name'))
+@section('title', 'Quản lí người dùng | Dashboard')
+
 @section('content')
     <!-- page content -->
     <div class="right_col" role="main">
@@ -68,22 +69,18 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{route('users.edit', $value->id)}}" type="button"
-                                           class="btn btn-info btn-xs" style="min-width:100px;"><i
-                                                    class="fa fa-trash"></i> Cập nhật
-                                        </a>
+                                        <a href="{{route('users.edit', $value->id)}}" style="min-width:100px;"
+                                           class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
                                         <form action="{{route('users.destroy', $value->id)}}" method="post">
                                             <input type="hidden" name="_method" value="DELETE">
                                             {{csrf_field()}}
-                                            <button type="submit" onclick="ConfirmDelete()"
+                                            <button type="submit" onclick="return ConfirmDelete()"
                                                     class="btn btn-danger btn-xs" name="actiondelete" value="1"
                                                     style="min-width:100px;"><i
-                                                        class="fa fa-trash"></i> Xóa
+                                                    class="fa fa-trash"></i> Xóa
                                             </button>
                                         </form>
-                                        </a>
                                     </td>
-
                                 </tr>
                                 <?php endforeach; ?>
                                 </tbody>
@@ -100,43 +97,47 @@
 @endsection
 
 @push('js')
-<!-- Datatables -->
-<script src="{{asset('libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('libs/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-<script src="{{asset('libs/datatables.net-scroller/js/datatables.scroller.min.js')}}"></script>
-<script src="{{asset('libs/jszip/dist/jszip.min.js')}}"></script>
-<script src="{{asset('libs/pdfmake/build/pdfmake.min.js')}}"></script>
-<script src="{{asset('libs/pdfmake/build/vfs_fonts.js')}}"></script>
-<script src="{{asset('libs/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')}}"></script>
-<!-- Custom Theme Scripts -->
+    <!-- jQuery <-->
+    <script src="{{asset('libs/fastclick/lib/fastclick.js')}}"></script>
 
-<script type="text/javascript">
-    //----------------Datatables-----------
-    var $datatable = $('#datatable-buttons');
+    <!-- iCheck -->
+    <script src="{{asset('libs/iCheck/icheck.min.js')}}"></script>
+    <!-- Datatables -->
+    <script src="{{asset('libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+    <script src="{{asset('libs/datatables.net-scroller/js/datatables.scroller.min.js')}}"></script>
+    <script src="{{asset('libs/jszip/dist/jszip.min.js')}}"></script>
+    <script src="{{asset('libs/pdfmake/build/pdfmake.min.js')}}"></script>
+    <script src="{{asset('libs/pdfmake/build/vfs_fonts.js')}}"></script>
 
-    $datatable.dataTable({
-        'order': [[1, 'asc']],
-        'columnDefs': [
-            {orderable: true, targets: [0]}
-        ]
-    });
+    <script src="{{asset('build/js/custom.js')}}"></script>
+    <script type="text/javascript">
+        //----------------Datatables-----------
+        var $datatable = $('#datatable-buttons');
 
-    $(":input").inputmask();
-    function ConfirmDelete() {
-        var x = confirm("Bạn có thực sự muốn xóa người dùng này?");
-        if (x)
-            return true;
-        else
-            return false;
-    }
-</script>
+        $datatable.dataTable({
+            'order': [[1, 'asc']],
+            'columnDefs': [
+                {orderable: true, targets: [0]}
+            ]
+        });
+
+        $(":input").inputmask();
+        function ConfirmDelete() {
+            var x = confirm("Bạn có thực sự muốn xóa người dùng này?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 @endpush

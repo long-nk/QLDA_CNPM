@@ -52,18 +52,6 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Loại bài viết <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <select name="category" id="" class="form-control" {{old('category')}}>
-                                            <option value="-1">--None--</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Hình ảnh <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">

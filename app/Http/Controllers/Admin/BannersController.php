@@ -21,8 +21,9 @@ class BannersController extends Controller
     public function index()
     {
         $bannerList = Banner::orderBy('Sd_sort')->get();
+        $categories = Categories::get();
 
-        return view('backend.banners.index', compact('bannerList'));
+        return view('backend.banners.index', compact('bannerList', 'categories'));
     }
 
     /**

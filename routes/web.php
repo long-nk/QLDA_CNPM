@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\ProductController;
 /* --------Frontend----------*/
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -13,11 +14,12 @@ Route::get('lien-he', 'ContactController@index')->name('contact');
 
 Route::get('tin-tuc', 'NewsController@index')->name('news');
 
-//Route::group(array('prefix' => 'san-pham'), function (){
+Route::group(array('prefix' => 'san-pham'), function (){
     Route::get('san-pham', 'ProductController@index')->name('product.index');
     Route::get('category', 'ProductController@show')->name('product.category');
-//    Route::get('{category}/{product}', 'ProductController@show')->name('product.detail');
-//});
+    Route::get('{category}', 'ProductsController@category')->name('product.category');
+    Route::get('{category}/{product}', 'ProductController@show')->name('product.detail');
+});
 
 Route::get('he-thong-cua-hang', 'ShopController@index')->name('shop.index');
 
@@ -32,6 +34,7 @@ Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
 
 
 //---------Backend--------
+Auth::routes();
 Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
 
 Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
@@ -56,4 +59,4 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
     Route::get('changeStatusContact/{id}', 'ContactsController@changeStatus')->name('contact.changeStatus');
 });
 
-Auth::routes();
+
