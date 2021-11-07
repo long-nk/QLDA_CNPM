@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Requests\CategoryRequest;
-use App\Models\Categories;
-use App\Models\FileItem;
-use Faker\Provider\File;
-use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class CategoriesController extends Controller
@@ -17,12 +13,6 @@ class CategoriesController extends Controller
     {
         $categories = Categories::where('C_active', '=', 1)->orderBy('id')->get();
         return view('backend.categories.index', compact('categories'));
-    }
-
-    public function sitemap()
-    {
-        $categories = Categories::get();
-        return view('backend.categories.sitemap', compact('categories'));
     }
 
     /**
@@ -147,7 +137,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Categories::find($id)->delete();
+        Categories::find($id)->delete();
 
         $categories = Categories::get();
         Cache::put('categories', $categories, 60);
