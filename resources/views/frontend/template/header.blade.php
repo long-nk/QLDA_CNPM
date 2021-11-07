@@ -1,86 +1,21 @@
 <!DOCTYPE html>
 <html lang='vi'>
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 <head>
     <meta charset='UTF-8'/>
     <meta content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1' name='viewport'/>
-    <title>2020 - Nula Cosmetic Premium</title>
-    <link href='http://1.bp.blogspot.com/' rel='dns-prefetch'/>
-    <link href='http://2.bp.blogspot.com/' rel='dns-prefetch'/>
-    <link href='http://3.bp.blogspot.com/' rel='dns-prefetch'/>
-    <link href='http://4.bp.blogspot.com/' rel='dns-prefetch'/>
-    <link href='http://www.blogger.com/' rel='dns-prefetch'/>
-    <link href='http://dnjs.cloudflare.com/' rel='dns-prefetch'/>
-    <link href='http://fonts.gstatic.com/' rel='dns-prefetch'/>
-    <link href='http://pagead2.googlesyndication.com/' rel='dns-prefetch'/>
-    <link href='http://www.googletagmanager.com/' rel='dns-prefetch'/>
-    <link href='http://www.google-analytics.com/' rel='dns-prefetch'/>
-    <link href='http://connect.facebook.net/' rel='dns-prefetch'/>
-    <link href='http://c.disquscdn.com/' rel='dns-prefetch'/>
-    <link href='http://disqus.com/' rel='dns-prefetch'/>
+    <title> 2021 - Nula Cosmetic Store</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <meta content='blogger' name='generator'/>
     <link href='favicon.ico' rel='icon' type='image/x-icon'/>
     <meta content='#00afce' name='theme-color'/>
     <meta content='#00afce' name='msapplication-navbutton-color'/>
     <link href={{route('home')}} rel='canonical'/>
-    <link rel="alternate" type="application/atom+xml" title="2020 - Nula Cosmetic Premium - Atom"
-          href="feeds/posts/default"/>
-    <link rel="alternate" type="application/rss+xml" title="2020 - Nula Cosmetic Premium - RSS"
-          href="feeds/posts/default9522?alt=rss"/>
-    <link rel="service.post" type="application/atom+xml" title="2020 - Nula Cosmetic Premium - Atom"
-          href="https://www.blogger.com/feeds/5640853351965315871/posts/default"/>
-    <meta content='' name='description'/>
-    <link
-        href='../1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/s16000/g.jpg'
-        rel='image_src'/>
-    <!-- Metadata for Open Graph protocol. See http://ogp.me/. -->
+    <meta content='Cửa hàng mỹ phẩm Nula Cosmetic' name='description'/>
     <meta content='website' property='og:type'/>
-    <meta content='2020 - Nula Cosmetic Premium' property='og:title'/>
-    <meta content='https://template-nula-cosmcleticok.blogspot.com/' property='og:url'/>
-    <meta content='' property='og:description'/>
-    <meta content='2020 - Nula Cosmetic Premium' property='og:site_name'/>
-    <meta
-        content='https://1.bp.blogspot.com/-Cc5XoZmhX50/YCOJrAel-NI/AAAAAAAASo0/5GVOSURb87Q1qnHZTbASUAQjHEbsKRIFwCLcBGAsYHQ/s16000/thumb.png'
-        property='og:image'/>
-    <meta content='https://template-nula-cosmcleticok.blogspot.com/' name='twitter:site'/>
-    <meta content='https://template-nula-cosmcleticok.blogspot.com/' name='twitter:site'/>
-    <meta content='summary' name='twitter:card'/>
-    <meta content='summary_large_image' name='twitter:card'/>
-    <meta content='2020 - Nula Cosmetic Premium' name='twitter:title'/>
-    <meta content='https://template-nula-cosmcleticok.blogspot.com/' name='twitter:domain'/>
-    <meta content='' name='twitter:description'/>
-    <meta
-        content='https://1.bp.blogspot.com/-PB7q33woGfo/X1g1rRSqybI/AAAAAAAAPmM/ktJE8Q5zPA8Jm8mDSbQMJQQ5klcQKnHfgCLcBGAsYHQ/w1200-h630-p-k-no-nu/20.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-_i526UPRwxg/X1g1_Rwa6iI/AAAAAAAAPmU/dcsbtTKLuNc969OU7PBQYbXljmdb6qgzwCLcBGAsYHQ/w1200-h630-p-k-no-nu/19.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-BNFviLKChLc/X1g2awh7aBI/AAAAAAAAPmc/4iDVo8pZ9qEgN4oyDwNBcu5AsEqofF1eACLcBGAsYHQ/w1200-h630-p-k-no-nu/s.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-7x0dC9wmucg/X1g21FpRYGI/AAAAAAAAPmk/x1Cd1fGJIhY3YwJM0Q8nVeScujgOqOibgCLcBGAsYHQ/w1200-h630-p-k-no-nu/l.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-ZqUToAtkQ_s/X1g3Nz7N6vI/AAAAAAAAPms/VYHQd_I-x9wxs4U6QRaGxSdgCJfHUO2nACLcBGAsYHQ/w1200-h630-p-k-no-nu/12.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-OHIf6BAGR4k/X1g6Zq9HtvI/AAAAAAAAPm8/t1Ut1Sc9yd45VXLKnamgUCj1PJ-1RjAlQCLcBGAsYHQ/w1200-h630-p-k-no-nu/1.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-uE9lscOqj4Y/X1g80iAPCAI/AAAAAAAAPnI/fjeICJ1iSdkHUNVh7x2uQ1OvGRbVmWX-QCLcBGAsYHQ/w1200-h630-p-k-no-nu/h.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-9wFOVs0oPcM/X1g9EXQxiPI/AAAAAAAAPnQ/mVdoTDwVBeo4xJFYIbJG23aPPEOBUa4ewCLcBGAsYHQ/w1200-h630-p-k-no-nu/n.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-CQC8lvO-P84/X1h0MD3NQEI/AAAAAAAAPnc/Y6-_oR6DM_se14oosxQ1Bdv5_FbYR62PQCLcBGAsYHQ/w1200-h630-p-k-no-nu/n.jpg'
-        name='twitter:image'/>
-    <meta
-        content='https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/w1200-h630-p-k-no-nu/g.jpg'
-        name='twitter:image'/>
+    <meta content='2021 - Nula Cosmetic Store' property='og:title'/>
+    <meta content='2021 - Nula Cosmetic Store' property='og:site_name'/>
     <link rel="StyleSheet" href="{{asset('resouce/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css')}}" media="all">
 
@@ -101,7 +36,7 @@
                         <div class='widget Header' data-version='2' id='Header2'>
                             <div class='header-widget'>
                                 <a class='logo-wrapper' href={{route('home')}}>
-                                    <img alt='2020 - Nula Cosmetic Premium'
+                                    <img alt='2021 - Nula Cosmetic Store'
                                          src='/resouce/temp/2.bp.blogspot.com/-AaykUlWGAfw/YJkg2rv8QlI/AAAAAAAAS2E/1MciRu0uk5A34GV5_kW6VtWEcLa6hprmQCK4BGAYYCw/s1600/logo.png'/>
                                 </a>
                             </div>
@@ -194,9 +129,6 @@
                                         <li class='level0 level-top parent'><a class='a_top'
                                                                                href='search/label/che-khuyet-diem.html'>_Che
                                                 khuyết điểm</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top'
-                                                                               href={{route('product.category')}}>Son
-                                                môi</a></li>
                                         <li class='level0 level-top parent'><a class='a_top'
                                                                                href={{route('shop.index')}}>Hệ thống
                                                 cửa hàng</a></li>
