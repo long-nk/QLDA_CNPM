@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 05, 2021 lúc 08:30 PM
--- Phiên bản máy phục vụ: 10.1.34-MariaDB
--- Phiên bản PHP: 7.2.8
+-- Host: 127.0.0.1
+-- Generation Time: Nov 01, 2021 at 03:48 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `webmypham`
+-- Database: `webmypham`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +33,7 @@ CREATE TABLE `admin` (
   `Email` varchar(255) NOT NULL,
   `Phone` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `Log_login` text,
+  `Log_login` text DEFAULT NULL,
   `Created_at` timestamp NULL DEFAULT NULL,
   `Update_at` timestamp NULL DEFAULT NULL,
   `Class` varchar(255) DEFAULT NULL,
@@ -45,7 +44,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `article`
+-- Table structure for table `article`
 --
 
 CREATE TABLE `article` (
@@ -55,7 +54,7 @@ CREATE TABLE `article` (
   `A_Active` tinyint(4) NOT NULL,
   `A_Menu_id` bigint(20) NOT NULL,
   `A_View` int(11) NOT NULL,
-  `A_Description` mediumtext,
+  `A_Description` mediumtext DEFAULT NULL,
   `A_Avatar` varchar(255) DEFAULT NULL,
   `A_Content` int(11) NOT NULL,
   `Update_at` timestamp NULL DEFAULT NULL,
@@ -65,7 +64,7 @@ CREATE TABLE `article` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -85,13 +84,13 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
   `Id` bigint(20) NOT NULL,
   `Cmt_name` varchar(255) DEFAULT NULL,
-  `Cmt_content` text,
+  `Cmt_content` text DEFAULT NULL,
   `Cmt_product_id` bigint(20) NOT NULL,
   `Cmt_user_id` bigint(20) NOT NULL,
   `Cmt_like` int(11) NOT NULL,
@@ -103,7 +102,7 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `keyword`
+-- Table structure for table `keyword`
 --
 
 CREATE TABLE `keyword` (
@@ -118,7 +117,7 @@ CREATE TABLE `keyword` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `menu`
+-- Table structure for table `menu`
 --
 
 CREATE TABLE `menu` (
@@ -137,7 +136,7 @@ CREATE TABLE `menu` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -154,7 +153,7 @@ CREATE TABLE `order` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -178,7 +177,7 @@ CREATE TABLE `product` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `slide`
+-- Table structure for table `slide`
 --
 
 CREATE TABLE `slide` (
@@ -196,7 +195,7 @@ CREATE TABLE `slide` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `transaction`
+-- Table structure for table `transaction`
 --
 
 CREATE TABLE `transaction` (
@@ -217,51 +216,58 @@ CREATE TABLE `transaction` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `Id` bigint(20) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Nick_name` varchar(255) DEFAULT NULL,
-  `Password` varchar(255) NOT NULL,
-  `Log_login` text,
-  `Created_at` timestamp NULL DEFAULT NULL,
-  `Update_at` timestamp NULL DEFAULT NULL,
-  `Address` varchar(255) DEFAULT NULL,
-  `Count_comment` tinyint(4) NOT NULL,
-  `Avatar` varchar(255) DEFAULT NULL,
+  `First_Name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `Phone` varchar(255) DEFAULT NULL,
-  `Status` tinyint(4) NOT NULL
+  `Last_Name` varchar(255) NOT NULL,
+  `provider` text DEFAULT NULL,
+  `provider_id` text DEFAULT NULL,
+  `remember_token` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`Id`, `First_Name`, `email`, `password`, `Phone`, `Last_Name`, `provider`, `provider_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Luân', 'luan@gmail.com', '$2y$10$TDDYolR68ZTPWflpoi6h6..I6g/v4u.KGnz5IfLwolWSphzjiBaOe', '0898103236', 'Nguyễn', NULL, NULL, 'ypMWr3prUQ1WIEayVYNtAIyAm9OEvumA0IUodYvQSp9wbA3BnFY2DD7fHc9M', '2021-10-31 13:30:52', '2021-11-01 08:15:26'),
+(2, 'Luân', 'dolienkhoa191200@gmail.com', '', '', 'Nguyễn', 'facebook', '3084419061802284', 'EAAPZAoZBWjY9QBAPmNIB04AZAvq87oUfeK1ovXiPe320wijBe3zEh9KmNhoIHO1PVbJ0cr7yDPpXDb9IZAlepFzmscZAqhKL3zyIDM4yKxnu2OcaX3gCZC7DZB6pRHdHW2wqJZBNZCmyiErkmEU4Rw3kZB8tsDNzQ5xEYzxMKHLDuIUXOgR3S3KS1wXs3fW8CubnC27wFFfnSo7I0RgKdUXQLq1I131ArNn7BvgbahfJZCXKgZDZD', '2021-10-31 15:14:48', '2021-10-31 22:15:05'),
+(3, 'Luân', 'nguyenhuuluan17@gmail.com', '', '', 'Nguyễn', 'google', '107506599858220795529', 'F6ZCBMhBzyUtOkACIadNENnvZ19XvVGaQhC7DoNxS9DTYsQw36kVdvh2ooM9', '2021-10-31 18:25:18', '2021-11-01 08:25:55');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Chỉ mục cho bảng `article`
+-- Indexes for table `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Haves` (`A_Menu_id`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Belong` (`C_parent_id`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`Id`),
@@ -269,20 +275,20 @@ ALTER TABLE `comment`
   ADD KEY `Made` (`Cmt_user_id`);
 
 --
--- Chỉ mục cho bảng `keyword`
+-- Indexes for table `keyword`
 --
 ALTER TABLE `keyword`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Chỉ mục cho bảng `menu`
+-- Indexes for table `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Manages` (`Mn_admin_id`);
 
 --
--- Chỉ mục cho bảng `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`Id`),
@@ -290,7 +296,7 @@ ALTER TABLE `order`
   ADD KEY `Create` (`Od_transaction_id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`Id`),
@@ -298,13 +304,13 @@ ALTER TABLE `product`
   ADD KEY `Belongs` (`Pro_category_id`);
 
 --
--- Chỉ mục cho bảng `slide`
+-- Indexes for table `slide`
 --
 ALTER TABLE `slide`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Chỉ mục cho bảng `transaction`
+-- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`Id`),
@@ -312,125 +318,125 @@ ALTER TABLE `transaction`
   ADD KEY `Make` (`Tst_user_id`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`Id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `article`
+-- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `keyword`
+-- AUTO_INCREMENT for table `keyword`
 --
 ALTER TABLE `keyword`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `menu`
+-- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `order`
+-- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `slide`
+-- AUTO_INCREMENT for table `slide`
 --
 ALTER TABLE `slide`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `transaction`
+-- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `article`
+-- Constraints for table `article`
 --
 ALTER TABLE `article`
   ADD CONSTRAINT `Haves` FOREIGN KEY (`A_Menu_id`) REFERENCES `menu` (`Id`);
 
 --
--- Các ràng buộc cho bảng `categories`
+-- Constraints for table `categories`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `Belong` FOREIGN KEY (`C_parent_id`) REFERENCES `product` (`Id`);
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `Have` FOREIGN KEY (`Cmt_product_id`) REFERENCES `product` (`Id`);
 
 --
--- Các ràng buộc cho bảng `menu`
+-- Constraints for table `menu`
 --
 ALTER TABLE `menu`
   ADD CONSTRAINT `Manages` FOREIGN KEY (`Mn_admin_id`) REFERENCES `admin` (`Id`);
 
 --
--- Các ràng buộc cho bảng `order`
+-- Constraints for table `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `Create` FOREIGN KEY (`Od_transaction_id`) REFERENCES `transaction` (`Id`),
   ADD CONSTRAINT `In` FOREIGN KEY (`Od_Product_id`) REFERENCES `product` (`Id`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `Belongs` FOREIGN KEY (`Pro_category_id`) REFERENCES `categories` (`Id`),
   ADD CONSTRAINT `test` FOREIGN KEY (`Pro_admin_id`) REFERENCES `admin` (`Id`);
 
 --
--- Các ràng buộc cho bảng `transaction`
+-- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
   ADD CONSTRAINT `Make` FOREIGN KEY (`Tst_user_id`) REFERENCES `user` (`Id`),

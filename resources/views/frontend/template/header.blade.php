@@ -84,9 +84,14 @@
     <meta
         content='https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/w1200-h630-p-k-no-nu/g.jpg'
         name='twitter:image'/>
+<<<<<<< HEAD
     <link rel="StyleSheet" href='/resouce/css/style.css'>
     <link rel="stylesheet" href='/resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css' media="all">
 
+=======
+    <link rel="StyleSheet" href="{{asset('resouce/css/style.css')}}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+>>>>>>> 56ac6e344ba71b668edd30937bc69a43376c9ac4
 </head>
 <body class='page-index'>
 <div class='opacity_menu'></div>
@@ -173,10 +178,15 @@
                             </div>
                         </div>
                         <div class="account_xs">
-
-                            <a href={{route('customer.register')}}>Đăng ký</a>
-                            <span>|</span>
-                            <a class="btnx" href={{route('customer.login')}}>Đăng nhập</a>
+                            @if (Auth::check())
+                                <a href="javascript:void(0)">Xin chào, {{ Auth::user()->First_Name . " " . Auth::user()->Last_Name }}</a>
+                                <span>|</span>
+                                <a class="btnx" href="{{route('customer.logout')}}">Đăng xuất</a>
+                            @else
+                                <a href="{{route('customer.register')}}">Đăng ký</a>
+                                <span>|</span>
+                                <a class="btnx" href="{{route('customer.login')}}">Đăng nhập</a>
+                            @endif
 
 
                         </div>
