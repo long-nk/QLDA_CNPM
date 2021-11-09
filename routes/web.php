@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomAuthController;
-use App\Http\Controllers\ProductController;
+
 /* --------Frontend----------*/
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -17,7 +16,7 @@ Route::get('tin-tuc', 'NewsController@index')->name('news');
 Route::group(array('prefix' => 'san-pham'), function (){
     Route::get('san-pham', 'ProductController@index')->name('product.index');
     Route::get('category', 'ProductController@show')->name('product.category');
-    Route::get('{category}', 'ProductsController@category')->name('product.category');
+    Route::get('{category}', 'ProductController@category')->name('product.category');
     Route::get('{category}/{product}', 'ProductController@show')->name('product.detail');
 });
 
@@ -39,13 +38,11 @@ Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
 
 Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
     Route::resource('banners', 'BannersController');
-    Route::resource('products', 'ProductsController');
-    Route::get('products_list/{id}', 'ProductsController@list_all')->name('products.list');
+    Route::resource('products', 'ProductController');
+    Route::get('products_list/{id}', 'ProductController@list_all')->name('products.list');
     Route::resource('contacts', 'ContactsController');
     Route::resource('news', 'NewsController');
     Route::resource('categories', 'CategoriesController');
-    Route::resource('address', 'ShopAddressController');
-
     Route::get('sitemap', 'CategoriesController@sitemap')->name('categories.sitemap');
     Route::resource('users', 'UsersController');
     //Users
