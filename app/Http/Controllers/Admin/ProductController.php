@@ -1,20 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductsRequest;
-use App\Models\Banner;
 use App\Models\Categories;
 use App\Models\Product;
-use Carbon\Carbon;
 use File;
-use Illuminate\Http\Request;
 use Image;
-use Mockery\CountValidator\Exact;
 use Mockery\Exception;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
