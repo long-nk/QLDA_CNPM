@@ -63,4 +63,33 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
     Route::get('changeStatusContact/{id}', 'ContactsController@changeStatus')->name('contact.changeStatus');
 });
 
+Route::get('gio-hang', 'CartController@index')->name('cart.index');
+
+Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
+
+
+//---------Backend--------
+Auth::routes();
+Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
+
+Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
+    Route::resource('banners', 'BannersController');
+    Route::resource('products', 'ProductController');
+    Route::get('products_list/{id}', 'ProductController@list_all')->name('products.list');
+    Route::resource('contacts', 'ContactsController');
+    Route::resource('news', 'NewsController');
+    Route::resource('categories', 'CategoriesController');
+    Route::get('sitemap', 'CategoriesController@sitemap')->name('categories.sitemap');
+    Route::resource('users', 'UsersController');
+    //Users
+    Route::post('changeStatusUser/{id}', 'UsersController@changeStatusUser')->name('users.changeStatus');
+    Route::post('changePassword', 'UsersController@changePassword')->name('admin.changePassword');
+    Route::get('profile', 'UsersController@profile');
+    Route::post('updateProfile', 'UsersController@updateProfile');
+    Route::post('changeStatusUser/{id}', 'UsersController@changeStatusUser');
+    Route::post('deleteUsers/{id}', 'UsersController@deleteUsers');
+
+    Route::get('changeStatusContact/{id}', 'ContactsController@changeStatus')->name('contact.changeStatus');
+});
+
 
