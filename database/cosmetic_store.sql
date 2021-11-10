@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-11-07 22:50:41
+Date: 2021-11-03 12:40:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,45 +44,46 @@ INSERT INTO `admin` VALUES ('1', 'admin', 'admin@gmail', '0987654678', '123456',
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `A_Name` varchar(255) NOT NULL,
-  `A_Hot` tinyint(4) DEFAULT NULL,
+  `A_Hot` tinyint(4) NOT NULL,
   `A_Active` tinyint(4) NOT NULL,
-  `A_Menu_id` bigint(20) DEFAULT NULL,
-  `A_View` int(11) DEFAULT NULL,
-  `A_Description` mediumtext NOT NULL,
-  `A_Avatar` varchar(255) NOT NULL DEFAULT '',
-  `A_Content` text NOT NULL,
-  `Update_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `Created_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
+  `A_Menu_id` bigint(20) NOT NULL,
+  `A_View` int(11) NOT NULL,
+  `A_Description` mediumtext DEFAULT NULL,
+  `A_Avatar` varchar(255) DEFAULT NULL,
+  `A_Content` int(11) NOT NULL,
+  `Update_at` timestamp NULL DEFAULT NULL,
+  `Created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`Id`),
   KEY `Haves` (`A_Menu_id`),
   CONSTRAINT `Haves` FOREIGN KEY (`A_Menu_id`) REFERENCES `menu` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('1', 'Son moi', null, '1', null, null, '<p>Son m&ocirc;i</p>', 'images/uploads/news//nula_cosmetic_news_1636165146.jpg', '<p>Son m&ocirc;i</p>', null, null);
-INSERT INTO `article` VALUES ('2', 'Kẻ mắt', null, '1', null, null, '<p>Kẻ mắt</p>', 'images/uploads/news//nula_cosmetic_news_1636165441.jpg', '<p>Kẻ mắt</p>', null, null);
 
 -- ----------------------------
 -- Table structure for categories
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `C_name` varchar(255) NOT NULL,
+  `C_parent_id` bigint(20) NOT NULL,
   `C_Avatar` varchar(255) DEFAULT NULL,
-  `C_type` tinyint(4) DEFAULT NULL,
+  `C_type` tinyint(4) NOT NULL,
   `C_active` tinyint(4) DEFAULT NULL,
-  `C_hot` tinyint(4) DEFAULT NULL,
-  `Created_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `Update_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `C_hot` tinyint(4) NOT NULL,
+  `Created_at` timestamp NULL DEFAULT NULL,
+  `Update_at` timestamp NULL DEFAULT NULL,
   `C_sort` tinyint(4) DEFAULT NULL,
   `C_banner` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`Id`),
+  KEY `Belong` (`C_parent_id`),
+  CONSTRAINT `Belong` FOREIGN KEY (`C_parent_id`) REFERENCES `product` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of categories
@@ -93,6 +94,31 @@ INSERT INTO `categories` VALUES ('3', 'Chăm sóc da', 'https://cocoshop.vn/asse
 INSERT INTO `categories` VALUES ('4', 'Chăm sóc cơ thể', 'https://cocoshop.vn/assets/shops/2019_07/chamsoccothe-min_1.png', '4', '1', '1', '2021-11-04 18:19:55', '2021-11-04 18:19:55', null, null);
 INSERT INTO `categories` VALUES ('5', 'Chăm sóc tóc', 'https://cocoshop.vn/assets/shops/2019_07/chamsoctocmin.png', '5', '1', '1', '2021-11-04 18:19:57', '2021-11-04 18:19:57', null, null);
 INSERT INTO `categories` VALUES ('6', 'Nước hoa', 'https://cocoshop.vn/assets/shops/2019_07/nuoschoa-min.png', '6', '1', '1', '2021-11-04 18:19:59', '2021-11-04 18:19:59', null, null);
+
+-- ----------------------------
+-- Table structure for comment
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Cmt_name` varchar(255) DEFAULT NULL,
+  `Cmt_content` text DEFAULT NULL,
+  `Cmt_product_id` bigint(20) NOT NULL,
+  `Cmt_user_id` bigint(20) NOT NULL,
+  `Cmt_like` int(11) NOT NULL,
+  `Cmt_disk_like` int(11) NOT NULL,
+  `Update_at` timestamp NULL DEFAULT NULL,
+  `Created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `Have` (`Cmt_product_id`),
+  KEY `Made` (`Cmt_user_id`),
+  CONSTRAINT `Have` FOREIGN KEY (`Cmt_product_id`) REFERENCES `product` (`Id`),
+  CONSTRAINT `Made` FOREIGN KEY (`Cmt_user_id`) REFERENCES `users` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comment
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for keyword
@@ -142,10 +168,10 @@ CREATE TABLE `menu` (
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
