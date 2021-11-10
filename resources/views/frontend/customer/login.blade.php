@@ -84,6 +84,10 @@
                                                     <div class="g-recaptcha brochure__form__captcha" data-sitekey="{{ env("RECAPTCHA_SITE_KEY") }}"></div>
 
                                                     <div class="pull-xs-left" style="margin-top:10px;">
+                                                        <a
+                                                            href="{{ route('customer.forgot') }}"
+                                                            class="btn-link-style btn-register">Quên mật khẩu</a>
+                                                        <br>
                                                         <input class="btn btn-style btn_50" type="submit"
                                                                value="Đăng nhập">
                                                         <span class="block a-center dkm margin-top-40">Chưa có tài khoản, đăng ký <a

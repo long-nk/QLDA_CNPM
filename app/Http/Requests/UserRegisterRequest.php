@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ValidatePassword;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -24,30 +25,27 @@ class UserRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'lastName'    => 'required|max:255',
-            'firstName'   => 'required|max:255',
-            'email'       => 'required|max:255|unique:user,email',
-            'phoneNumber' => 'required|min:10|max:10',
-            'password'    => 'required|min:8|max:255'
+            'name'        => 'required|max:255',
+            'email'       => 'required|max:255|unique:users,email',
+            'phone'       => 'required|min:10|max:10',
+            'password'    => ['required','min:8','max:255',new ValidatePassword]
         ];
     }
 
     public function messages()
     {
         return [
-            'lastName.required'    => 'Họ không được để trống',
-            'lastName.max'         => 'Họ có độ dài tối đa là 255 ký tự',
-            'firstName.required'   => 'Tên không được để trống',
-            'firstName.max'        => 'Tên có độ dài tối đa là 255 ký tự',
+            'name.required'        => 'Họ tên không được để trống',
+            'name.max'             => 'Họ tên có độ dài tối đa là 255 ký tự',
             'email.required'       => 'Email không được để trống',
             'email.max'            => 'Email có độ dài tối đa là 255 ký tự',
             'email.unique'         => 'Email này đã được đăng ký',
             'password.required'    => 'Mật khẩu không được để trống',
             'password.min'         => 'Mật khẩu có dài tối thiểu là 8 ký tự',
             'password.max'         => 'Mật khẩu có độ tài tối đa là 255 ký tự',
-            'phoneNumber.required' => 'Số điện thoai không được để trống',
-            'phoneNumber.min'      => 'Số điện thoại chỉ có 10 chữ số',
-            'phoneNumber.max'      => 'Số điện thoại chỉ có 10 chữ số',
+            'phone.required'       => 'Số điện thoai không được để trống',
+            'phone.min'            => 'Số điện thoại chỉ có 10 chữ số',
+            'phone.max'            => 'Số điện thoại chỉ có 10 chữ số',
         ];
     }
 }

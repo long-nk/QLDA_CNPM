@@ -1,0 +1,249 @@
+@charset "utf-8";
+/**
+Inlucde fonts
+ */
+@font-face {
+    font-family: RobotoBold;
+    src: url(../fonts/Roboto-Bold.ttf);
+}
+@font-face {
+    font-family: RobotoRegular;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: RobotoCondBold;
+    src: url(../fonts/RobotoCondensed-Bold.ttf);
+}
+
+*{
+    font-family:"RobotoRegular", Sans-Serif;
+}
+
+.introduction_content p {
+    font-size: 17px;
+}
+/*Call now left bottom*/
+@media (min-width: 768px) {
+    h4, .heading-4 {
+        font-size: 20px;
+        line-height: 1.14;
+    }
+    .call_now{
+        display: none;
+    }
+    .phonering-alo-phone{
+        display: block;
+    }
+    .row.product-thumb.small .item {
+        min-height: 305px;
+    }
+    .imgNews {
+        min-height: 219px;
+    }
+}
+@media (max-width: 768px) {
+    .mini-cart .cart_header .icon_hotline {
+        display: none;
+    }
+    .call_now{
+        display: block;
+    }
+    .phonering-alo-phone{
+        display: none;
+    }
+    header nav .nav-item{
+        top: 0px;
+    }
+}
+/*End carousel*/
+.call_now {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background: #fff;
+    z-index: 999999999999;
+    width: 197px;
+}
+
+.phone_text {
+    font-weight: bold;
+    position: absolute;
+    background: #ffe800;
+    color: #000;
+    padding: 6px 17px;
+    border-top-right-radius: 17px;
+    font-size: 18px;
+    bottom: 0px;
+}
+
+
+/*Carousel */
+span.phone_text span {
+    font-size: 18px;
+}
+
+
+a.left.carousel-control {
+    background: none;
+}
+
+a.right.carousel-control {
+    background:  none;
+}
+
+span.glyphicon.glyphicon-chevron-left {
+    left: 35px;
+}
+
+span.glyphicon.glyphicon-chevron-right {
+    right: 35px;
+}
+
+/*Body*/
+
+body{
+    background: url("../images/bg/background.png");
+
+}
+
+.bg-header-nav{
+    background: url('../images/menu1.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/*Image product*/
+.box_product {
+    position: relative;
+}
+
+.box_bg1 {
+    background:  url(../images/bg/a1.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    left: -5px;
+}
+.box_bg2 {
+    background:  url(../images/bg/a2.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.box_bg3 {
+    background:  url(../images/bg/a4.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 0px;
+    left: -1px;
+}
+.box_bg4 {
+    background:  url(../images/bg/a3.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.adv_bottom_inner {
+    border: 1px solid #ddcb48;
+}
+
+#footer .topfoter .img_footer a {
+    color: #9ff51c;
+    font-size: 17px;
+}
+
+footer {
+    background: blue;
+}
+
+.footer-widget h3, .footer-widget i, .footer-widget a, .footer-widget p {
+    color: #fff;
+}
+.footer-widget h3 span {
+    font-family: "RobotoCondBold", sans-serif;
+}
+
+.footer-widget p {
+    line-height: 19px;
+}
+span.coppyright {
+    color: #fff;
+}
+.top_header {
+    background: none;
+    color: #734f00;
+    border-bottom: 1px solid #d4c1c1;
+}
+
+.top_header a {
+    color: #734f00;
+}
+
+.top_header li *{
+    font-family: "RobotoBold", Sans-Serif;
+}
+.imagePreviewLink span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    font-family: "Roboto",sans-serif;
+    color: #ffe800;
+    text-shadow: 2px 2px 2px #6d6d46;
+    margin-left: -61px;
+    margin-top: -30px;
+}
+#showImagesModal span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 31px;
+    color: #ffe800;
+    text-shadow: 1px 3px 3px #6d6d46;
+    margin-left: -95px;
+    margin-top: -18px;
+    font-family: "RobotoBold",sans-serif;
+}
+.topbar-mobile {
+    background: #de1c31;
+    color: #fff;
+    padding: 10px 0px;
+}
+
+.topbar-mobile li a {
+    color: #fff;
+}
+.mini-cart .cart_header .icon_hotline a.img_hover_cart {
+    left: -26px;
+    right: 0px;
+    position: absolute;
+    top: 2px;
+}
+
+.mini-cart .cart_header .icon_hotline a {
+    position: absolute;
+    top: -7px;
+    left: 11px;
+    color: #bb2031;
+    font-size: 18px;
+}
+.mini-cart .cart_header .icon_hotline span {
+    top: 16px;
+    left: 13px;
+    position: absolute;
+    font-size: 13px;
+    color: #dc454c;
+}
+section.main_container.collection{
+    float: left;
+}
+
+aside.left.left-content {
+    float: left;
+}

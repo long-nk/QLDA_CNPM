@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Exception;
-use App\User;
+use App\Models\User;
 
 class SocialLoginController extends Controller
 {
@@ -67,13 +67,11 @@ class SocialLoginController extends Controller
                     'remember_token'  => $providerUser->token
                 ]);
             } else {
-                $data = explode(" ", $providerUser->name);
                 // create a new user
                 $user = User::create([
-                    'First_Name'     => $data[0],
-                    'Last_Name'      => $data[1],
+                    'name'           => $providerUser->nam,
                     'email'          => $providerUser->getEmail(),
-                    'Phone'          => '',
+                    'phone'          => '',
                     'password'       => '',
                     'provider'       => $driver,
                     'provider_id'    => $providerUser->getId(),

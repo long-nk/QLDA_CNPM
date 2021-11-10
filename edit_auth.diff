@@ -1,0 +1,733 @@
+diff --git a/app/Http/Controllers/Auth/AuthController.php b/app/Http/Controllers/Auth/AuthController.php
+deleted file mode 100755
+index c8317e8..0000000
+--- a/app/Http/Controllers/Auth/AuthController.php
++++ /dev/null
+@@ -1,13 +0,0 @@
+-<?php
+-
+-namespace App\Http\Controllers;
+-
+-use App\Http\Requests;
+-
+-class AuthController extends Controller
+-{
+-    public function __construct()
+-    {
+-        $this->middleware('auth');
+-    }
+-}
+diff --git a/app/Http/Controllers/Auth/ForgotPasswordController.php b/app/Http/Controllers/Auth/ForgotPasswordController.php
+old mode 100755
+new mode 100644
+index 394dca8..465c39c
+--- a/app/Http/Controllers/Auth/ForgotPasswordController.php
++++ b/app/Http/Controllers/Auth/ForgotPasswordController.php
+@@ -4,38 +4,19 @@ namespace App\Http\Controllers\Auth;
+ 
+ use App\Http\Controllers\Controller;
+ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+-use Illuminate\Http\Request;
+-use Illuminate\Support\Str;
+-use DB;
+-use Carbon\Carbon;
+-use Mail;
+ 
+ class ForgotPasswordController extends Controller
+ {
+-    public function getEmail()
+-    {
+-
+-        return view('auth.password.email');
+-    }
+-
+-    public function postEmail(Request $request)
+-    {
+-        $request->validate([
+-            'email' => 'required|email|exists:users',
+-        ]);
+-
+-        $token = Str::random(60);
+-
+-        DB::table('password_resets')->insert(
+-            ['email' => $request->email, 'token' => $token, 'created_at' => Carbon::now()]
+-        );
+-
+-        Mail::send('auth.password.verify',['token' => $token], function($message) use ($request) {
+-            $message->from('email@example.com');
+-            $message->to($request->email);
+-            $message->subject('Reset Password Notification');
+-        });
+-
+-        return back()->with('message', 'We have e-mailed your password reset link!');
+-    }
++    /*
++    |--------------------------------------------------------------------------
++    | Password Reset Controller
++    |--------------------------------------------------------------------------
++    |
++    | This controller is responsible for handling password reset emails and
++    | includes a trait which assists in sending these notifications from
++    | your application to your users. Feel free to explore this trait.
++    |
++    */
++
++    use SendsPasswordResetEmails;
+ }
+diff --git a/app/Http/Controllers/Auth/LoginController.php b/app/Http/Controllers/Auth/LoginController.php
+old mode 100755
+new mode 100644
+index 893f2d0..18a0d08
+--- a/app/Http/Controllers/Auth/LoginController.php
++++ b/app/Http/Controllers/Auth/LoginController.php
+@@ -3,36 +3,38 @@
+ namespace App\Http\Controllers\Auth;
+ 
+ use App\Http\Controllers\Controller;
+-use Illuminate\Http\Request;
+-use Auth;
++use App\Providers\RouteServiceProvider;
++use Illuminate\Foundation\Auth\AuthenticatesUsers;
+ 
+ class LoginController extends Controller
+ {
+-    public function login()
++    /*
++    |--------------------------------------------------------------------------
++    | Login Controller
++    |--------------------------------------------------------------------------
++    |
++    | This controller handles authenticating users for the application and
++    | redirecting them to your home screen. The controller uses a trait
++    | to conveniently provide its functionality to your applications.
++    |
++    */
++
++    use AuthenticatesUsers;
++
++    /**
++     * Where to redirect users after login.
++     *
++     * @var string
++     */
++    protected $redirectTo = RouteServiceProvider::HOME;
++
++    /**
++     * Create a new controller instance.
++     *
++     * @return void
++     */
++    public function __construct()
+     {
+-
+-        return view('auth.login');
+-    }
+-
+-    public function authenticate(Request $request)
+-    {
+-        $request->validate([
+-            'email' => 'required|string|email',
+-            'password' => 'required|string',
+-        ]);
+-
+-        $credentials = $request->only('email', 'password');
+-        if (Auth::attempt($credentials)) {
+-            return redirect()->intended('admin');
+-        }
+-
+-        return redirect('login')->with('error', 'Oppes! You have entered invalid credentials');
++        $this->middleware('guest')->except('logout');
+     }
+-
+-    public function logout() {
+-        Auth::logout();
+-
+-        return redirect('login');
+-    }
+-
+ }
+diff --git a/app/Http/Controllers/Auth/RegisterController.php b/app/Http/Controllers/Auth/RegisterController.php
+old mode 100755
+new mode 100644
+index 301cf75..ed1a5e0
+--- a/app/Http/Controllers/Auth/RegisterController.php
++++ b/app/Http/Controllers/Auth/RegisterController.php
+@@ -3,34 +3,71 @@
+ namespace App\Http\Controllers\Auth;
+ 
+ use App\Http\Controllers\Controller;
+-use Illuminate\Http\Request;
++use App\Providers\RouteServiceProvider;
+ use App\Models\User;
+-use Hash;
++use Illuminate\Foundation\Auth\RegistersUsers;
++use Illuminate\Support\Facades\Hash;
++use Illuminate\Support\Facades\Validator;
+ 
+ class RegisterController extends Controller
+ {
+-    public function register()
+-    {
++    /*
++    |--------------------------------------------------------------------------
++    | Register Controller
++    |--------------------------------------------------------------------------
++    |
++    | This controller handles the registration of new users as well as their
++    | validation and creation. By default this controller uses a trait to
++    | provide this functionality without requiring any additional code.
++    |
++    */
++
++    use RegistersUsers;
+ 
+-        return view('auth.register');
++    /**
++     * Where to redirect users after registration.
++     *
++     * @var string
++     */
++    protected $redirectTo = RouteServiceProvider::HOME;
++
++    /**
++     * Create a new controller instance.
++     *
++     * @return void
++     */
++    public function __construct()
++    {
++        $this->middleware('guest');
+     }
+ 
+-    public function store(Request $request)
++    /**
++     * Get a validator for an incoming registration request.
++     *
++     * @param  array  $data
++     * @return \Illuminate\Contracts\Validation\Validator
++     */
++    protected function validator(array $data)
+     {
+-        $request->validate([
+-            'name' => 'required|string|max:255',
+-            'email' => 'required|string|email|max:255|unique:users',
+-            'password' => 'required|string|min:8|confirmed',
+-            'password_confirmation' => 'required',
++        return Validator::make($data, [
++            'name' => ['required', 'string', 'max:255'],
++            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
++            'password' => ['required', 'string', 'min:8', 'confirmed'],
+         ]);
++    }
+ 
+-        User::create([
+-            'name' => $request->name,
+-            'email' => $request->email,
+-            'password' => Hash::make($request->password),
++    /**
++     * Create a new user instance after a valid registration.
++     *
++     * @param  array  $data
++     * @return \App\Models\User
++     */
++    protected function create(array $data)
++    {
++        return User::create([
++            'name' => $data['name'],
++            'email' => $data['email'],
++            'password' => Hash::make($data['password']),
+         ]);
+-
+-        return redirect('login');
+     }
+-
+ }
+diff --git a/app/Http/Controllers/Auth/ResetPasswordController.php b/app/Http/Controllers/Auth/ResetPasswordController.php
+old mode 100755
+new mode 100644
+index cdc7a0d..b1726a3
+--- a/app/Http/Controllers/Auth/ResetPasswordController.php
++++ b/app/Http/Controllers/Auth/ResetPasswordController.php
+@@ -3,41 +3,28 @@
+ namespace App\Http\Controllers\Auth;
+ 
+ use App\Http\Controllers\Controller;
++use App\Providers\RouteServiceProvider;
+ use Illuminate\Foundation\Auth\ResetsPasswords;
+-use Illuminate\Http\Request;
+-use DB;
+-use App\Models\User;
+-use Hash;
+ 
+ class ResetPasswordController extends Controller
+ {
+-    public function getPassword($token) {
+-
+-        return view('auth.password.reset', ['token' => $token]);
+-    }
+-
+-    public function updatePassword(Request $request)
+-    {
+-        $request->validate([
+-            'email' => 'required|email|exists:users',
+-            'password' => 'required|string|min:6|confirmed',
+-            'password_confirmation' => 'required',
+-
+-        ]);
+-
+-        $updatePassword = DB::table('password_resets')
+-            ->where(['email' => $request->email, 'token' => $request->token])
+-            ->first();
+-
+-        if(!$updatePassword)
+-            return back()->withInput()->with('error', 'Invalid token!');
+-
+-        $user = User::where('email', $request->email)
+-            ->update(['password' => Hash::make($request->password)]);
+-
+-        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+-
+-        return redirect('/login')->with('message', 'Your password has been changed!');
+-
+-    }
++    /*
++    |--------------------------------------------------------------------------
++    | Password Reset Controller
++    |--------------------------------------------------------------------------
++    |
++    | This controller is responsible for handling password reset requests
++    | and uses a simple trait to include this behavior. You're free to
++    | explore this trait and override any methods you wish to tweak.
++    |
++    */
++
++    use ResetsPasswords;
++
++    /**
++     * Where to redirect users after resetting their password.
++     *
++     * @var string
++     */
++    protected $redirectTo = RouteServiceProvider::HOME;
+ }
+diff --git a/app/Http/Controllers/HomeController.php b/app/Http/Controllers/HomeController.php
+index 7cbc2c3..d582a8c 100644
+--- a/app/Http/Controllers/HomeController.php
++++ b/app/Http/Controllers/HomeController.php
+@@ -3,18 +3,10 @@
+ namespace App\Http\Controllers;
+ 
+ use Illuminate\Http\Request;
++use Illuminate\Support\Facades\Auth;
+ 
+ class HomeController extends Controller
+ {
+-    /**
+-     * Create a new controller instance.
+-     *
+-     * @return void
+-     */
+-    public function __construct()
+-    {
+-        $this->middleware('auth');
+-    }
+ 
+     /**
+      * Show the application dashboard.
+@@ -23,6 +15,6 @@ class HomeController extends Controller
+      */
+     public function index()
+     {
+-        return view('home');
++        return view('frontend.homepage.index');
+     }
+ }
+diff --git a/app/Providers/AppServiceProvider.php b/app/Providers/AppServiceProvider.php
+index ee8ca5b..9242dee 100644
+--- a/app/Providers/AppServiceProvider.php
++++ b/app/Providers/AppServiceProvider.php
+@@ -3,6 +3,7 @@
+ namespace App\Providers;
+ 
+ use Illuminate\Support\ServiceProvider;
++use Illuminate\Support\Facades\Schema;
+ 
+ class AppServiceProvider extends ServiceProvider
+ {
+@@ -23,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
+      */
+     public function boot()
+     {
+-        //
++        Schema::defaultStringLength(191);
+     }
+ }
+diff --git a/app/Providers/RouteServiceProvider.php b/app/Providers/RouteServiceProvider.php
+index 527eee3..f46ba78 100644
+--- a/app/Providers/RouteServiceProvider.php
++++ b/app/Providers/RouteServiceProvider.php
+@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
+      *
+      * @var string
+      */
+-    public const HOME = '/home';
++    public const HOME = '/dashboard';
+ 
+     /**
+      * Define your route model bindings, pattern filters, etc.
+diff --git "a/public/D:\\PROJECTS\\QLDA_CNPM\\storage\\logs/laravel.log" "b/public/D:\\PROJECTS\\QLDA_CNPM\\storage\\logs/laravel.log"
+deleted file mode 100644
+index 9365059..0000000
+--- "a/public/D:\\PROJECTS\\QLDA_CNPM\\storage\\logs/laravel.log"
++++ /dev/null
+@@ -1,255 +0,0 @@
+-[2021-11-01 01:06:27] local.ERROR: View [frontend.homepage.index] not found. {"exception":"[object] (InvalidArgumentException(code: 0): View [frontend.homepage.index] not found. at /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:137)
+-[stacktrace]
+-#0 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\\View\\FileViewFinder->findInPaths('frontend.homepa...', Array)
+-#1 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/Factory.php(131): Illuminate\\View\\FileViewFinder->find('frontend.homepa...')
+-#2 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(970): Illuminate\\View\\Factory->make('frontend.homepa...', Array, Array)
+-#3 /mnt/d/PROJECTS/QLDA_CNPM/app/Http/Controllers/HomeController.php(16): view('frontend.homepa...')
+-#4 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\HomeController->index()
+-#5 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('index', Array)
+-#6 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\HomeController), 'index')
+-#7 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Route.php(176): Illuminate\\Routing\\Route->runController()
+-#8 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(681): Illuminate\\Routing\\Route->run()
+-#9 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+-#10 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#11 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#12 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#13 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#14 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#15 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#16 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#17 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#18 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#19 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#20 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#21 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#22 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#23 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#24 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+-#25 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+-#26 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+-#27 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+-#28 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+-#29 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#30 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#31 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#32 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#33 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#34 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#35 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#36 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#37 /mnt/d/PROJECTS/QLDA_CNPM/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#38 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#39 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#40 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#41 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+-#42 /mnt/d/PROJECTS/QLDA_CNPM/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+-#43 /mnt/d/PROJECTS/QLDA_CNPM/server.php(21): require_once('/mnt/d/PROJECTS...')
+-#44 {main}
+-"} 
+-[2021-11-01 01:06:31] local.ERROR: file_put_contents(D:\PROJECTS\QLDA_CNPM\storage\framework/sessions/wAvZiAchMo2TH6naj9ZG43Z3h1aN8y0Uq0f07Qp4): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): file_put_contents(D:\\PROJECTS\\QLDA_CNPM\\storage\\framework/sessions/wAvZiAchMo2TH6naj9ZG43Z3h1aN8y0Uq0f07Qp4): failed to open stream: No such file or directory at /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133)
+-[stacktrace]
+-#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'file_put_conten...', '/mnt/d/PROJECTS...', 133, Array)
+-#1 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('D:\\\\PROJECTS\\\\QLD...', 'a:3:{s:6:\"_toke...', 2)
+-#2 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(83): Illuminate\\Filesystem\\Filesystem->put('D:\\\\PROJECTS\\\\QLD...', 'a:3:{s:6:\"_toke...', true)
+-#3 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Store.php(129): Illuminate\\Session\\FileSessionHandler->write('wAvZiAchMo2TH6n...', 'a:3:{s:6:\"_toke...')
+-#4 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(170): Illuminate\\Session\\Store->save()
+-#5 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(65): Illuminate\\Session\\Middleware\\StartSession->saveSession(Object(Illuminate\\Http\\Request))
+-#6 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#7 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#8 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#9 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#10 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#11 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#12 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#13 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+-#14 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+-#15 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+-#16 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+-#17 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+-#18 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#19 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#20 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#21 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#22 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#23 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#24 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#25 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#26 /mnt/d/PROJECTS/QLDA_CNPM/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#27 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#28 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#29 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#30 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+-#31 /mnt/d/PROJECTS/QLDA_CNPM/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+-#32 /mnt/d/PROJECTS/QLDA_CNPM/server.php(21): require_once('/mnt/d/PROJECTS...')
+-#33 {main}
+-"} 
+-[2021-11-01 01:07:28] local.ERROR: View [frontend.homepage.index] not found. {"exception":"[object] (InvalidArgumentException(code: 0): View [frontend.homepage.index] not found. at /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:137)
+-[stacktrace]
+-#0 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\\View\\FileViewFinder->findInPaths('frontend.homepa...', Array)
+-#1 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/Factory.php(131): Illuminate\\View\\FileViewFinder->find('frontend.homepa...')
+-#2 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(970): Illuminate\\View\\Factory->make('frontend.homepa...', Array, Array)
+-#3 /mnt/d/PROJECTS/QLDA_CNPM/app/Http/Controllers/HomeController.php(16): view('frontend.homepa...')
+-#4 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\HomeController->index()
+-#5 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('index', Array)
+-#6 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\HomeController), 'index')
+-#7 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Route.php(176): Illuminate\\Routing\\Route->runController()
+-#8 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(681): Illuminate\\Routing\\Route->run()
+-#9 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+-#10 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#11 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#12 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#13 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#14 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#15 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#16 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#17 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#18 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#19 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#20 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#21 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#22 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#23 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#24 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+-#25 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+-#26 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+-#27 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+-#28 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+-#29 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#30 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#31 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#32 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#33 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#34 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#35 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#36 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#37 /mnt/d/PROJECTS/QLDA_CNPM/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#38 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#39 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#40 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#41 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+-#42 /mnt/d/PROJECTS/QLDA_CNPM/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+-#43 /mnt/d/PROJECTS/QLDA_CNPM/server.php(21): require_once('/mnt/d/PROJECTS...')
+-#44 {main}
+-"} 
+-[2021-11-01 01:07:30] local.ERROR: file_put_contents(D:\PROJECTS\QLDA_CNPM\storage\framework/sessions/oBqGYddAMYvDM8DuU4fRLaREx398viVaQYSLdiWI): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): file_put_contents(D:\\PROJECTS\\QLDA_CNPM\\storage\\framework/sessions/oBqGYddAMYvDM8DuU4fRLaREx398viVaQYSLdiWI): failed to open stream: No such file or directory at /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133)
+-[stacktrace]
+-#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'file_put_conten...', '/mnt/d/PROJECTS...', 133, Array)
+-#1 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('D:\\\\PROJECTS\\\\QLD...', 'a:3:{s:6:\"_toke...', 2)
+-#2 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(83): Illuminate\\Filesystem\\Filesystem->put('D:\\\\PROJECTS\\\\QLD...', 'a:3:{s:6:\"_toke...', true)
+-#3 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Store.php(129): Illuminate\\Session\\FileSessionHandler->write('oBqGYddAMYvDM8D...', 'a:3:{s:6:\"_toke...')
+-#4 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(170): Illuminate\\Session\\Store->save()
+-#5 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(65): Illuminate\\Session\\Middleware\\StartSession->saveSession(Object(Illuminate\\Http\\Request))
+-#6 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#7 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#8 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#9 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#10 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#11 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#12 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#13 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+-#14 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+-#15 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+-#16 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+-#17 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+-#18 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#19 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#20 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#21 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#22 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#23 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#24 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#25 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#26 /mnt/d/PROJECTS/QLDA_CNPM/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#27 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#28 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#29 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#30 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+-#31 /mnt/d/PROJECTS/QLDA_CNPM/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+-#32 /mnt/d/PROJECTS/QLDA_CNPM/server.php(21): require_once('/mnt/d/PROJECTS...')
+-#33 {main}
+-"} 
+-[2021-11-01 01:09:49] local.ERROR: View [frontend.homepage.index] not found. {"exception":"[object] (InvalidArgumentException(code: 0): View [frontend.homepage.index] not found. at /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:137)
+-[stacktrace]
+-#0 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(79): Illuminate\\View\\FileViewFinder->findInPaths('frontend.homepa...', Array)
+-#1 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/Factory.php(131): Illuminate\\View\\FileViewFinder->find('frontend.homepa...')
+-#2 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php(970): Illuminate\\View\\Factory->make('frontend.homepa...', Array, Array)
+-#3 /mnt/d/PROJECTS/QLDA_CNPM/app/Http/Controllers/HomeController.php(16): view('frontend.homepa...')
+-#4 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): App\\Http\\Controllers\\HomeController->index()
+-#5 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction('index', Array)
+-#6 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Route.php(219): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(App\\Http\\Controllers\\HomeController), 'index')
+-#7 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Route.php(176): Illuminate\\Routing\\Route->runController()
+-#8 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(681): Illuminate\\Routing\\Route->run()
+-#9 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+-#10 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#11 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#12 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#13 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#14 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#15 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#16 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#17 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#18 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#19 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#20 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#21 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#22 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#23 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#24 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+-#25 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+-#26 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+-#27 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+-#28 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+-#29 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#30 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#31 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#32 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#33 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#34 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#35 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#36 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#37 /mnt/d/PROJECTS/QLDA_CNPM/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#38 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#39 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#40 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#41 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+-#42 /mnt/d/PROJECTS/QLDA_CNPM/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+-#43 /mnt/d/PROJECTS/QLDA_CNPM/server.php(21): require_once('/mnt/d/PROJECTS...')
+-#44 {main}
+-"} 
+-[2021-11-01 01:09:50] local.ERROR: file_put_contents(D:\PROJECTS\QLDA_CNPM\storage\framework/sessions/3mhmz9wfY2LHefIrUTZLYexnwxRa222ckC8ihvvx): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): file_put_contents(D:\\PROJECTS\\QLDA_CNPM\\storage\\framework/sessions/3mhmz9wfY2LHefIrUTZLYexnwxRa222ckC8ihvvx): failed to open stream: No such file or directory at /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:133)
+-[stacktrace]
+-#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'file_put_conten...', '/mnt/d/PROJECTS...', 133, Array)
+-#1 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(133): file_put_contents('D:\\\\PROJECTS\\\\QLD...', 'a:3:{s:6:\"_toke...', 2)
+-#2 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(83): Illuminate\\Filesystem\\Filesystem->put('D:\\\\PROJECTS\\\\QLD...', 'a:3:{s:6:\"_toke...', true)
+-#3 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Store.php(129): Illuminate\\Session\\FileSessionHandler->write('3mhmz9wfY2LHefI...', 'a:3:{s:6:\"_toke...')
+-#4 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(170): Illuminate\\Session\\Store->save()
+-#5 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(65): Illuminate\\Session\\Middleware\\StartSession->saveSession(Object(Illuminate\\Http\\Request))
+-#6 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#7 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#8 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#9 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#10 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#11 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#12 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(683): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#13 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+-#14 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+-#15 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+-#16 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+-#17 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(130): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+-#18 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#19 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#20 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#21 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#22 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#23 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#24 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(63): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#25 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#26 /mnt/d/PROJECTS/QLDA_CNPM/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#27 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(171): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+-#28 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(105): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+-#29 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+-#30 /mnt/d/PROJECTS/QLDA_CNPM/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+-#31 /mnt/d/PROJECTS/QLDA_CNPM/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+-#32 /mnt/d/PROJECTS/QLDA_CNPM/server.php(21): require_once('/mnt/d/PROJECTS...')
+-#33 {main}
+-"} 
+diff --git a/resources/views/backend/layout/master.blade.php b/resources/views/backend/layout/master.blade.php
+index be1c695..1720a3d 100644
+--- a/resources/views/backend/layout/master.blade.php
++++ b/resources/views/backend/layout/master.blade.php
+@@ -140,7 +140,12 @@
+                                 {{--</a>--}}
+                                 {{--</li>--}}
+                                 <li>
+-                                    <a href="{{url('admin/logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
++                                    <a href="{{url('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
++                                        <i class="fa fa-sign-out pull-right"></i> Log Out
++                                    </a>
++                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
++                                        @csrf
++                                    </form>
+                                 </li>
+                             </ul>
+                             <div id="modalChangePassword" class="modal fade" role="dialog">
+diff --git a/resources/views/layouts/app.blade.php b/resources/views/layouts/app.blade.php
+index e571a23..5e0a5b4 100644
+--- a/resources/views/layouts/app.blade.php
++++ b/resources/views/layouts/app.blade.php
+@@ -50,9 +50,15 @@
+                         @endif
+                     @else
+                         <li class="nav-item dropdown">
+-                            <a class="dropdown-item" href="{{ route('logout') }}">
++                            <a class="dropdown-item" href="{{ route('logout') }}"
++{{--                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"--}}
++                            >
+                                 {{ __('Logout') }}
+                             </a>
++
++                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
++                                @csrf
++                            </form>
+                         </li>
+                     @endguest
+                 </ul>
+diff --git a/routes/web.php b/routes/web.php
+index 2fc47d7..1753edf 100644
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -35,7 +35,7 @@ Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
+ //Route::get('/admin', function () {
+ //    return redirect('/dashboard');
+ //})->name('dashboard');
+-//Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
++Route::get('/dashboard', 'Admin\AdminController@index')->middleware('auth');
+ 
+ //----------Login--------
+ //Route::get('login', 'Auth\LoginController@getLogin')->name('login');
+@@ -70,24 +70,24 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
+     Route::get('changeStatusContact/{id}', 'ContactsController@changeStatus')->name('contact.changeStatus');
+ });
+ 
+-Route::get('/home', 'HomeController@index')->name('home');
+-
+ 
+ //-------------Admin----------
+ //Register
+-Route::get('register', 'Auth\RegisterController@register');
+-Route::post('register', 'Auth\RegisterController@store')->name('register');
+-
+-//Login
+-Route::get('login', 'Auth\LoginController@login')->name('login');
+-Route::post('login', 'Auth\LoginController@authenticate');
+-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+-
+-Route::get('admin', 'AdminController@index')->name('admin');
+-//Route::get('home', 'AdminController@index')->name('home');
+-
+-Route::get('forget-password', 'Auth\ForgotPasswordController@getEmail');
+-Route::post('forget-password', 'Auth\ForgotPasswordController@postEmail');
+-
+-Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
+-Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
++//Route::get('register', 'Auth\RegisterController@register');
++//Route::post('register', 'Auth\RegisterController@store')->name('register');
++//
++////Login
++//Route::get('login', 'Auth\LoginController@login')->name('login');
++//Route::post('login', 'Auth\LoginController@authenticate');
++//Route::get('logout', 'Auth\LoginController@logout')->name('logout');
++//
++//Route::get('admin', 'AdminController@index')->name('admin');
++////Route::get('home', 'AdminController@index')->name('home');
++//
++//Route::get('forget-password', 'Auth\ForgotPasswordController@getEmail');
++//Route::post('forget-password', 'Auth\ForgotPasswordController@postEmail');
++//
++//Route::get('reset-password/{token}', 'Auth\ResetPasswordController@getPassword');
++//Route::post('reset-password', 'Auth\ResetPasswordController@updatePassword');
++
++Auth::routes();
