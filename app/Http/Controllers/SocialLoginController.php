@@ -69,7 +69,7 @@ class SocialLoginController extends Controller
             } else {
                 // create a new user
                 $user = User::create([
-                    'name'           => $providerUser->nam,
+                    'name'           => $providerUser->name,
                     'email'          => $providerUser->getEmail(),
                     'phone'          => '',
                     'password'       => '',
