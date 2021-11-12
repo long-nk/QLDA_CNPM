@@ -19,14 +19,14 @@
                                                     <span class="mr_lr">&nbsp;/&nbsp;</span>
                                                 </li>
 
-                                                <li><strong><span>Đăng nhập tài khoản</span></strong></li>
+                                                <li><strong><span>Quên mật khẩu</span></strong></li>
 
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </section>
-                            <p class="title_page">Đăng nhập tài khoản</p>
+                            <p class="title_page">Quên mật khẩu</p>
 
                         </div>
                     </div>
@@ -59,9 +59,9 @@
                                                 {{Session::get('success')}}
                                             </div>
                                         @endif
-                                        <h1 class="title_heads a-center"><span>Đăng nhập</span></h1>
+                                        <h1 class="title_heads a-center"><span>Quên mật khẩu</span></h1>
                                         <div id="login">
-                                            <form accept-charset="utf-8" action="{{ route('customer.handle.login') }}" id="customer_login"
+                                            <form accept-charset="utf-8" action="{{ route('customer.send.mail') }}"
                                                   method="post">
 
                                                 @csrf
@@ -74,21 +74,10 @@
                                                                name="email" id="customer_email" placeholder="Email"
                                                                >
                                                     </fieldset>
-                                                    <fieldset class="form-group">
-                                                        <label>Mật khẩu <span class="required">*</span></label>
-                                                        <input type="password" class="form-control form-control-lg"
-                                                               name="password" id="customer_password"
-                                                               placeholder="Mật khẩu">
-                                                    </fieldset>
-                                                    
-                                                    <div class="g-recaptcha brochure__form__captcha" data-sitekey="{{ env("RECAPTCHA_SITE_KEY") }}"></div>
-                                                    <a
-                                                    href="{{ route('customer.forgot') }}"
-                                                    class="btn-link-style btn-register">Quên mật khẩu</a>
-                                                    <br>
+
                                                     <div class="pull-xs-left" style="margin-top:10px;">
                                                         <input class="btn btn-style btn_50" type="submit"
-                                                               value="Đăng nhập">
+                                                               value="Gửi">
                                                         <span class="block a-center dkm margin-top-40">Chưa có tài khoản, đăng ký <a
                                                                 href="{{ route('customer.register') }}"
                                                                 class="btn-link-style btn-register">tại đây</a></span>

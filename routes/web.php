@@ -22,9 +22,18 @@ Route::group(array('prefix' => 'san-pham'), function (){
 
 Route::get('he-thong-cua-hang', 'ShopController@index')->name('shop.index');
 
-Route::group(array('prefix' => 'customer'), function (){
-    Route::get('login', 'CustomerController@login')->name('customer.login');
-    Route::get('register', 'CustomerController@register')->name('customer.register');
+Route::group(['prefix' => 'customer', 'as' => 'customer.'], function (){
+    Route::get('dang-nhap', 'CustomerController@login')->name('login');
+    Route::post('dang-nhap', 'CustomerController@handleLogin')->name('handle.login');
+    Route::get('dang-ky', 'CustomerController@register')->name('register');
+    Route::post('dang-ky', 'CustomerController@handleRegister')->name('handle.register');
+    Route::get('dang-xuat', 'CustomerController@logout')->name('logout');
+    Route::get('/oauth/{driver}', 'SocialLoginController@redirectToProvider')->name('social.oauth');
+    Route::get('/oauth/{driver}/callback', 'SocialLoginController@handleProviderCallback')->name('social.callback');
+    Route::get('quen-mat-khau', 'CustomerController@forgotPassword')->name('forgot');
+    Route::post('send-mail', 'CustomerController@sendLink')->name('send.mail');
+    Route::get('thay-doi-mat-khau/{token}', 'CustomerController@showChangePassword')->name('change.password');
+    Route::post('khoi-phuc-mat-khau', 'CustomerController@restorePassword')->name('restore');
 });
 
 Route::get('gio-hang', 'CartController@index')->name('cart.index');
@@ -55,5 +64,3 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
 
     Route::get('changeStatusContact/{id}', 'ContactsController@changeStatus')->name('contact.changeStatus');
 });
-
-
