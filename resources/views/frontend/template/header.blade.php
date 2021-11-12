@@ -17,6 +17,7 @@
     <meta content='2021 - Nula Cosmetic Store' property='og:title'/>
     <meta content='2021 - Nula Cosmetic Store' property='og:site_name'/>
     <link rel="StyleSheet" href="{{asset('resouce/css/style.css')}}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="{{asset('resouce/temp/use.fontawesome.com/releases/v5.7.2/css/all.css')}}" media="all">
 
 </head>
@@ -105,10 +106,15 @@
                             </div>
                         </div>
                         <div class="account_xs">
-
-                            <a href={{route('customer.register')}}>Đăng ký</a>
-                            <span>|</span>
-                            <a class="btnx" href={{route('customer.login')}}>Đăng nhập</a>
+                            @if (Auth::check())
+                                <a href="javascript:void(0)">Xin chào, {{ Auth::user()->name }}</a>
+                                <span>|</span>
+                                <a class="btnx" href="{{route('customer.logout')}}">Đăng xuất</a>
+                            @else
+                                <a href="{{route('customer.register')}}">Đăng ký</a>
+                                <span>|</span>
+                                <a class="btnx" href="{{route('customer.login')}}">Đăng nhập</a>
+                            @endif
 
 
                         </div>
