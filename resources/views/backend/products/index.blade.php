@@ -61,7 +61,7 @@
                                                 <th class="text-center" style="width:5%">STT</th>
                                                 <th class="text-center" style="width:20%">Hình ảnh</th>
                                                 <th class="text-center" style="width:20%">Tên sản phẩm</th>
-                                                <th class="text-center" style="width:20%">Giới thiệu</th>
+                                                <th class="text-center" style="width:20%">Loại sản phẩm</th>
                                                 <th class="text-center" style="width:15%">Trạng thái</th>
                                                 <th class="text-center" style="width:20%">Hành động</th>
                                             </tr>
@@ -83,7 +83,12 @@
                                                             <a href="{{route('products.edit', $value->id)}}">{{$value->Pro_name}}</a>
                                                         </td>
                                                         <td class="text-center">
-                                                            {{$value->Pro_description}}
+                                                            @if($value->Pro_hot == 1)
+                                                                Sản phẩm mới
+                                                            @else
+                                                                Sản phẩm bán chạy
+                                                            @endif
+
                                                         </td>
                                                         <td class="text-center">
                                                             @if($value->Pro_active)
