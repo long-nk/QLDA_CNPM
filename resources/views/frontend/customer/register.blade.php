@@ -59,19 +59,10 @@
                                                         <div class="row">
                                                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                                                 <fieldset class="form-group">
-                                                                    <label> Họ<span class="required">*</span></label>
+                                                                    <label>Họ tên <span class="required">*</span></label>
                                                                     <input type="text"
-                                                                           class="form-control form-control-lg" value="{{ old('lastName') }}"
-                                                                           name="lastName" id="lastName"
-                                                                           placeholder="Họ">
-                                                                </fieldset>
-                                                            </div>
-                                                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                                                <fieldset class="form-group">
-                                                                    <label>Tên <span class="required">*</span></label>
-                                                                    <input type="text"
-                                                                           class="form-control form-control-lg" value="{{ old('firstName') }}"
-                                                                           name="firstName" id="firstName"
+                                                                           class="form-control form-control-lg" value="{{ old('name') }}"
+                                                                           name="name" id="name"
                                                                            placeholder="Tên">
                                                                 </fieldset>
                                                             </div>
@@ -90,10 +81,10 @@
                                                                 <fieldset class="form-group">
                                                                     <label>Số điện thoại <span class="required">*</span></label>
                                                                     <input placeholder="Số điện thoại" type="tel"
-                                                                           value="{{ old('phoneNumber') }}"
+                                                                           value="{{ old('phone') }}"
                                                                            class="form-control form-control-comment form-control-lg"
                                                                            pattern="[0-9]{10}"
-                                                                           name="phoneNumber">
+                                                                           name="phone">
                                                                 </fieldset>
                                                             </div>
                                                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
