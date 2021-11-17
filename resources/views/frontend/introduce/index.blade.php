@@ -12,32 +12,6 @@
                                     <article class="post-outer-container">
                                         <div class="post-outer">
                                             <div class="post">
-                                                <script type="application/ld+json">{
-  "@context": "http://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://template-nula-cosmcleticok.blogspot.com/p/gioi-thieu.html"
-  },
-  "headline": "Giới thiệu","description": "Cuộc sống với những khoảnh khắc tỏa sáng rực rỡ cùng làn da khỏe mạnh, căng tràn độ ẩm là một khái niệm làm đẹp mới từ Nula Template được th...","datePublished": "2020-09-10T18:28:00-07:00",
-  "dateModified": "2021-05-10T17:52:20-07:00","image": {
-    "@type": "ImageObject","url": "https://1.bp.blogspot.com/-t0KMSlQ6roA/X1rScLkKRdI/AAAAAAAAPrA/iiB_mMMd1Wo9rxuaXclZOocJravaMB0IgCLcBGAsYHQ/w1200-h630-p-k-no-nu/bg_gioithieu.jpg",
-    "height": 630,
-    "width": 1200},"publisher": {
-    "@type": "Organization",
-    "name": "Blogger",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60",
-      "width": 206,
-      "height": 60
-    }
-  },"author": {
-    "@type": "Person",
-    "name": "Hòa Trần"
-  }
-}
-                                                </script>
                                                 <div
                                                     class="breadcrumb_background margin-bottom-20 margin-left-15 margin-top-10">
                                                     <div class="title_full">
@@ -53,10 +27,10 @@
                                                                                     itemprop="itemListElement"
                                                                                     itemscope=""
                                                                                     itemtype="http://schema.org/ListItem">
-                                                                                    <a href="../index.html"
+                                                                                    <a
                                                                                        itemprop="item"><span
                                                                                             itemprop="name">
-Trang chủ</span></a>
+                                                                                            Trang chủ</span></a>
                                                                                     <span class="mr_lr"> / </span>
                                                                                     <meta content="1"
                                                                                           itemprop="position">
@@ -66,7 +40,7 @@ Trang chủ</span></a>
                                                                                     itemtype="http://schema.org/ListItem">
                                                                                     <strong><a itemprop="item"><span
                                                                                                 itemprop="name">
-Giới thiệu</span></a></strong>
+                                                                                                Giới thiệu</span></a></strong>
                                                                                     <meta content="3"
                                                                                           itemprop="position">
                                                                                 </li>
@@ -83,93 +57,72 @@ Giới thiệu</span></a></strong>
                                                 </div>
                                                 <div class="post-body">
                                                     <div class="col-xs-12">
-                                                        <p>Cuộc sống với những khoảnh khắc tỏa sáng rực rỡ cùng làn da
-                                                            khỏe mạnh, căng tràn độ ẩm là một khái niệm làm đẹp mới từ
-                                                            Nula Template được thiết kế bởi&nbsp;<b><a
-                                                                    href="http://giaodien.blog/">Giaodien.blog</a></b>
+                                                        <p><u>Danh sách thành viên gồm:</u></p>
+                                                        <p> - <b>Ngô Kim Long</b></p>
+                                                        <p> - Phạm Thị Hồng Nhung</p>
+                                                        <p> - Phạm Thị Loan</p>
+                                                        <p> - Nguyễn Công Toàn</p>
+                                                        <div class="separator" style="clear: both; text-align: center;">
+                                                            <a href="/resouce/temp/1.bp.blogspot.com/-t0KMSlQ6roA/X1rScLkKRdI/AAAAAAAAPrA/iiB_mMMd1Wo9rxuaXclZOocJravaMB0IgCLcBGAsYHQ/s902/bg_gioithieu.jpg"
+                                                               style="margin-left: 1em; margin-right: 1em;"><img
+                                                                    alt="Giới thiệu" border="0"
+                                                                    data-original-height="542" data-original-width="902"
+                                                                    height="300" width="300"
+                                                                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/LogoUTC.jpg"
+                                                                    title="logo"></a></div>
+                                                        <br>
+                                                        <p>   Các cửa hàng mỹ phẩm cung cấp loại mĩ phẩm chất lượng cho người 
+                                                            dùng, và đang có chiến lược mở rộng sang hình thức kinh doanh online. Cửa 
+                                                            hàng phục vụ nhiều loại mĩ phẩm chăm sóc sắc đẹp khác nhau, với nhiều người 
+                                                            tiêu dùng khác nhau, bên cạnh đó cửa hàng còn có nhiều hình thức quan trọng 
+                                                            là buôn bán, giao dịch... Vì vậy, cần có một hệ thống phần mềm chuyên nghiệp 
+                                                            để giảm thiểu các rủi ro, lưu trữ lượng lớn dữ liệu và dễ dàng trong việc quản 
+                                                            lý.
                                                         </p>
-                                                        <p>Dưỡng ẩm được xem như chiếc chìa khóa thiết yếu giúp làn da
-                                                            tỏa sáng từ bên trong. Nula cosmetics với nhiều năm nghiên
-                                                            cứu chuyên sâu về cơ chế giữ ẩm cho làn da dựa trên ý tưởng
-                                                            một làn da căng mọng được cung cấp đầy đủ nước là giải pháp
-                                                            cho nhiều vấn đề về da. Template được thiết kế
-                                                            bởi&nbsp;<b><a
-                                                                    href="http://giaodien.blog/">Giaodien.blog</a></b>
+                                                        <p>   Người quản lý cần quản lý các thông tin về các loại sản phẩm của cửa 
+                                                            hàng, và các sản phẩm cụ thể của cửa hàng đang bày bán như kem chống nắng, 
+                                                            phấn nền, các bộ dưỡng da,…. Lưu các thông tin về sản phẩm như tên sản 
+                                                            phẩm, loại sản phẩm, giá, hình ảnh minh họa... để người dùng lựa chọn theo các 
+                                                            tiêu chí của bản thân
                                                         </p>
-                                                        <p>Độ ẩm sâu giúp nuôi dưỡng làn da, tăng cường hàng rào bảo vệ
-                                                            da, thanh lọc và duy trì một làn da khoẻ mạnh, trong trẻo và
-                                                            rạng rỡ hơn. Template được thiết kế bởi&nbsp;<b><a
-                                                                    href="http://giaodien.blog/">Giaodien.blog</a></b>
+                                                        <p>   Quản lý cũng cần lưu lại các thông tin menu và bài viết của cửa hàng để 
+                                                            quảng cáo cho các thông tin sản phẩm mà cửa hàng đang đẩy mạnh. Có các 
+                                                            trang quảng cáo cho những sản phẩm nổi bật, được khách hàng sử dụng nhiều, 
+                                                            mang lại doanh thu lớn cho cửa hàng, và tiếp cận nhiều hơn tới khách hàng 
+                                                            mới.
                                                         </p>
                                                         <div class="separator" style="clear: both; text-align: center;">
                                                             <a href="/resouce/temp/1.bp.blogspot.com/-t0KMSlQ6roA/X1rScLkKRdI/AAAAAAAAPrA/iiB_mMMd1Wo9rxuaXclZOocJravaMB0IgCLcBGAsYHQ/s902/bg_gioithieu.jpg"
                                                                style="margin-left: 1em; margin-right: 1em;"><img
                                                                     alt="Giới thiệu" border="0"
                                                                     data-original-height="542" data-original-width="902"
-                                                                    height="384"
-                                                                    src="/resouce/temp/1.bp.blogspot.com/-t0KMSlQ6roA/X1rScLkKRdI/AAAAAAAAPrA/iiB_mMMd1Wo9rxuaXclZOocJravaMB0IgCLcBGAsYHQ/w640-h384/bg_gioithieu.jpg"
+                                                                    height="400"
+                                                                    src="https://1.bp.blogspot.com/-t0KMSlQ6roA/X1rScLkKRdI/AAAAAAAAPrA/iiB_mMMd1Wo9rxuaXclZOocJravaMB0IgCLcBGAsYHQ/w640-h384/bg_gioithieu.jpg"
                                                                     title="Giới thiệu" width="640"></a></div>
                                                         <br>
-                                                        <p>Cuộc sống với những khoảnh khắc tỏa sáng rực rỡ cùng làn da
-                                                            khỏe mạnh, căng tràn độ ẩm là một khái niệm làm đẹp mới từ
-                                                            Nula Template được thiết kế bởi&nbsp;<b><a
-                                                                    href="http://giaodien.blog/">Giaodien.blog</a></b>
+                                                        <p>   Khi có thắc mắc hay phản hồi về sản phẩm đã sử dụng, khách hàng liên 
+                                                            hệ với cửa hàng. Khi khách hàng mua hàng của cửa hàng, các thông tin cơ bản 
+                                                            của khách hàng như họ tên, số điện thoại, địa chỉ… sẽ được lưu lại để tiện cho 
+                                                            việc liên lạc, giao hàng cũng như thực hiện tri ân; và lưu các thông tin giao dịch 
+                                                            như các sản phẩm khách hàng mua, số lượng, giá tiền, giảm giá và tổng tiền….
                                                         </p>
-                                                        <p>Dưỡng ẩm được xem như chiếc chìa khóa thiết yếu giúp làn da
-                                                            tỏa sáng từ bên trong. Nula cosmetics với nhiều năm nghiên
-                                                            cứu chuyên sâu về cơ chế giữ ẩm cho làn da dựa trên ý tưởng
-                                                            một làn da căng mọng được cung cấp đầy đủ nước là giải pháp
-                                                            cho nhiều vấn đề về da. Template được thiết kế
-                                                            bởi&nbsp;<b><a
-                                                                    href="http://giaodien.blog/">Giaodien.blog</a></b>
+                                                        <p>    Nhóm 14 đã tạo ra 1 website để đáp ứng được nhu cầu của khách hàng, nhằm nâng cao trải nghiệm mua hàng,
+                                                            cũng như tạo điều kiện tốt nhất cho khách hàng, bên cạnh việc bán hàng offline
+                                                            thì việc kinh doanh online cũng rất cần thiết, nhất là trong thời gian giãn cách 
+                                                            hiện nay.
                                                         </p>
-                                                        <p>Độ ẩm sâu giúp nuôi dưỡng làn da, tăng cường hàng rào bảo vệ
-                                                            da, thanh lọc và duy trì một làn da khoẻ mạnh, trong trẻo và
-                                                            rạng rỡ hơn. Template được thiết kế bởi&nbsp;<b><a
-                                                                    href="http://giaodien.blog/">Giaodien.blog</a></b>
-                                                        </p>
+                                                        
                                                     </div>
-                                                </div>
-                                                <div class="post-footer">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <section class="comments embed" data-num-comments="0" id="comments">
-                                                <a name="comments"></a>
-                                                <h3 class="title">Nhận xét</h3>
-                                                <div id="Blog1_comments-block-wrapper">
-                                                </div>
-                                                <div class="footer">
-                                                    <div class="comment-form">
-                                                        <a name="comment-form"></a>
-                                                        <h4 id="comment-post-message">Đăng nhận xét</h4>
-                                                        <a href="https://www.blogger.com/comment-iframe.g?blogID=5640853351965315871&amp;pageID=3872665038937611975&amp;skin=soho&amp;blogspotRpcToken=8221582"
-                                                           id="comment-editor-src"></a>
-                                                        <iframe allowtransparency="allowtransparency"
-                                                                class="blogger-iframe-colorize blogger-comment-from-post"
-                                                                frameborder="0" height="88px" id="comment-editor"
-                                                                name="comment-editor"
-                                                                src="https://www.blogger.com/comment-iframe.g?blogID=5640853351965315871&amp;pageID=3872665038937611975&amp;skin=soho&amp;blogspotRpcToken=8221582"
-                                                                width="100%" data-resized="true"></iframe>
-                                                        <script
-                                                            src="../../www.blogger.com/static/v1/jsbin/186635561-comment_from_post_iframe.js"
-                                                            type="text/javascript"></script>
-                                                        <script type="text/javascript">
-                                                            BLOG_CMT_createIframe('https://www.blogger.com/rpc_relay.html');
-                                                        </script>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
                                     </article>
-                                </div>
-                                <div class="blog-feeds">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-
-@stop
+        </div>    
+    </div>
+@endsection
