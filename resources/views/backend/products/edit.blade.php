@@ -74,7 +74,7 @@
                                             <img src="{{url('/')}}/{{$product->Pro_avatar}}" alt="" id="img_show" width="100%">
                                         </div>
                                         <div class="box_upload">
-                                            <span class="fa fa-upload"></span> Chọn banner
+                                            <span class="fa fa-upload"></span> Chọn tệp
                                             <input type="file" class="hide_file" name="image"
                                                    onchange="show_img_selected(this)" {{$product->Pro_avatar == ""?"required":""}}>
                                         </div>

@@ -5,7 +5,7 @@
     <div class='block_right'>
         <div class='wrapmain wrap_body_calc'>
             <h1 class='hidden'>
-                2020 - Nula Cosmetic Premium
+                2021 - Nula Cosmetic
             </h1>
             <section class='awe-section-1'>
                 <section class='sectionslider section_slider'>

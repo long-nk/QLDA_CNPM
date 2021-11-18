@@ -74,7 +74,7 @@
                                                                     <input type="email"
                                                                            class="form-control form-control-lg" value="{{ old('email') }}"
                                                                            name="email" id="email" placeholder="Email"
-                                                                           >
+                                                                    >
                                                                 </fieldset>
                                                             </div>
                                                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">

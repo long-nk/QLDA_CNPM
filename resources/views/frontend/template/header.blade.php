@@ -8,6 +8,8 @@
     <title> 2021 - Nula Cosmetic Store</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     <meta content='blogger' name='generator'/>
+    <meta content='{{csrf_token()}}' name='csrf-token'/>
+
     <link href='favicon.ico' rel='icon' type='image/x-icon'/>
     <meta content='#00afce' name='theme-color'/>
     <meta content='#00afce' name='msapplication-navbutton-color'/>
@@ -71,7 +73,7 @@
                                 <div class='header-widget'>
                                     <div class='logos section hidden-xs hidden-sm hidden-md'>
                                         <a class='logo-wrapper ' href={{route('home')}}>
-                                            <img alt='2020 - Nula Cosmetic Premium'
+                                            <img alt='2021 - Nula Cosmetic'
                                                  src='/resouce/temp/1.bp.blogspot.com/-i8TF1s6I6EQ/YJkNrxRaLgI/AAAAAAAAS14/XXVSPOoYpCgiw7qswA-Z2Imoohj02fi9wCK4BGAYYCw/s1600/logo.png'/>
                                         </a>
                                     </div>
@@ -81,23 +83,28 @@
                         <div class='cart_header_new'>
                             <div class='icon_cart'>
                                 <a class='img_hover_cart' href={{route('cart.index')}} title='Giỏ hàng'>
-                                    <div class='icon_hotline'>
-                                        <i class='fas fa-shopping-basket iconcart'>
-                                        </i>
-                                        <div class='border_count'>
-                                            <span class='count_item count_item_pr simpleCart_quantity'>
+                                <div class='icon_hotline'>
+                                    <i class='fas fa-shopping-basket iconcart'>
+                                    </i>
+                                    <div class='border_count'>
+                                            <span class='count_item count_item_pr product_in_cart'>
+                                                @php $number = 0 @endphp
+                                                @if(session('cart'))
+                                                    @php $number = count(session('cart')) @endphp
+                                                @endif
+                                                {{$number}}
                                             </span>
-                                        </div>
                                     </div>
+                                </div>
                                 </a>
                             </div>
                         </div>
                         <div class='serachpc hidden-sm hidden-xs'>
                             <div class='searchform'>
-                                <form action='https://template-nula-cosmcleticok.blogspot.com/search'
+                                <form action="{{route('home.search')}}"
                                       class='input-group search-bar' method='get' role='search'>
                                     <input autocomplete='off' class='input-group-field auto-search visible_index'
-                                           name='q' placeholder='Tìm kiếm' type='text' value=''/>
+                                           name='search' placeholder='Tìm kiếm' type='text' value="{{isset($keyWord)?$keyWord:old('search')}}"/>
                                     <button class='visible_index btn icon-fallback-text' type='submit'>
                                         <i class='fa fa-search'>
                                         </i>
@@ -122,27 +129,28 @@
                             <div class='section' id='idthanhmenu' name='Thanh menu'>
                                 <div class='widget LinkList' data-version='2' id='LinkList6'>
                                     <ul class='menu_ul a-center'>
-                                        <li class='level0 level-top parent'><a class='a_top' href={{route('home')}}>Trang
-                                                chủ</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top' href={{route('intro')}}>Giới
-                                                thiệu</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top'
-                                                                               href={{url('san-pham')}}>Sản
-                                                phẩm</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top'
-                                                                               href='search/label/nuoc-hoa.html'>_Nước
-                                                hoa</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top'
-                                                                               href='search/label/che-khuyet-diem.html'>_Che
-                                                khuyết điểm</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top'
-                                                                               href={{route('shop.index')}}>Hệ thống
-                                                cửa hàng</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top'
-                                                                               href={{route('news')}}>Tin
-                                                tức</a></li>
-                                        <li class='level0 level-top parent'><a class='a_top' href={{route('contact')}}>Liên
-                                                hệ</a></li>
+                                        <li class='level0 level-top parent'>
+                                            <a class='a_top' href={{route('home')}}>Trang chủ</a>
+                                        </li>
+                                        <li class='level0 level-top parent'>
+                                            <a class='a_top' href={{route('intro')}}>Giới thiệu</a>
+                                        </li>
+                                        <li class='level0 level-top parent'>
+                                            <a class='a_top' href={{url('san-pham')}}>Sản phẩm</a></li>
+                                        @foreach($categories as $category)
+                                            <li class='level0 level-top parent'>
+                                                <a class='a_top' href="{{route('product.category', $category->id)}}">_{{$category->C_name}}</a>
+                                            </li>
+                                        @endforeach
+                                        <li class='level0 level-top parent'>
+                                            <a class='a_top' href={{route('shop.index')}}>Hệ thống cửa hàng</a>
+                                        </li>
+                                        <li class='level0 level-top parent'>
+                                            <a class='a_top' href={{route('news')}}>Tin tức</a>
+                                        </li>
+                                        <li class='level0 level-top parent'>
+                                            <a class='a_top' href={{route('contact')}}>Liên hệ</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -152,9 +160,9 @@
                                 <div class='section' id='idbannersidebar' name='Banner sidebar'>
                                     <div class='widget Image' data-version='2' id='Image1'>
                                         <a class='block a-center' href={{route('product.index')}}
-                                           title='Sản phẩm bán chạy'>
-                                            <img alt='Sản phẩm bán chạy'
-                                                 src='/resouce/temp/3.bp.blogspot.com/-bxwOkVs9ETE/YJkicnlp9rI/AAAAAAAAS2Q/OQUK9QZKxJ0SwrrXObBlsERRiSrJdiqjACK4BGAYYCw/s1600/banner_menu.jpg'/>
+                                            title='Sản phẩm bán chạy'>
+                                        <img alt='Sản phẩm bán chạy'
+                                             src='/resouce/temp/3.bp.blogspot.com/-bxwOkVs9ETE/YJkicnlp9rI/AAAAAAAAS2Q/OQUK9QZKxJ0SwrrXObBlsERRiSrJdiqjACK4BGAYYCw/s1600/banner_menu.jpg'/>
                                         </a>
                                     </div>
                                 </div>

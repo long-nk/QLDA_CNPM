@@ -3,7 +3,7 @@
         <div class='site-footer'>
             <div class='mid-footer'>
                 <div class='row'>
-                    <div class='col-xs-12 col-sm-12 col-md-3 col-lg-fix-2 logoanh'>
+                    <div class='col-xs-12 col-sm-12 col-md-6 col-lg-fix-2 logoanh'>
                         <div class='section' id='idlogofooter' name='logo footer'>
                             <div class='widget Image' data-version='2' id='Image3'>
                                 <div class='widget-ft'>
@@ -20,43 +20,7 @@
                     <div class='col-lg-fix-10 col-md-9 col-sm-12 col-xs-12'>
                         <div class='row'>
                             <div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
-                                <div class='section' id='idvechungtoi' name='VỀ CHÚNG TÔI'>
-                                    <div class='widget LinkList' data-version='2' id='LinkList2'>
-                                        <div class='widget-ft first'>
-                                            <h4 class='title-menu'>
-                                                <a aria-controls='collapseListMenu01'
-                                                   aria-expanded='false' class='collapsed'
-                                                   data-target='#collapseListMenu01'
-                                                   data-toggle='collapse' role='button'>
-                                                    VỀ CHÚNG TÔI
-                                                    <i aria-hidden='true' class='fa fa-plus'></i>
-                                                </a>
-                                            </h4>
-                                            <div class='collapse' id='collapseListMenu01'>
-                                                <ul class='list-menu'>
-                                                    <li class='li_menu'><a href={{route('home')}}>Trang
-                                                            chủ</a></li>
-                                                    <li class='li_menu'><a href={{route('intro')}}>Về
-                                                            chúng tôi</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('product.index')}}>Sản
-                                                            phẩm</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('shop.index')}}>Hệ thống cửa
-                                                            hàng</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('news')}}>Tin tức</a>
-                                                    </li>
-                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
-                                                            hệ</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
-                                <div class='section' id='idthongtin' name='Thông tin'>
+                                <div class='section' id='idthongtin' name='Về Nula Cosmetic'>
                                     <div class='widget LinkList' data-version='2' id='LinkList3'>
                                         <div class='widget-ft first'>
                                             <h4 class='title-menu'>
@@ -70,21 +34,13 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu02'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href={{route('home')}}>Trang
-                                                            chủ</a></li>
-                                                    <li class='li_menu'><a href={{route('intro')}}>Về
-                                                            chúng tôi</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('product.index')}}>Sản
-                                                            phẩm</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('shop.index')}}>Hệ thống cửa
-                                                            hàng</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('news')}}>Tin tức</a>
+                                                    <li class='li_menu'><a href={{route('home')}}>Trang chủ</a></li>
+                                                    <li class='li_menu'><a href={{route('intro')}}>Về chúng tôi</a></li>
+                                                    <li class='li_menu'><a href={{route('product.index')}}>Sản phẩm</a>
                                                     </li>
-                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
-                                                            hệ</a></li>
+                                                    <li class='li_menu'><a href={{route('shop.index')}}>Hệ thống cửa
+                                                            hàng</a></li>
+                                                    <li class='li_menu'><a href={{route('news')}}>Tin tức</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -92,7 +48,7 @@
                                 </div>
                             </div>
                             <div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
-                                <div class='section' id='idthotro' name='Hỗ trợ'>
+                                <div class='section' id='idthotro' name='Chính sách'>
                                     <div class='widget LinkList' data-version='2' id='LinkList4'>
                                         <div class='widget-ft first'>
                                             <h4 class='title-menu'>
@@ -106,21 +62,14 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu03'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href={{route('home')}}>Trang
-                                                            chủ</a></li>
-                                                    <li class='li_menu'><a href={{route('intro')}}>Về
-                                                            chúng tôi</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('product.index')}}>Sản
-                                                            phẩm</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('shop.index')}}>Hệ thống cửa
-                                                            hàng</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('news')}}>Tin tức</a>
+                                                    <li class='li_menu'><a href={{route('home')}}>Điều khoản sử dụng</a>
                                                     </li>
-                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
-                                                            hệ</a></li>
+                                                    <li class='li_menu'><a href={{route('intro')}}>Chính sách đổi
+                                                            trả</a></li>
+                                                    <li class='li_menu'><a href={{route('product.index')}}>Chính sách và
+                                                            quy định</a></li>
+                                                    <li class='li_menu'><a href={{route('shop.index')}}>Chính sách bảo
+                                                            mật</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -128,7 +77,7 @@
                                 </div>
                             </div>
                             <div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
-                                <div class='section' id='idlienhe' name='Liên hệ'>
+                                <div class='section' id='idlienhe' name='Hỗ trợ'>
                                     <div class='widget LinkList' data-version='2' id='LinkList5'>
                                         <div class='widget-ft first'>
                                             <h4 class='title-menu'>
@@ -142,21 +91,9 @@
                                             </h4>
                                             <div class='collapse' id='collapseListMenu04'>
                                                 <ul class='list-menu'>
-                                                    <li class='li_menu'><a href={{route('home')}}>Trang
-                                                            chủ</a></li>
-                                                    <li class='li_menu'><a href={{route('intro')}}>Về
-                                                            chúng tôi</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('product.index')}}>Sản
-                                                            phẩm</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('shop.index')}}>Hệ thống cửa
-                                                            hàng</a></li>
-                                                    <li class='li_menu'><a
-                                                            href={{route('news')}}>Tin tức</a>
+                                                    <li class='li_menu'><a href={{route('contact')}}>Liên hệ</a></li>
+                                                    <li class='li_menu'><a href={{route('home')}}>Hướng dẫn mua hàng</a>
                                                     </li>
-                                                    <li class='li_menu'><a href={{route('contact')}}>Liên
-                                                            hệ</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -200,41 +137,11 @@
         </div>
     </footer>
 </div>
-</div>
-</div>
 
-<div class='modal fade in' id='popupCartModal' role='dialog'>
-    <div class='popup_overlay'></div>
-    <div class='modal-dialog'>
-        <div class='modal-content'>
-            <button aria-label='Close' class='close hidden-xs' data-backdrop='false' data-dismiss='modal'
-                    style='position: relative; z-index: 9;' type='button'><span aria-hidden='true'><i
-                        class='fas fa-times'></i></span></button>
-            <div class='row row-noGutter'>
-                <div class='modal-left col-sm-6'>
-                    <h3 class='title'><i class='fas fa-check'></i> Bạn vừa thêm sản phẩm này vào giỏ hàng</h3>
-                    <div class='modal-body hoatran-checkout-post'>
-                        <div class='simpleCart_items cart-item'>
-                        </div>
-                    </div>
-                </div>
-                <div class='modal-right col-sm-6'>
-                    <h3 class='title'><a href='cart.html'><i class='fas fa-shopping-basket'></i> Giỏ hàng của bạn có
-                            <span><span class='cart-popup-count simpleCart_quantity'></span> sản phẩm</span></a></h3>
-                    <div class='total_price'>
-                        <div class='total_price_h'>Tổng tiền</div>
-                        <div class='price simpleCart_total'></div>
-                    </div>
-                    <a class='btn btn-primary btn-pop' href='p/cart.html'><i class='fas fa-shopping-basket'></i>Tới giỏ
-                        hàng</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div id="cart_modal"></div>
 
-@include('frontend.template.my_script')
-<script src="{{asset('/resouce/js/script.js')}}"></script>
+@include('frontend.template.script')
+{{--<script src="{{asset('/resouce/js/script.js')}}"></script>--}}
 </body>
 
 </html>

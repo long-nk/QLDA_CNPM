@@ -13,32 +13,6 @@
                                     <article class="post-outer-container">
                                         <div class="post-outer">
                                             <div class="post">
-                                                <script type="application/ld+json">{
-                                                      "@context": "http://schema.org",
-                                                      "@type": "BlogPosting",
-                                                      "mainEntityOfPage": {
-                                                        "@type": "WebPage",
-                                                        "@id": "https://template-nula-cosmcleticok.blogspot.com/p/cart.html"
-                                                      },
-                                                      "headline": "Cart","description": "Số lượng sản phẩm trong Giỏ hàng                                                          Thành tiền                                    ...","datePublished": "2020-09-10T20:16:00-07:00",
-                                                      "dateModified": "2021-05-10T00:06:42-07:00","image": {
-                                                        "@type": "ImageObject","url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200",
-                                                        "height": 348,
-                                                        "width": 1200},"publisher": {
-                                                        "@type": "Organization",
-                                                        "name": "Blogger",
-                                                        "logo": {
-                                                          "@type": "ImageObject",
-                                                          "url": "https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60",
-                                                          "width": 206,
-                                                          "height": 60
-                                                        }
-                                                      },"author": {
-                                                        "@type": "Person",
-                                                        "name": "Hòa Trần"
-                                                      }
-                                                    }
-                                                </script>
                                                 <div
                                                     class="breadcrumb_background margin-bottom-20 margin-left-15 margin-top-10">
                                                     <div class="title_full">
@@ -54,10 +28,9 @@
                                                                                     itemprop="itemListElement"
                                                                                     itemscope=""
                                                                                     itemtype="http://schema.org/ListItem">
-                                                                                    <a href="https://template-nula-cosmcleticok.blogspot.com/"
-                                                                                       itemprop="item"><span
-                                                                                            itemprop="name">
-Trang chủ</span></a>
+                                                                                    <a href="/" itemprop="item">
+                                                                                        <span
+                                                                                            itemprop="name">Trang chủ</span></a>
                                                                                     <span class="mr_lr"> / </span>
                                                                                     <meta content="1"
                                                                                           itemprop="position">
@@ -65,9 +38,12 @@ Trang chủ</span></a>
                                                                                 <li itemprop="itemListElement"
                                                                                     itemscope=""
                                                                                     itemtype="http://schema.org/ListItem">
-                                                                                    <strong><a itemprop="item"><span
-                                                                                                itemprop="name">
-Cart</span></a></strong>
+                                                                                    <strong>
+                                                                                        <a itemprop="item">
+                                                                                            <span
+                                                                                                itemprop="name">Cart</span>
+                                                                                        </a>
+                                                                                    </strong>
                                                                                     <meta content="3"
                                                                                           itemprop="position">
                                                                                 </li>
@@ -85,9 +61,53 @@ Cart</span></a></strong>
                                                 <div class="post-body">
                                                     <div class="col-xs-12">
                                                         <div class="hoatran-checkout-wrap cart margin-bottom-30">
+                                                            @php $number = 0 @endphp
+                                                            @if(session('cart'))
+                                                                @foreach(session('cart') as $id => $details)
+                                                                    @php $number = count(session('cart')) @endphp
+                                                                @endforeach
+                                                            @endif
                                                             <h4 class="subtitle-head relative"> Số lượng sản phẩm trong
-                                                                Giỏ hàng <span class="simpleCart_quantity">4</span>
+                                                                Giỏ hàng <span class="simpleCart_quantity">{{$number}}</span>
                                                             </h4>
+
+                                                            <div class="simpleCart_items cart-item clearfix">
+                                                                <div>
+                                                                    @php $total = 0 @endphp
+                                                                    @if(session('cart'))
+                                                                        @foreach(session('cart') as $id => $details)
+                                                                            @php $total += floatval($details['price']) * ($details['quantity']) @endphp
+                                                                            <div class="itemRow row-0 odd"
+                                                                                 id="cartItem_Order #1">
+                                                                                <div class="item-thumb"><img
+                                                                                        src="{{$details['image']}}">
+                                                                                </div>
+                                                                                <div class="item-name">{{ $details['name'] }}
+                                                                                </div>
+                                                                                <div class="item-price">{{ $details['price'] }}đ</div>
+                                                                                <div class="item-decrement item_sub" data-id="{{$id}}" data-price="{{$details['price']}}">
+                                                                                    <a href="#" class="simpleCart_decrement">
+                                                                                        <i class="fa fa-minus-square"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="item-quantity item_number_{{$id}}">{{$details['quantity']}}</div>
+                                                                                <div class="item-increment item_plus_number_cart" data-id="{{$id}}" data-price="{{$details['price']}}">
+                                                                                    <a href="#" class="simpleCart_increment">
+                                                                                        <i class="fa fa-plus-square"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="item-total item_total_{{$id}}">{{number_format(floatval($details['price'] * $details['quantity']), 0, ',', '.') . "đ"}}</div>
+                                                                                <div class="item-remove item-remove-product" data-id="{{$id}}">
+                                                                                    <a class="remove-from-cart remove_product" href="#">
+                                                                                        <i class="fa fa-times"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    @endif
+
+                                                                </div>
+                                                            </div>
 
                                                             <div class="row">
                                                                 <div class="col-lg-6 col-md-12">
@@ -97,7 +117,7 @@ Cart</span></a></strong>
                                                                                 <span class="f-left">Thành tiền</span>
                                                                                 <span class="f-right"
                                                                                       style="color: #ff5a00;"><b
-                                                                                        class="simpleCart_total">3,060,000₫</b></span>
+                                                                                        class="simpleCart_total">{{number_format(floatval($total), 0, ',', '.') . "đ"}}</b></span>
                                                                             </div>
                                                                             <div class="clearfix">
                                                                                 <span
@@ -107,7 +127,7 @@ Cart</span></a></strong>
                                                                             <div class="clearfix">
                                                                                 <span class="f-left">Tổng tiền</span>
                                                                                 <span class="f-right"><b
-                                                                                        class="simpleCart_grandTotal">3,060,000₫</b></span>
+                                                                                        class="simpleCart_grandTotal">{{number_format(floatval($total), 0, ',', '.') . "đ"}}</b></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
