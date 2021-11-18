@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -13,7 +14,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('frontend.news.index');
+        $news = Article::where('A_Active', 1)->get();
+        $blogs = Article::where('A_Active', 1)->inRandomOrder()->limit(4)->get();;
+        return view('frontend.news.index', compact('news', 'blogs'));
     }
 
     /**
@@ -45,7 +48,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        $news = Article::where('id', $id)->first();
+        return view('frontend.news.news_detail', compact('news'));
     }
 
     /**

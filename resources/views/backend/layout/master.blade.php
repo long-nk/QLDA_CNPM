@@ -98,7 +98,7 @@
                     <a data-toggle="tooltip" data-placement="top" title="Lock">
                         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                     </a>
-                    <a href="{{route('logout')}}" method="POST" data-toggle="tooltip" data-placement="top" title="Logout">
+                    <a href="{{url('admin/logout')}}" data-toggle="tooltip" data-placement="top" title="Logout">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -125,14 +125,8 @@
                                 <li>
                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#modalChangePassword">Change Password</a>
                                 </li>
-                                {{--<li>--}}
-                                {{--<a href="javascript:;">--}}
-                                {{--<span class="badge bg-red pull-right">50%</span>--}}
-                                {{--<span>Settings</span>--}}
-                                {{--</a>--}}
-                                {{--</li>--}}
                                 <li>
-                                    <a href="{{url('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out pull-right"></i> Log Out
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -160,14 +154,6 @@
                                                     </div>
 
                                                 </div>
-                                                {{--<div class="form-group">--}}
-                                                {{--<div class="col-md-4 text-right">--}}
-                                                {{--<label class="control-label">Confirm Password <span class="required">*</span></label>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-md-7">--}}
-                                                {{--<input type="password" class="form-control" name="confirm_password" placeholder="********"/>--}}
-                                                {{--</div>--}}
-                                                {{--</div>--}}
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-success">Update</button>

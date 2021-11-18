@@ -30,7 +30,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Comment(){
-        return $this->hasOne('App/Models/Comment');
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
     }
 }

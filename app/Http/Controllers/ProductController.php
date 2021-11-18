@@ -16,7 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('frontend.product.index');
+        $products = Product::where('Pro_Active', 1)->orderBy('created_at', 'desc')->paginate(24);
+
+        $category = Categories::all();
+
+        return view('frontend.product.index', compact('products', 'category'));
     }
 
     /**
@@ -46,9 +50,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($product_id)
     {
-        return view('frontend.product.category');
+        $product = Product::where('id', $product_id)->first();
+        $category = Categories::where('id', $product->Pro_category_id)->first();
+        $products = Product::where('Pro_category_id', $product->Pro_category_id)->inRandomOrder()->limit(18)->get();;
+        return view('frontend.product.product_detail', compact('product', 'category', 'products'));
     }
 
     /**
@@ -85,14 +92,13 @@ class ProductController extends Controller
         //
     }
 
-    public function category($category)
+    public function category($category_id)
     {
+        $products = Product::where('Pro_category_id', $category_id)->orderBy('created_at', 'desc')->paginate(24);
 
-        dd($category);
-        $category = Categories::where('id', $category)->first();
+        $category = Categories::where('id', $category_id)->first();
 
-        $products = Product::where('Pro_category_id', $category-id)->orderBy('created_at', 'desc')->paginate(20);
-
-        return view('frontend.products.category', compact('products','category'));
+        return view('frontend.product.category', compact('products', 'category'));
     }
+
 }

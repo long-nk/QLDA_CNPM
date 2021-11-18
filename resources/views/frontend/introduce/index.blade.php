@@ -71,24 +71,24 @@
                                                                     src="https://upload.wikimedia.org/wikipedia/commons/f/fa/LogoUTC.jpg"
                                                                     title="logo"></a></div>
                                                         <br>
-                                                        <p>   Các cửa hàng mỹ phẩm cung cấp loại mĩ phẩm chất lượng cho người 
-                                                            dùng, và đang có chiến lược mở rộng sang hình thức kinh doanh online. Cửa 
-                                                            hàng phục vụ nhiều loại mĩ phẩm chăm sóc sắc đẹp khác nhau, với nhiều người 
-                                                            tiêu dùng khác nhau, bên cạnh đó cửa hàng còn có nhiều hình thức quan trọng 
-                                                            là buôn bán, giao dịch... Vì vậy, cần có một hệ thống phần mềm chuyên nghiệp 
-                                                            để giảm thiểu các rủi ro, lưu trữ lượng lớn dữ liệu và dễ dàng trong việc quản 
+                                                        <p>   Các cửa hàng mỹ phẩm cung cấp loại mĩ phẩm chất lượng cho người
+                                                            dùng, và đang có chiến lược mở rộng sang hình thức kinh doanh online. Cửa
+                                                            hàng phục vụ nhiều loại mĩ phẩm chăm sóc sắc đẹp khác nhau, với nhiều người
+                                                            tiêu dùng khác nhau, bên cạnh đó cửa hàng còn có nhiều hình thức quan trọng
+                                                            là buôn bán, giao dịch... Vì vậy, cần có một hệ thống phần mềm chuyên nghiệp
+                                                            để giảm thiểu các rủi ro, lưu trữ lượng lớn dữ liệu và dễ dàng trong việc quản
                                                             lý.
                                                         </p>
-                                                        <p>   Người quản lý cần quản lý các thông tin về các loại sản phẩm của cửa 
-                                                            hàng, và các sản phẩm cụ thể của cửa hàng đang bày bán như kem chống nắng, 
-                                                            phấn nền, các bộ dưỡng da,…. Lưu các thông tin về sản phẩm như tên sản 
-                                                            phẩm, loại sản phẩm, giá, hình ảnh minh họa... để người dùng lựa chọn theo các 
+                                                        <p>   Người quản lý cần quản lý các thông tin về các loại sản phẩm của cửa
+                                                            hàng, và các sản phẩm cụ thể của cửa hàng đang bày bán như kem chống nắng,
+                                                            phấn nền, các bộ dưỡng da,…. Lưu các thông tin về sản phẩm như tên sản
+                                                            phẩm, loại sản phẩm, giá, hình ảnh minh họa... để người dùng lựa chọn theo các
                                                             tiêu chí của bản thân
                                                         </p>
-                                                        <p>   Quản lý cũng cần lưu lại các thông tin menu và bài viết của cửa hàng để 
-                                                            quảng cáo cho các thông tin sản phẩm mà cửa hàng đang đẩy mạnh. Có các 
-                                                            trang quảng cáo cho những sản phẩm nổi bật, được khách hàng sử dụng nhiều, 
-                                                            mang lại doanh thu lớn cho cửa hàng, và tiếp cận nhiều hơn tới khách hàng 
+                                                        <p>   Quản lý cũng cần lưu lại các thông tin menu và bài viết của cửa hàng để
+                                                            quảng cáo cho các thông tin sản phẩm mà cửa hàng đang đẩy mạnh. Có các
+                                                            trang quảng cáo cho những sản phẩm nổi bật, được khách hàng sử dụng nhiều,
+                                                            mang lại doanh thu lớn cho cửa hàng, và tiếp cận nhiều hơn tới khách hàng
                                                             mới.
                                                         </p>
                                                         <div class="separator" style="clear: both; text-align: center;">
@@ -100,18 +100,18 @@
                                                                     src="https://1.bp.blogspot.com/-t0KMSlQ6roA/X1rScLkKRdI/AAAAAAAAPrA/iiB_mMMd1Wo9rxuaXclZOocJravaMB0IgCLcBGAsYHQ/w640-h384/bg_gioithieu.jpg"
                                                                     title="Giới thiệu" width="640"></a></div>
                                                         <br>
-                                                        <p>   Khi có thắc mắc hay phản hồi về sản phẩm đã sử dụng, khách hàng liên 
-                                                            hệ với cửa hàng. Khi khách hàng mua hàng của cửa hàng, các thông tin cơ bản 
-                                                            của khách hàng như họ tên, số điện thoại, địa chỉ… sẽ được lưu lại để tiện cho 
-                                                            việc liên lạc, giao hàng cũng như thực hiện tri ân; và lưu các thông tin giao dịch 
+                                                        <p>   Khi có thắc mắc hay phản hồi về sản phẩm đã sử dụng, khách hàng liên
+                                                            hệ với cửa hàng. Khi khách hàng mua hàng của cửa hàng, các thông tin cơ bản
+                                                            của khách hàng như họ tên, số điện thoại, địa chỉ… sẽ được lưu lại để tiện cho
+                                                            việc liên lạc, giao hàng cũng như thực hiện tri ân; và lưu các thông tin giao dịch
                                                             như các sản phẩm khách hàng mua, số lượng, giá tiền, giảm giá và tổng tiền….
                                                         </p>
                                                         <p>    Nhóm 14 đã tạo ra 1 website để đáp ứng được nhu cầu của khách hàng, nhằm nâng cao trải nghiệm mua hàng,
                                                             cũng như tạo điều kiện tốt nhất cho khách hàng, bên cạnh việc bán hàng offline
-                                                            thì việc kinh doanh online cũng rất cần thiết, nhất là trong thời gian giãn cách 
+                                                            thì việc kinh doanh online cũng rất cần thiết, nhất là trong thời gian giãn cách
                                                             hiện nay.
                                                         </p>
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,6 +123,6 @@
                     </div>
                 </section>
             </div>
-        </div>    
+        </div>
     </div>
 @endsection

@@ -80,8 +80,8 @@
                                                                name="password" id="customer_password"
                                                                placeholder="Mật khẩu">
                                                     </fieldset>
-                                                    
-                                                    <div class="g-recaptcha brochure__form__captcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+
+                                                    <div class="g-recaptcha brochure__form__captcha" data-sitekey="{{ env("RECAPTCHA_SITE_KEY") }}"></div>
                                                     <a
                                                     href="{{ route('customer.forgot') }}"
                                                     class="btn-link-style btn-register">Quên mật khẩu</a>

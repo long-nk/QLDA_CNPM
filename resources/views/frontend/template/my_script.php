@@ -1,6 +1,6 @@
-<script type='application/ld+json'>{"@context":"http://schema.org","@type":"WebSite","name":"2020 - Nula Cosmetic Premium","url":"https://template-nula-cosmcleticok.blogspot.com/","potentialAction":{"@type":"SearchAction","target":"https://template-nula-cosmcleticok.blogspot.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type='application/ld+json'>{"@context":"http://schema.org","@type":"WebSite","name":"2021 - Nula Cosmetic","url":"https://template-nula-cosmcleticok.blogspot.com/","potentialAction":{"@type":"SearchAction","target":"https://template-nula-cosmcleticok.blogspot.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <script type='application/ld+json'>
-    { "@context": "https://schema.org", "@type": "Organization", "name": "2020 - Nula Cosmetic Premium", "url": "https://template-nula-cosmcleticok.blogspot.com/", "logo": "https://1.bp.blogspot.com/-aEz8aPuOTk8/XsNmTECxjJI/AAAAAAAAMCQ/LSToBHH_RiUWMzozvtDeLi2qwTQL-8R-wCLcBGAsYHQ/s1600/logo.png", "foundingDate": "2020", "founders": [{ "@type": "Person", "name": "Hòa Trần" }], "address": [{ "@type": "PostalAddress", "streetAddress": "An Lạc, Bình Tân, Hồ Chí Minh", "addressLocality": "Hồ Chí Minh", "addressRegion": "Southeast", "postalCode": "80000", "addressCountry": "VN" }], "contactPoint": [{ "@type": "ContactPoint", "telephone": "+84971539681", "contactType": "customer service" }], "sameAs": [ "https://www.facebook.com/hoatran.gl/", "https://twitter.com/tranhoa1991gl/", "https://www.pinterest.com/tranhoa1991gl", "https://www.linkedin.com/in/tranhoa1991gl", "https://www.instagram.com/tranhoa1991gl" ] }
+    { "@context": "https://schema.org", "@type": "Organization", "name": "2021 - Nula Cosmetic", "url": "https://template-nula-cosmcleticok.blogspot.com/", "logo": "https://1.bp.blogspot.com/-aEz8aPuOTk8/XsNmTECxjJI/AAAAAAAAMCQ/LSToBHH_RiUWMzozvtDeLi2qwTQL-8R-wCLcBGAsYHQ/s1600/logo.png", "foundingDate": "2020", "founders": [{ "@type": "Person", "name": "Hòa Trần" }], "address": [{ "@type": "PostalAddress", "streetAddress": "An Lạc, Bình Tân, Hồ Chí Minh", "addressLocality": "Hồ Chí Minh", "addressRegion": "Southeast", "postalCode": "80000", "addressCountry": "VN" }], "contactPoint": [{ "@type": "ContactPoint", "telephone": "+84971539681", "contactType": "customer service" }], "sameAs": [ "https://www.facebook.com/hoatran.gl/", "https://twitter.com/tranhoa1991gl/", "https://www.pinterest.com/tranhoa1991gl", "https://www.linkedin.com/in/tranhoa1991gl", "https://www.instagram.com/tranhoa1991gl" ] }
 </script>
 <script>
     //<![CDATA[
@@ -12,24 +12,838 @@
 </script>
 <script>
     //<![CDATA[
-    var JSON;!function(t,e){var n="string",r=function(t,e){return typeof t===e},a=function(t){return r(t,"undefined")},i=function(t){return r(t,"function")},o=function(t){return"object"==typeof HTMLElement?t instanceof HTMLElement:"object"==typeof t&&1===t.nodeType&&"string"==typeof t.nodeName},c=function(u){function s(t){return C.extend({attr:"",label:"",view:"attr",text:"",className:"",hide:!1},t||{})}function l(){if(!C.isReady){try{e.documentElement.doScroll("left")}catch(t){return void setTimeout(l,1)}C.init()}}var h={MooTools:"$$",Prototype:"$$",jQuery:"*"},f=0,d={},p=u||"simpleCart",m={};u={},u={};var y,g,v=t.localStorage,b=t.console||{msgs:[],log:function(t){b.msgs.push(t)}},_={USD:{code:"USD",symbol:"&#36;",name:"US Dollar"},VND:{code:"USD",symbol:"₫",name:"Viet Nam Dong"},AUD:{code:"AUD",symbol:"&#36;",name:"Australian Dollar"},BRL:{code:"BRL",symbol:"R&#36;",name:"Brazilian Real"},CAD:{code:"CAD",symbol:"&#36;",name:"Canadian Dollar"},CZK:{code:"CZK",symbol:"&nbsp;&#75;&#269;",name:"Czech Koruna",after:!0},DKK:{code:"DKK",symbol:"DKK&nbsp;",name:"Danish Krone"},EUR:{code:"EUR",symbol:"&euro;",name:"Euro"},HKD:{code:"HKD",symbol:"&#36;",name:"Hong Kong Dollar"},HUF:{code:"HUF",symbol:"&#70;&#116;",name:"Hungarian Forint"},ILS:{code:"ILS",symbol:"&#8362;",name:"Israeli New Sheqel"},JPY:{code:"JPY",symbol:"&yen;",name:"Japanese Yen",accuracy:0},MXN:{code:"MXN",symbol:"&#36;",name:"Mexican Peso"},NOK:{code:"NOK",symbol:"NOK&nbsp;",name:"Norwegian Krone"},NZD:{code:"NZD",symbol:"&#36;",name:"New Zealand Dollar"},PLN:{code:"PLN",symbol:"PLN&nbsp;",name:"Polish Zloty"},GBP:{code:"GBP",symbol:"&pound;",name:"Pound Sterling"},SGD:{code:"SGD",symbol:"&#36;",name:"Singapore Dollar"},SEK:{code:"SEK",symbol:"SEK&nbsp;",name:"Swedish Krona"},CHF:{code:"CHF",symbol:"CHF&nbsp;",name:"Swiss Franc"},THB:{code:"THB",symbol:"&#3647;",name:"Thai Baht"},BTC:{code:"BTC",symbol:" BTC",name:"Bitcoin",accuracy:4,after:!0}},x={checkout:{type:"PayPal",email:"you@yours.com"},currency:"VND",language:"vietnam-vi",cartStyle:"div",cartColumns:[{view:"image",attr:"thumb",label:"Ảnh"},{attr:"name",label:"Sản phẩm"},{attr:"price",label:"Giá",view:"currency"},{view:"decrement",label:!1,text:'<i class="fa fa-minus-square"></i>'},{attr:"quantity",label:"Số lượng"},{view:"increment",label:!1,text:'<i class="fa fa-plus-square"></i>'},{attr:"total",label:"Tổng",view:"currency"},{view:"remove",text:'<i class="fa fa-times"></i>',label:"Xóa"}],excludeFromCheckout:["thumb"],shippingFlatRate:0,shippingQuantityRate:0,shippingTotalRate:0,shippingCustom:null,taxRate:0,taxShipping:!1,data:{}},C=function(t){return i(t)?C.ready(t):r(t,"object")?C.extend(x,t):void 0};return C.extend=function(t,e){var n;for(n in a(e)&&(e=t,t=C),e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t},C.extend({copy:function(t){return(t=c(t)).init(),t}}),C.extend({isReady:!1,add:function(t,e){var n=new C.Item(t||{}),r=!0,i=!0===e&&e;return!(!i&&!1===(r=C.trigger("beforeAdd",[n])))&&((r=C.has(n))?(r.increment(n.quantity()),n=r):d[n.id()]=n,C.update(),i||C.trigger("afterAdd",[n,a(r)]),n)},each:function(t,e){var n,r,a,o=0;if(i(t))r=t,a=d;else{if(!i(e))return;r=e,a=t}for(n in a)if(Object.prototype.hasOwnProperty.call(a,n)){if(!1===r.call(C,a[n],o,n))break;o+=1}},find:function(t){var e=[];return r(d[t],"object")?d[t]:r(t,"object")?(C.each(function(a){var i=!0;C.each(t,function(t,e,o){return r(t,n)?t.match(/<=.*/)?(t=parseFloat(t.replace("<=","")),a.get(o)&&parseFloat(a.get(o))<=t||(i=!1)):t.match(/</)?(t=parseFloat(t.replace("<","")),a.get(o)&&parseFloat(a.get(o))<t||(i=!1)):t.match(/>=/)?(t=parseFloat(t.replace(">=","")),a.get(o)&&parseFloat(a.get(o))>=t||(i=!1)):t.match(/>/)?(t=parseFloat(t.replace(">","")),a.get(o)&&parseFloat(a.get(o))>t||(i=!1)):a.get(o)&&a.get(o)===t||(i=!1):a.get(o)&&a.get(o)===t||(i=!1),i}),i&&e.push(a)}),e):(a(t)&&C.each(function(t){e.push(t)}),e)},items:function(){return this.find()},has:function(t){var e=!1;return C.each(function(n){n.equals(t)&&(e=n)}),e},empty:function(){var t={};C.each(function(e){!1===e.remove(!0)&&(t[e.id()]=e)}),d=t,C.update()},quantity:function(){var t=0;return C.each(function(e){t+=e.quantity()}),t},total:function(){var t=0;return C.each(function(e){t+=e.total()}),t},grandTotal:function(){return C.total()+C.tax()+C.shipping()},update:function(){C.save(),C.trigger("update")},init:function(){C.load(),C.update(),C.ready()},$:function(t){return new C.ELEMENT(t)},$create:function(t){return C.$(e.createElement(t))},setupViewTool:function(){var e,n,r=t;for(n in h)if(Object.prototype.hasOwnProperty.call(h,n)&&t[n]&&((e=(e=h[n].replace("*",n).split(".")).shift())&&(r=r[e]),"function"==typeof r)){y=r,C.extend(C.ELEMENT._,m[n]);break}},ids:function(){var t=[];return C.each(function(e){t.push(e.id())}),t},save:function(){C.trigger("beforeSave");var t={};C.each(function(e){t[e.id()]=C.extend(e.fields(),e.options())}),v.setItem(p+"_items",JSON.stringify(t)),C.trigger("afterSave")},load:function(){d={};var t=v.getItem(p+"_items");if(t){try{C.each(JSON.parse(t),function(t){C.add(t,!0)})}catch(t){C.error("Error Loading data: "+t)}C.trigger("load")}},ready:function(t){i(t)?C.isReady?t.call(C):C.bind("ready",t):a(t)&&!C.isReady&&(C.trigger("ready"),C.isReady=!0)},error:function(t){var e="";r(t,n)?e=t:r(t,"object")&&r(t.message,n)&&(e=t.message);try{b.log("simpleCart(js) Error: "+e)}catch(t){}C.trigger("error",t)}}),C.extend({tax:function(){var t=x.taxShipping?C.total()+C.shipping():C.total(),e=C.taxRate()*t;return C.each(function(t){t.get("tax")?e+=t.get("tax"):t.get("taxRate")&&(e+=t.get("taxRate")*t.total())}),parseFloat(e)},taxRate:function(){return x.taxRate||0},shipping:function(t){if(!i(t)){var e=x.shippingQuantityRate*C.quantity()+x.shippingTotalRate*C.total()+x.shippingFlatRate;return i(x.shippingCustom)&&(e+=x.shippingCustom.call(C)),C.each(function(t){e+=parseFloat(t.get("shipping")||0)}),parseFloat(e)}C({shippingCustom:t})}}),g={attr:function(t,e){return t.get(e.attr)||""},currency:function(t,e){return C.toCurrency(t.get(e.attr)||0)},link:function(t,e){return"<a href='"+t.get(e.attr)+"'>"+e.text+"</a>"},decrement:function(t,e){return"<a href='javascript:;' class='"+p+"_decrement'>"+(e.text||"-")+"</a>"},increment:function(t,e){return"<a href='javascript:;' class='"+p+"_increment'>"+(e.text||"+")+"</a>"},image:function(t,e){return"<img src='"+t.get(e.attr)+"'/>"},input:function(t,e){return"<input type='text' value='"+t.get(e.attr)+"' class='"+p+"_input'/>"},remove:function(t,e){return"<a href='javascript:;' class='"+p+"_remove'>"+(e.text||"X")+"</a>"}},C.extend({writeCart:function(t){var e,n,r="table"===(u=x.cartStyle.toLowerCase()),a=r?"tr":"div",i=r?"th":"div",o=r?"td":"div",c=C.$create(u),u=C.$create(a).addClass("headerRow");for(C.$(t).html(" ").append(c),c.append(u),r=0,n=x.cartColumns.length;r<n;r+=1)t="item-"+((e=s(x.cartColumns[r])).attr||e.view||e.label||e.text||"cell")+" "+e.className,e=e.label||"",u.append(C.$create(i).addClass(t).html(e));return C.each(function(t,e){C.createCartRow(t,e,a,o,c)}),c},createCartRow:function(t,e,a,o,c){var u,l,h;for(e=C.$create(a).addClass("itemRow row-"+e+" "+(e%2?"even":"odd")).attr("id","cartItem_"+t.id()),c.append(e),c=0,a=x.cartColumns.length;c<a;c+=1)l="item-"+((u=s(x.cartColumns[c])).attr||(r(u.view,n)?u.view:u.label||u.text||"cell"))+" "+u.className,h=t,h=(i(u.view)?u.view:r(u.view,n)&&i(g[u.view])?g[u.view]:g.attr).call(C,h,u),l=C.$create(o).addClass(l).html(h),e.append(l);return e}}),C.Item=function(t){function e(){r(o.price,n)&&(o.price=parseFloat(o.price.replace(C.currency().decimal,".").replace(/[^0-9\.]+/gi,""))),isNaN(o.price)&&(o.price=0),0>o.price&&(o.price=0),r(o.quantity,n)&&(o.quantity=parseInt(o.quantity.replace(C.currency().delimiter,""),10)),isNaN(o.quantity)&&(o.quantity=1),0>=o.quantity&&c.remove()}var o={},c=this;for(r(t,"object")&&C.extend(o,t),f+=1,o.id=o.id||"Order #"+f;!a(d[o.id]);)f+=1,o.id="Order #"+f;c.get=function(t,e){var n=!e;return a(t)?t:i(o[t])?o[t].call(c):a(o[t])?i(c[t])&&n?c[t].call(c):!a(c[t])&&n?c[t]:o[t]:o[t]},c.set=function(t,n){return a(t)||(o[t.toLowerCase()]=n,"price"!==t.toLowerCase()&&"quantity"!==t.toLowerCase()||e()),c},c.equals=function(t){for(var e in o)if(Object.prototype.hasOwnProperty.call(o,e)&&"quantity"!==e&&"id"!==e&&t.get(e)!==o[e])return!1;return!0},c.options=function(){var t={};return C.each(o,function(e,n,r){var a=!0;C.each(c.reservedFields(),function(t){return t===r&&(a=!1),a}),a&&(t[r]=c.get(r))}),t},e()},C.Item._=C.Item.prototype={increment:function(t){return t=parseInt(t||1,10),this.quantity(this.quantity()+t),1>this.quantity()?(this.remove(),null):this},decrement:function(t){return this.increment(-parseInt(t||1,10))},remove:function(t){return!1!==C.trigger("beforeRemove",[d[this.id()]])&&(delete d[this.id()],t||C.update(),null)},reservedFields:function(){return"quantity id item_number price name shipping tax taxRate".split(" ")},fields:function(){var t={},e=this;return C.each(e.reservedFields(),function(n){e.get(n)&&(t[n]=e.get(n))}),t},quantity:function(t){return a(t)?parseInt(this.get("quantity",!0)||1,10):this.set("quantity",t)},price:function(t){return a(t)?parseFloat(this.get("price",!0).toString().replace(C.currency().symbol,"").replace(C.currency().delimiter,"")||1):this.set("price",parseFloat(t.toString().replace(C.currency().symbol,"").replace(C.currency().delimiter,"")))},id:function(){return this.get("id",!1)},total:function(){return this.quantity()*this.price()}},C.extend({checkout:function(){if("custom"===x.checkout.type.toLowerCase()&&i(x.checkout.fn))x.checkout.fn.call(C,x.checkout);else if(i(C.checkout[x.checkout.type])){var t=C.checkout[x.checkout.type].call(C,x.checkout);t.data&&t.action&&t.method&&!1!==C.trigger("beforeCheckout",[t.data])&&C.generateAndSendForm(t)}else C.error("No Valid Checkout Method Specified")},extendCheckout:function(t){return C.extend(C.checkout,t)},generateAndSendForm:function(t){var e=C.$create("form");e.attr("style","display:none;"),e.attr("action",t.action),e.attr("method",t.method),C.each(t.data,function(t,n,r){e.append(C.$create("input").attr("type","hidden").attr("name",r).val(t))}),C.$("body").append(e),e.el.submit(),e.remove()}}),C.extendCheckout({PayPal:function(t){if(!t.email)return C.error("No email provided for PayPal checkout");var e={cmd:"_cart",upload:"1",currency_code:C.currency().code,business:t.email,rm:"GET"===t.method?"0":"2",tax_cart:(1*C.tax()).toFixed(2),handling_cart:(1*C.shipping()).toFixed(2),charset:"utf-8"},n=t.sandbox?"https://www.sandbox.paypal.com/cgi-bin/webscr":"https://www.paypal.com/cgi-bin/webscr",r="GET"===t.method?"GET":"POST";return t.success&&(e.return=t.success),t.cancel&&(e.cancel_return=t.cancel),t.notify&&(e.notify_url=t.notify),C.each(function(t,n){var r,a=n+1,i=t.options(),o=0;e["item_name_"+a]=t.get("name"),e["quantity_"+a]=t.quantity(),e["amount_"+a]=(1*t.price()).toFixed(2),e["item_number_"+a]=t.get("item_number")||a,C.each(i,function(t,n,i){10>n&&(r=!0,C.each(x.excludeFromCheckout,function(t){t===i&&(r=!1)}),r&&(o+=1,e["on"+n+"_"+a]=i,e["os"+n+"_"+a]=t))}),e["option_index_"+n]=Math.min(10,o)}),{action:n,method:r,data:e}},GoogleCheckout:function(t){if(!t.merchantID)return C.error("No merchant id provided for GoogleCheckout");if("USD"!==C.currency().code&&"GBP"!==C.currency().code)return C.error("Google Checkout only accepts USD and GBP");var e={ship_method_name_1:"Shipping",ship_method_price_1:C.shipping(),ship_method_currency_1:C.currency().code,_charset_:""},n="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/"+t.merchantID;return t="GET"===t.method?"GET":"POST",C.each(function(t,n){var r,a=n+1,i=[];e["item_name_"+a]=t.get("name"),e["item_quantity_"+a]=t.quantity(),e["item_price_"+a]=t.price(),e["item_currency_ "+a]=C.currency().code,e["item_tax_rate"+a]=t.get("taxRate")||C.taxRate(),C.each(t.options(),function(t,e,n){r=!0,C.each(x.excludeFromCheckout,function(t){t===n&&(r=!1)}),r&&i.push(n+": "+t)}),e["item_description_"+a]=i.join(", ")}),{action:n,method:t,data:e}},AmazonPayments:function(t){if(!t.merchant_signature)return C.error("No merchant signature provided for Amazon Payments");if(!t.merchant_id)return C.error("No merchant id provided for Amazon Payments");if(!t.aws_access_key_id)return C.error("No AWS access key id provided for Amazon Payments");var e={aws_access_key_id:t.aws_access_key_id,merchant_signature:t.merchant_signature,currency_code:C.currency().code,tax_rate:C.taxRate(),weight_unit:t.weight_unit||"lb"},n="https://payments"+(t.sandbox?"-sandbox":"")+".amazon.com/checkout/"+t.merchant_id,r="GET"===t.method?"GET":"POST";return C.each(function(n,r){var a=r+1,i=[];e["item_title_"+a]=n.get("name"),e["item_quantity_"+a]=n.quantity(),e["item_price_"+a]=n.price(),e["item_sku_ "+a]=n.get("sku")||n.id(),e["item_merchant_id_"+a]=t.merchant_id,n.get("weight")&&(e["item_weight_"+a]=n.get("weight")),x.shippingQuantityRate&&(e["shipping_method_price_per_unit_rate_"+a]=x.shippingQuantityRate),C.each(n.options(),function(t,e,n){var r=!0;C.each(x.excludeFromCheckout,function(t){t===n&&(r=!1)}),r&&"weight"!==n&&"tax"!==n&&i.push(n+": "+t)}),e["item_description_"+a]=i.join(", ")}),{action:n,method:r,data:e}},SendForm:function(t){if(!t.url)return C.error("URL required for SendForm Checkout");var e={currency:C.currency().code,shipping:C.shipping(),tax:C.tax(),taxRate:C.taxRate(),itemCount:C.find({}).length},n=t.url,r="GET"===t.method?"GET":"POST";return C.each(function(t,n){var r,a=n+1,i=[];e["item_name_"+a]=t.get("name"),e["item_quantity_"+a]=t.quantity(),e["item_price_"+a]=t.price(),C.each(t.options(),function(t,e,n){r=!0,C.each(x.excludeFromCheckout,function(t){t===n&&(r=!1)}),r&&i.push(n+": "+t)}),e["item_options_"+a]=i.join(", ")}),t.success&&(e.return=t.success),t.cancel&&(e.cancel_return=t.cancel),t.extra_data&&(e=C.extend(e,t.extra_data)),{action:n,method:r,data:e}}}),(u={bind:function(t,e){if(!i(e))return this;this._events||(this._events={});var n=t.split(/ +/);return C.each(n,function(t){!0===this._events[t]?e.apply(this):a(this._events[t])?this._events[t]=[e]:this._events[t].push(e)}),this},trigger:function(t,e){var n,r,o=!0;if(this._events||(this._events={}),!a(this._events[t])&&i(this._events[t][0]))for(n=0,r=this._events[t].length;n<r;n+=1)o=this._events[t][n].apply(this,e||[]);return!1!==o}}).on=u.bind,C.extend(u),C.extend(C.Item._,u),C(u={beforeAdd:null,afterAdd:null,load:null,beforeSave:null,afterSave:null,update:null,ready:null,checkoutSuccess:null,checkoutFail:null,beforeCheckout:null,beforeRemove:null}),C.each(u,function(t,e,n){C.bind(n,function(){i(x[n])&&x[n].apply(this,arguments)})}),C.extend({toCurrency:function(t,e){var n=parseFloat(t),r=e||{},a=(r=C.extend(C.extend({symbol:"$",decimal:".",delimiter:",",accuracy:0,after:!1},C.currency()),r),n=(a=n.toFixed(r.accuracy).split("."))[1],a[0]);return a=C.chunk(a.reverse(),3).join(r.delimiter.reverse()).reverse(),(r.after?"":a+r.symbol)+(n?r.decimal+n:"")+(r.after?r.symbol:"")},chunk:function(t,e){return void 0===e&&(e=2),t.match(RegExp(".{1,"+e+"}","g"))||[]}}),String.prototype.reverse=function(){return this.split("").reverse().join("")},C.extend({currency:function(t){if(r(t,n)&&!a(_[t]))x.currency=t;else{if(!r(t,"object"))return _[x.currency];_[t.code]=t,x.currency=t.code}}}),C.extend({bindOutlets:function(t){C.each(t,function(t,e,n){C.bind("update",function(){C.setOutlet("."+p+"_"+n,t)})})},setOutlet:function(t,e){var n=e.call(C,t);r(n,"object")&&n.el?C.$(t).html(" ").append(n):a(n)||C.$(t).html(n)},bindInputs:function(t){C.each(t,function(t){C.setInput("."+p+"_"+t.selector,t.event,t.callback)})},setInput:function(t,e,n){C.$(t).live(e,n)}}),C.ELEMENT=function(t){this.create(t),this.selector=t||null},C.extend(m,{MooTools:{text:function(t){return this.attr("text",t)},html:function(t){return this.attr("html",t)},val:function(t){return this.attr("value",t)},attr:function(t,e){return a(e)?this.el[0]&&this.el[0].get(t):(this.el.set(t,e),this)},remove:function(){return this.el.dispose(),null},addClass:function(t){return this.el.addClass(t),this},removeClass:function(t){return this.el.removeClass(t),this},append:function(t){return this.el.adopt(t.el),this},each:function(t){return i(t)&&C.each(this.el,function(e,n,r){t.call(n,n,e,r)}),this},click:function(t){return i(t)?this.each(function(e){e.addEvent("click",function(n){t.call(e,n)})}):a(t)&&this.el.fireEvent("click"),this},live:function(t,e){var n=this.selector;i(e)&&C.$("body").el.addEvent(t+":relay("+n+")",function(t,n){e.call(n,t)})},match:function(t){return this.el.match(t)},parent:function(){return C.$(this.el.getParent())},find:function(t){return C.$(this.el.getElements(t))},closest:function(t){return C.$(this.el.getParent(t))},descendants:function(){return this.find("*")},tag:function(){return this.el[0].tagName},submit:function(){return this.el[0].submit(),this},create:function(t){this.el=y(t)}},Prototype:{text:function(t){return a(t)?this.el[0].innerHTML:(this.each(function(e,n){$(n).update(t)}),this)},html:function(t){return this.text(t)},val:function(t){return this.attr("value",t)},attr:function(t,e){return a(e)?this.el[0].readAttribute(t):(this.each(function(n,r){$(r).writeAttribute(t,e)}),this)},append:function(t){return this.each(function(e,n){t.el?t.each(function(t,e){$(n).appendChild(e)}):o(t)&&$(n).appendChild(t)}),this},remove:function(){return this.each(function(t,e){$(e).remove()}),this},addClass:function(t){return this.each(function(e,n){$(n).addClassName(t)}),this},removeClass:function(t){return this.each(function(e,n){$(n).removeClassName(t)}),this},each:function(t){return i(t)&&C.each(this.el,function(e,n,r){t.call(n,n,e,r)}),this},click:function(t){return i(t)?this.each(function(e,n){$(n).observe("click",function(e){t.call(n,e)})}):a(t)&&this.each(function(t,e){$(e).fire("click")}),this},live:function(t,n){if(i(n)){var r=this.selector;e.observe(t,function(t,e){e===y(t).findElement(r)&&n.call(e,t)})}},parent:function(){return C.$(this.el.up())},find:function(t){return C.$(this.el.getElementsBySelector(t))},closest:function(t){return C.$(this.el.up(t))},descendants:function(){return C.$(this.el.descendants())},tag:function(){return this.el.tagName},submit:function(){this.el[0].submit()},create:function(t){r(t,n)?this.el=y(t):o(t)&&(this.el=[t])}},jQuery:{passthrough:function(t,e){return a(e)?this.el[t]():(this.el[t](e),this)},text:function(t){return this.passthrough("text",t)},html:function(t){return this.passthrough("html",t)},val:function(t){return this.passthrough("val",t)},append:function(t){return this.el.append(t.el||t),this},attr:function(t,e){return a(e)?this.el.attr(t):(this.el.attr(t,e),this)},remove:function(){return this.el.remove(),this},addClass:function(t){return this.el.addClass(t),this},removeClass:function(t){return this.el.removeClass(t),this},each:function(t){return this.passthrough("each",t)},click:function(t){return this.passthrough("click",t)},live:function(t,n){return y(e).delegate(this.selector,t,n),this},parent:function(){return C.$(this.el.parent())},find:function(t){return C.$(this.el.find(t))},closest:function(t){return C.$(this.el.closest(t))},tag:function(){return this.el[0].tagName},descendants:function(){return C.$(this.el.find("*"))},submit:function(){return this.el.submit()},create:function(t){this.el=y(t)}}}),C.ELEMENT._=C.ELEMENT.prototype,C.ready(C.setupViewTool),C.ready(function(){C.bindOutlets({total:function(){return C.toCurrency(C.total())},quantity:function(){return C.quantity()},items:function(t){C.writeCart(t)},tax:function(){return C.toCurrency(C.tax())},taxRate:function(){return C.taxRate().toFixed()},shipping:function(){return C.toCurrency(C.shipping())},grandTotal:function(){return C.toCurrency(C.grandTotal())}}),C.bindInputs([{selector:"checkout",event:"click",callback:function(){C.checkout()}},{selector:"empty",event:"click",callback:function(){C.empty()}},{selector:"increment",event:"click",callback:function(){C.find(C.$(this).closest(".itemRow").attr("id").split("_")[1]).increment(),C.update()}},{selector:"decrement",event:"click",callback:function(){C.find(C.$(this).closest(".itemRow").attr("id").split("_")[1]).decrement(),C.update()}},{selector:"remove",event:"click",callback:function(){C.find(C.$(this).closest(".itemRow").attr("id").split("_")[1]).remove()}},{selector:"input",event:"change",callback:function(){var t=C.$(this),e=t.parent(),n=e.attr("class").split(" ");C.each(n,function(n){n.match(/item-.+/i)&&(n=n.split("-")[1],C.find(e.closest(".itemRow").attr("id").split("_")[1]).set(n,t.val()),C.update())})}},{selector:"shelfItem .item_add",event:"click",callback:function(){var t={};C.$(this).closest("."+p+"_shelfItem").descendants().each(function(e,n){var r=C.$(n);r.attr("class")&&r.attr("class").match(/item_.+/)&&!r.attr("class").match(/item_add/)&&C.each(r.attr("class").split(" "),function(e){var n,a;if(e.match(/item_.+/)){switch(e=e.split("_")[1],n="",r.tag().toLowerCase()){case"input":case"textarea":case"select":(a=r.attr("type"))&&("checkbox"!==a.toLowerCase()&&"radio"!==a.toLowerCase()||!r.attr("checked"))&&"text"!==a.toLowerCase()&&"number"!==a.toLowerCase()||(n=r.val());break;case"img":n=r.attr("src");break;default:n=r.text()}null!==n&&""!==n&&(t[e.toLowerCase()]=t[e.toLowerCase()]?t[e.toLowerCase()]+", "+n:n)}})}),C.add(t)}}])}),e.addEventListener?t.DOMContentLoaded=function(){e.removeEventListener("DOMContentLoaded",DOMContentLoaded,!1),C.init()}:e.attachEvent&&(t.DOMContentLoaded=function(){"complete"===e.readyState&&(e.detachEvent("onreadystatechange",DOMContentLoaded),C.init())}),function(){if("complete"===e.readyState)return setTimeout(C.init,1);if(e.addEventListener)e.addEventListener("DOMContentLoaded",DOMContentLoaded,!1),t.addEventListener("load",C.init,!1);else if(e.attachEvent){e.attachEvent("onreadystatechange",DOMContentLoaded),t.attachEvent("onload",C.init);var n=!1;try{n=null===t.frameElement}catch(t){}e.documentElement.doScroll&&n&&l()}}(),C};t.simpleCart=c()}(window,document),JSON||(JSON={}),function(){function p(t){return 10>t?"0"+t:t}function f(t){return e.lastIndex=0,e.test(t)?'"'+t.replace(e,function(t){var e=C[t];return"string"==typeof e?e:"\\u"+("0000"+t.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+t+'"'}function s(t,e){var n,r,a,i,o,c=h,u=e[t];switch(u&&"object"==typeof u&&"function"==typeof u.toJSON&&(u=u.toJSON(t)),"function"==typeof q&&(u=q.call(e,t,u)),typeof u){case"string":return f(u);case"number":return isFinite(u)?String(u):"null";case"boolean":case"null":return String(u);case"object":if(!u)return"null";if(h+=y,o=[],"[object Array]"===Object.prototype.toString.apply(u)){for(i=u.length,n=0;n<i;n+=1)o[n]=s(n,u)||"null";return a=0===o.length?"[]":h?"[\n"+h+o.join(",\n"+h)+"\n"+c+"]":"["+o.join(",")+"]",h=c,a}if(q&&"object"==typeof q)for(i=q.length,n=0;n<i;n+=1)"string"==typeof q[n]&&(a=s(r=q[n],u))&&o.push(f(r)+(h?": ":":")+a);else for(r in u)Object.prototype.hasOwnProperty.call(u,r)&&(a=s(r,u))&&o.push(f(r)+(h?": ":":")+a);return a=0===o.length?"{}":h?"{\n"+h+o.join(",\n"+h)+"\n"+c+"}":"{"+o.join(",")+"}",h=c,a}}"function"!=typeof Date.prototype.toJSON&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+p(this.getUTCMonth()+1)+"-"+p(this.getUTCDate())+"T"+p(this.getUTCHours())+":"+p(this.getUTCMinutes())+":"+p(this.getUTCSeconds())+"Z":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(){return this.valueOf()});var k=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,e=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,h,y,C={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},q;"function"!=typeof JSON.stringify&&(JSON.stringify=function(t,e,n){var r;if(y=h="","number"==typeof n)for(r=0;r<n;r+=1)y+=" ";else"string"==typeof n&&(y=n);if((q=e)&&"function"!=typeof e&&("object"!=typeof e||"number"!=typeof e.length))throw Error("JSON.stringify");return s("",{"":t})}),"function"!=typeof JSON.parse&&(JSON.parse=function(e,f){function h(t,e){var n,r,a=t[e];if(a&&"object"==typeof a)for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(void 0!==(r=h(a,n))?a[n]=r:delete a[n]);return f.call(t,e,a)}var n;if(e=String(e),k.lastIndex=0,k.test(e)&&(e=e.replace(k,function(t){return"\\u"+("0000"+t.charCodeAt(0).toString(16)).slice(-4)})),/^[\],:{}\s]*$/.test(e.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g,"")))return n=eval("("+e+")"),"function"==typeof f?h({"":n},""):n;throw new SyntaxError("JSON.parse")})}(),function(){if(!this.localStorage)if(this.globalStorage)try{this.localStorage=this.globalStorage}catch(t){}else{var t=document.createElement("div");if(t.style.display="none",document.getElementsByTagName("head")[0].appendChild(t),t.addBehavior){t.addBehavior("#default#userdata");var e=this.localStorage={length:0,setItem:function(e,r){t.load("localStorage"),e=n(e),t.getAttribute(e)||this.length++,t.setAttribute(e,r),t.save("localStorage")},getItem:function(e){return t.load("localStorage"),e=n(e),t.getAttribute(e)},removeItem:function(e){t.load("localStorage"),e=n(e),t.removeAttribute(e),t.save("localStorage"),this.length=0},clear:function(){t.load("localStorage");for(var e=0;attr=t.XMLDocument.documentElement.attributes[e++];)t.removeAttribute(attr.name);t.save("localStorage"),this.length=0},key:function(e){return t.load("localStorage"),t.XMLDocument.documentElement.attributes[e]}},n=function(t){return t.replace(/[^-._0-9A-Za-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u37f-\u1fff\u200c-\u200d\u203f\u2040\u2070-\u218f]/g,"-")};t.load("localStorage"),e.length=t.XMLDocument.documentElement.attributes.length}}}();
+    var JSON;
+    !function (t, e) {
+        var n = "string", r = function (t, e) {
+            return typeof t === e
+        }, a = function (t) {
+            return r(t, "undefined")
+        }, i = function (t) {
+            return r(t, "function")
+        }, o = function (t) {
+            return "object" == typeof HTMLElement ? t instanceof HTMLElement : "object" == typeof t && 1 === t.nodeType && "string" == typeof t.nodeName
+        }, c = function (u) {
+            function s(t) {
+                return C.extend({attr: "", label: "", view: "attr", text: "", className: "", hide: !1}, t || {})
+            }
+
+            function l() {
+                if (!C.isReady) {
+                    try {
+                        e.documentElement.doScroll("left")
+                    } catch (t) {
+                        return void setTimeout(l, 1)
+                    }
+                    C.init()
+                }
+            }
+
+            var h = {MooTools: "$$", Prototype: "$$", jQuery: "*"}, f = 0, d = {}, p = u || "simpleCart", m = {};
+            u = {}, u = {};
+            var y, g, v = t.localStorage, b = t.console || {
+                msgs: [], log: function (t) {
+                    b.msgs.push(t)
+                }
+            }, _ = {
+                USD: {code: "USD", symbol: "&#36;", name: "US Dollar"},
+                VND: {code: "USD", symbol: "₫", name: "Viet Nam Dong"},
+                AUD: {code: "AUD", symbol: "&#36;", name: "Australian Dollar"},
+                BRL: {code: "BRL", symbol: "R&#36;", name: "Brazilian Real"},
+                CAD: {code: "CAD", symbol: "&#36;", name: "Canadian Dollar"},
+                CZK: {code: "CZK", symbol: "&nbsp;&#75;&#269;", name: "Czech Koruna", after: !0},
+                DKK: {code: "DKK", symbol: "DKK&nbsp;", name: "Danish Krone"},
+                EUR: {code: "EUR", symbol: "&euro;", name: "Euro"},
+                HKD: {code: "HKD", symbol: "&#36;", name: "Hong Kong Dollar"},
+                HUF: {code: "HUF", symbol: "&#70;&#116;", name: "Hungarian Forint"},
+                ILS: {code: "ILS", symbol: "&#8362;", name: "Israeli New Sheqel"},
+                JPY: {code: "JPY", symbol: "&yen;", name: "Japanese Yen", accuracy: 0},
+                MXN: {code: "MXN", symbol: "&#36;", name: "Mexican Peso"},
+                NOK: {code: "NOK", symbol: "NOK&nbsp;", name: "Norwegian Krone"},
+                NZD: {code: "NZD", symbol: "&#36;", name: "New Zealand Dollar"},
+                PLN: {code: "PLN", symbol: "PLN&nbsp;", name: "Polish Zloty"},
+                GBP: {code: "GBP", symbol: "&pound;", name: "Pound Sterling"},
+                SGD: {code: "SGD", symbol: "&#36;", name: "Singapore Dollar"},
+                SEK: {code: "SEK", symbol: "SEK&nbsp;", name: "Swedish Krona"},
+                CHF: {code: "CHF", symbol: "CHF&nbsp;", name: "Swiss Franc"},
+                THB: {code: "THB", symbol: "&#3647;", name: "Thai Baht"},
+                BTC: {code: "BTC", symbol: " BTC", name: "Bitcoin", accuracy: 4, after: !0}
+            }, x = {
+                checkout: {type: "PayPal", email: "you@yours.com"},
+                currency: "VND",
+                language: "vietnam-vi",
+                cartStyle: "div",
+                cartColumns: [{view: "image", attr: "thumb", label: "Ảnh"}, {
+                    attr: "name",
+                    label: "Sản phẩm"
+                }, {attr: "price", label: "Giá", view: "currency"}, {
+                    view: "decrement",
+                    label: !1,
+                    text: '<i class="fa fa-minus-square"></i>'
+                }, {attr: "quantity", label: "Số lượng"}, {
+                    view: "increment",
+                    label: !1,
+                    text: '<i class="fa fa-plus-square"></i>'
+                }, {attr: "total", label: "Tổng", view: "currency"}, {
+                    view: "remove",
+                    text: '<i class="fa fa-times"></i>',
+                    label: "Xóa"
+                }],
+                excludeFromCheckout: ["thumb"],
+                shippingFlatRate: 0,
+                shippingQuantityRate: 0,
+                shippingTotalRate: 0,
+                shippingCustom: null,
+                taxRate: 0,
+                taxShipping: !1,
+                data: {}
+            }, C = function (t) {
+                return i(t) ? C.ready(t) : r(t, "object") ? C.extend(x, t) : void 0
+            };
+            return C.extend = function (t, e) {
+                var n;
+                for (n in a(e) && (e = t, t = C), e) Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
+                return t
+            }, C.extend({
+                copy: function (t) {
+                    return (t = c(t)).init(), t
+                }
+            }), C.extend({
+                isReady: !1, add: function (t, e) {
+                    var n = new C.Item(t || {}), r = !0, i = !0 === e && e;
+                    return !(!i && !1 === (r = C.trigger("beforeAdd", [n]))) && ((r = C.has(n)) ? (r.increment(n.quantity()), n = r) : d[n.id()] = n, C.update(), i || C.trigger("afterAdd", [n, a(r)]), n)
+                }, each: function (t, e) {
+                    var n, r, a, o = 0;
+                    if (i(t)) r = t, a = d; else {
+                        if (!i(e)) return;
+                        r = e, a = t
+                    }
+                    for (n in a) if (Object.prototype.hasOwnProperty.call(a, n)) {
+                        if (!1 === r.call(C, a[n], o, n)) break;
+                        o += 1
+                    }
+                }, find: function (t) {
+                    var e = [];
+                    return r(d[t], "object") ? d[t] : r(t, "object") ? (C.each(function (a) {
+                        var i = !0;
+                        C.each(t, function (t, e, o) {
+                            return r(t, n) ? t.match(/<=.*/) ? (t = parseFloat(t.replace("<=", "")), a.get(o) && parseFloat(a.get(o)) <= t || (i = !1)) : t.match(/</) ? (t = parseFloat(t.replace("<", "")), a.get(o) && parseFloat(a.get(o)) < t || (i = !1)) : t.match(/>=/) ? (t = parseFloat(t.replace(">=", "")), a.get(o) && parseFloat(a.get(o)) >= t || (i = !1)) : t.match(/>/) ? (t = parseFloat(t.replace(">", "")), a.get(o) && parseFloat(a.get(o)) > t || (i = !1)) : a.get(o) && a.get(o) === t || (i = !1) : a.get(o) && a.get(o) === t || (i = !1), i
+                        }), i && e.push(a)
+                    }), e) : (a(t) && C.each(function (t) {
+                        e.push(t)
+                    }), e)
+                }, items: function () {
+                    return this.find()
+                }, has: function (t) {
+                    var e = !1;
+                    return C.each(function (n) {
+                        n.equals(t) && (e = n)
+                    }), e
+                }, empty: function () {
+                    var t = {};
+                    C.each(function (e) {
+                        !1 === e.remove(!0) && (t[e.id()] = e)
+                    }), d = t, C.update()
+                }, quantity: function () {
+                    var t = 0;
+                    return C.each(function (e) {
+                        t += e.quantity()
+                    }), t
+                }, total: function () {
+                    var t = 0;
+                    return C.each(function (e) {
+                        t += e.total()
+                    }), t
+                }, grandTotal: function () {
+                    return C.total() + C.tax() + C.shipping()
+                }, update: function () {
+                    C.save(), C.trigger("update")
+                }, init: function () {
+                    C.load(), C.update(), C.ready()
+                }, $: function (t) {
+                    return new C.ELEMENT(t)
+                }, $create: function (t) {
+                    return C.$(e.createElement(t))
+                }, setupViewTool: function () {
+                    var e, n, r = t;
+                    for (n in h) if (Object.prototype.hasOwnProperty.call(h, n) && t[n] && ((e = (e = h[n].replace("*", n).split(".")).shift()) && (r = r[e]), "function" == typeof r)) {
+                        y = r, C.extend(C.ELEMENT._, m[n]);
+                        break
+                    }
+                }, ids: function () {
+                    var t = [];
+                    return C.each(function (e) {
+                        t.push(e.id())
+                    }), t
+                }, save: function () {
+                    C.trigger("beforeSave");
+                    var t = {};
+                    C.each(function (e) {
+                        t[e.id()] = C.extend(e.fields(), e.options())
+                    }), v.setItem(p + "_items", JSON.stringify(t)), C.trigger("afterSave")
+                }, load: function () {
+                    d = {};
+                    var t = v.getItem(p + "_items");
+                    if (t) {
+                        try {
+                            C.each(JSON.parse(t), function (t) {
+                                C.add(t, !0)
+                            })
+                        } catch (t) {
+                            C.error("Error Loading data: " + t)
+                        }
+                        C.trigger("load")
+                    }
+                }, ready: function (t) {
+                    i(t) ? C.isReady ? t.call(C) : C.bind("ready", t) : a(t) && !C.isReady && (C.trigger("ready"), C.isReady = !0)
+                }, error: function (t) {
+                    var e = "";
+                    r(t, n) ? e = t : r(t, "object") && r(t.message, n) && (e = t.message);
+                    try {
+                        b.log("simpleCart(js) Error: " + e)
+                    } catch (t) {
+                    }
+                    C.trigger("error", t)
+                }
+            }), C.extend({
+                tax: function () {
+                    var t = x.taxShipping ? C.total() + C.shipping() : C.total(), e = C.taxRate() * t;
+                    return C.each(function (t) {
+                        t.get("tax") ? e += t.get("tax") : t.get("taxRate") && (e += t.get("taxRate") * t.total())
+                    }), parseFloat(e)
+                }, taxRate: function () {
+                    return x.taxRate || 0
+                }, shipping: function (t) {
+                    if (!i(t)) {
+                        var e = x.shippingQuantityRate * C.quantity() + x.shippingTotalRate * C.total() + x.shippingFlatRate;
+                        return i(x.shippingCustom) && (e += x.shippingCustom.call(C)), C.each(function (t) {
+                            e += parseFloat(t.get("shipping") || 0)
+                        }), parseFloat(e)
+                    }
+                    C({shippingCustom: t})
+                }
+            }), g = {
+                attr: function (t, e) {
+                    return t.get(e.attr) || ""
+                }, currency: function (t, e) {
+                    return C.toCurrency(t.get(e.attr) || 0)
+                }, link: function (t, e) {
+                    return "<a href='" + t.get(e.attr) + "'>" + e.text + "</a>"
+                }, decrement: function (t, e) {
+                    return "<a href='javascript:;' class='" + p + "_decrement'>" + (e.text || "-") + "</a>"
+                }, increment: function (t, e) {
+                    return "<a href='javascript:;' class='" + p + "_increment'>" + (e.text || "+") + "</a>"
+                }, image: function (t, e) {
+                    return "<img src='" + t.get(e.attr) + "'/>"
+                }, input: function (t, e) {
+                    return "<input type='text' value='" + t.get(e.attr) + "' class='" + p + "_input'/>"
+                }, remove: function (t, e) {
+                    return "<a href='javascript:;' class='" + p + "_remove'>" + (e.text || "X") + "</a>"
+                }
+            }, C.extend({
+                writeCart: function (t) {
+                    var e, n, r = "table" === (u = x.cartStyle.toLowerCase()), a = r ? "tr" : "div",
+                        i = r ? "th" : "div", o = r ? "td" : "div", c = C.$create(u),
+                        u = C.$create(a).addClass("headerRow");
+                    for (C.$(t).html(" ").append(c), c.append(u), r = 0, n = x.cartColumns.length; r < n; r += 1) t = "item-" + ((e = s(x.cartColumns[r])).attr || e.view || e.label || e.text || "cell") + " " + e.className, e = e.label || "", u.append(C.$create(i).addClass(t).html(e));
+                    return C.each(function (t, e) {
+                        C.createCartRow(t, e, a, o, c)
+                    }), c
+                }, createCartRow: function (t, e, a, o, c) {
+                    var u, l, h;
+                    for (e = C.$create(a).addClass("itemRow row-" + e + " " + (e % 2 ? "even" : "odd")).attr("id", "cartItem_" + t.id()), c.append(e), c = 0, a = x.cartColumns.length; c < a; c += 1) l = "item-" + ((u = s(x.cartColumns[c])).attr || (r(u.view, n) ? u.view : u.label || u.text || "cell")) + " " + u.className, h = t, h = (i(u.view) ? u.view : r(u.view, n) && i(g[u.view]) ? g[u.view] : g.attr).call(C, h, u), l = C.$create(o).addClass(l).html(h), e.append(l);
+                    return e
+                }
+            }), C.Item = function (t) {
+                function e() {
+                    r(o.price, n) && (o.price = parseFloat(o.price.replace(C.currency().decimal, ".").replace(/[^0-9\.]+/gi, ""))), isNaN(o.price) && (o.price = 0), 0 > o.price && (o.price = 0), r(o.quantity, n) && (o.quantity = parseInt(o.quantity.replace(C.currency().delimiter, ""), 10)), isNaN(o.quantity) && (o.quantity = 1), 0 >= o.quantity && c.remove()
+                }
+
+                var o = {}, c = this;
+                for (r(t, "object") && C.extend(o, t), f += 1, o.id = o.id || "Order #" + f; !a(d[o.id]);) f += 1, o.id = "Order #" + f;
+                c.get = function (t, e) {
+                    var n = !e;
+                    return a(t) ? t : i(o[t]) ? o[t].call(c) : a(o[t]) ? i(c[t]) && n ? c[t].call(c) : !a(c[t]) && n ? c[t] : o[t] : o[t]
+                }, c.set = function (t, n) {
+                    return a(t) || (o[t.toLowerCase()] = n, "price" !== t.toLowerCase() && "quantity" !== t.toLowerCase() || e()), c
+                }, c.equals = function (t) {
+                    for (var e in o) if (Object.prototype.hasOwnProperty.call(o, e) && "quantity" !== e && "id" !== e && t.get(e) !== o[e]) return !1;
+                    return !0
+                }, c.options = function () {
+                    var t = {};
+                    return C.each(o, function (e, n, r) {
+                        var a = !0;
+                        C.each(c.reservedFields(), function (t) {
+                            return t === r && (a = !1), a
+                        }), a && (t[r] = c.get(r))
+                    }), t
+                }, e()
+            }, C.Item._ = C.Item.prototype = {
+                increment: function (t) {
+                    return t = parseInt(t || 1, 10), this.quantity(this.quantity() + t), 1 > this.quantity() ? (this.remove(), null) : this
+                }, decrement: function (t) {
+                    return this.increment(-parseInt(t || 1, 10))
+                }, remove: function (t) {
+                    return !1 !== C.trigger("beforeRemove", [d[this.id()]]) && (delete d[this.id()], t || C.update(), null)
+                }, reservedFields: function () {
+                    return "quantity id item_number price name shipping tax taxRate".split(" ")
+                }, fields: function () {
+                    var t = {}, e = this;
+                    return C.each(e.reservedFields(), function (n) {
+                        e.get(n) && (t[n] = e.get(n))
+                    }), t
+                }, quantity: function (t) {
+                    return a(t) ? parseInt(this.get("quantity", !0) || 1, 10) : this.set("quantity", t)
+                }, price: function (t) {
+                    return a(t) ? parseFloat(this.get("price", !0).toString().replace(C.currency().symbol, "").replace(C.currency().delimiter, "") || 1) : this.set("price", parseFloat(t.toString().replace(C.currency().symbol, "").replace(C.currency().delimiter, "")))
+                }, id: function () {
+                    return this.get("id", !1)
+                }, total: function () {
+                    return this.quantity() * this.price()
+                }
+            }, C.extend({
+                checkout: function () {
+                    if ("custom" === x.checkout.type.toLowerCase() && i(x.checkout.fn)) x.checkout.fn.call(C, x.checkout); else if (i(C.checkout[x.checkout.type])) {
+                        var t = C.checkout[x.checkout.type].call(C, x.checkout);
+                        t.data && t.action && t.method && !1 !== C.trigger("beforeCheckout", [t.data]) && C.generateAndSendForm(t)
+                    } else C.error("No Valid Checkout Method Specified")
+                }, extendCheckout: function (t) {
+                    return C.extend(C.checkout, t)
+                }, generateAndSendForm: function (t) {
+                    var e = C.$create("form");
+                    e.attr("style", "display:none;"), e.attr("action", t.action), e.attr("method", t.method), C.each(t.data, function (t, n, r) {
+                        e.append(C.$create("input").attr("type", "hidden").attr("name", r).val(t))
+                    }), C.$("body").append(e), e.el.submit(), e.remove()
+                }
+            }), C.extendCheckout({
+                PayPal: function (t) {
+                    if (!t.email) return C.error("No email provided for PayPal checkout");
+                    var e = {
+                            cmd: "_cart",
+                            upload: "1",
+                            currency_code: C.currency().code,
+                            business: t.email,
+                            rm: "GET" === t.method ? "0" : "2",
+                            tax_cart: (1 * C.tax()).toFixed(2),
+                            handling_cart: (1 * C.shipping()).toFixed(2),
+                            charset: "utf-8"
+                        },
+                        n = t.sandbox ? "https://www.sandbox.paypal.com/cgi-bin/webscr" : "https://www.paypal.com/cgi-bin/webscr",
+                        r = "GET" === t.method ? "GET" : "POST";
+                    return t.success && (e.return = t.success), t.cancel && (e.cancel_return = t.cancel), t.notify && (e.notify_url = t.notify), C.each(function (t, n) {
+                        var r, a = n + 1, i = t.options(), o = 0;
+                        e["item_name_" + a] = t.get("name"), e["quantity_" + a] = t.quantity(), e["amount_" + a] = (1 * t.price()).toFixed(2), e["item_number_" + a] = t.get("item_number") || a, C.each(i, function (t, n, i) {
+                            10 > n && (r = !0, C.each(x.excludeFromCheckout, function (t) {
+                                t === i && (r = !1)
+                            }), r && (o += 1, e["on" + n + "_" + a] = i, e["os" + n + "_" + a] = t))
+                        }), e["option_index_" + n] = Math.min(10, o)
+                    }), {action: n, method: r, data: e}
+                }, GoogleCheckout: function (t) {
+                    if (!t.merchantID) return C.error("No merchant id provided for GoogleCheckout");
+                    if ("USD" !== C.currency().code && "GBP" !== C.currency().code) return C.error("Google Checkout only accepts USD and GBP");
+                    var e = {
+                        ship_method_name_1: "Shipping",
+                        ship_method_price_1: C.shipping(),
+                        ship_method_currency_1: C.currency().code,
+                        _charset_: ""
+                    }, n = "https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/" + t.merchantID;
+                    return t = "GET" === t.method ? "GET" : "POST", C.each(function (t, n) {
+                        var r, a = n + 1, i = [];
+                        e["item_name_" + a] = t.get("name"), e["item_quantity_" + a] = t.quantity(), e["item_price_" + a] = t.price(), e["item_currency_ " + a] = C.currency().code, e["item_tax_rate" + a] = t.get("taxRate") || C.taxRate(), C.each(t.options(), function (t, e, n) {
+                            r = !0, C.each(x.excludeFromCheckout, function (t) {
+                                t === n && (r = !1)
+                            }), r && i.push(n + ": " + t)
+                        }), e["item_description_" + a] = i.join(", ")
+                    }), {action: n, method: t, data: e}
+                }, AmazonPayments: function (t) {
+                    if (!t.merchant_signature) return C.error("No merchant signature provided for Amazon Payments");
+                    if (!t.merchant_id) return C.error("No merchant id provided for Amazon Payments");
+                    if (!t.aws_access_key_id) return C.error("No AWS access key id provided for Amazon Payments");
+                    var e = {
+                            aws_access_key_id: t.aws_access_key_id,
+                            merchant_signature: t.merchant_signature,
+                            currency_code: C.currency().code,
+                            tax_rate: C.taxRate(),
+                            weight_unit: t.weight_unit || "lb"
+                        }, n = "https://payments" + (t.sandbox ? "-sandbox" : "") + ".amazon.com/checkout/" + t.merchant_id,
+                        r = "GET" === t.method ? "GET" : "POST";
+                    return C.each(function (n, r) {
+                        var a = r + 1, i = [];
+                        e["item_title_" + a] = n.get("name"), e["item_quantity_" + a] = n.quantity(), e["item_price_" + a] = n.price(), e["item_sku_ " + a] = n.get("sku") || n.id(), e["item_merchant_id_" + a] = t.merchant_id, n.get("weight") && (e["item_weight_" + a] = n.get("weight")), x.shippingQuantityRate && (e["shipping_method_price_per_unit_rate_" + a] = x.shippingQuantityRate), C.each(n.options(), function (t, e, n) {
+                            var r = !0;
+                            C.each(x.excludeFromCheckout, function (t) {
+                                t === n && (r = !1)
+                            }), r && "weight" !== n && "tax" !== n && i.push(n + ": " + t)
+                        }), e["item_description_" + a] = i.join(", ")
+                    }), {action: n, method: r, data: e}
+                }, SendForm: function (t) {
+                    if (!t.url) return C.error("URL required for SendForm Checkout");
+                    var e = {
+                        currency: C.currency().code,
+                        shipping: C.shipping(),
+                        tax: C.tax(),
+                        taxRate: C.taxRate(),
+                        itemCount: C.find({}).length
+                    }, n = t.url, r = "GET" === t.method ? "GET" : "POST";
+                    return C.each(function (t, n) {
+                        var r, a = n + 1, i = [];
+                        e["item_name_" + a] = t.get("name"), e["item_quantity_" + a] = t.quantity(), e["item_price_" + a] = t.price(), C.each(t.options(), function (t, e, n) {
+                            r = !0, C.each(x.excludeFromCheckout, function (t) {
+                                t === n && (r = !1)
+                            }), r && i.push(n + ": " + t)
+                        }), e["item_options_" + a] = i.join(", ")
+                    }), t.success && (e.return = t.success), t.cancel && (e.cancel_return = t.cancel), t.extra_data && (e = C.extend(e, t.extra_data)), {
+                        action: n,
+                        method: r,
+                        data: e
+                    }
+                }
+            }), (u = {
+                bind: function (t, e) {
+                    if (!i(e)) return this;
+                    this._events || (this._events = {});
+                    var n = t.split(/ +/);
+                    return C.each(n, function (t) {
+                        !0 === this._events[t] ? e.apply(this) : a(this._events[t]) ? this._events[t] = [e] : this._events[t].push(e)
+                    }), this
+                }, trigger: function (t, e) {
+                    var n, r, o = !0;
+                    if (this._events || (this._events = {}), !a(this._events[t]) && i(this._events[t][0])) for (n = 0, r = this._events[t].length; n < r; n += 1) o = this._events[t][n].apply(this, e || []);
+                    return !1 !== o
+                }
+            }).on = u.bind, C.extend(u), C.extend(C.Item._, u), C(u = {
+                beforeAdd: null,
+                afterAdd: null,
+                load: null,
+                beforeSave: null,
+                afterSave: null,
+                update: null,
+                ready: null,
+                checkoutSuccess: null,
+                checkoutFail: null,
+                beforeCheckout: null,
+                beforeRemove: null
+            }), C.each(u, function (t, e, n) {
+                C.bind(n, function () {
+                    i(x[n]) && x[n].apply(this, arguments)
+                })
+            }), C.extend({
+                toCurrency: function (t, e) {
+                    var n = parseFloat(t), r = e || {}, a = (r = C.extend(C.extend({
+                        symbol: "$",
+                        decimal: ".",
+                        delimiter: ",",
+                        accuracy: 0,
+                        after: !1
+                    }, C.currency()), r), n = (a = n.toFixed(r.accuracy).split("."))[1], a[0]);
+                    return a = C.chunk(a.reverse(), 3).join(r.delimiter.reverse()).reverse(), (r.after ? "" : a + r.symbol) + (n ? r.decimal + n : "") + (r.after ? r.symbol : "")
+                }, chunk: function (t, e) {
+                    return void 0 === e && (e = 2), t.match(RegExp(".{1," + e + "}", "g")) || []
+                }
+            }), String.prototype.reverse = function () {
+                return this.split("").reverse().join("")
+            }, C.extend({
+                currency: function (t) {
+                    if (r(t, n) && !a(_[t])) x.currency = t; else {
+                        if (!r(t, "object")) return _[x.currency];
+                        _[t.code] = t, x.currency = t.code
+                    }
+                }
+            }), C.extend({
+                bindOutlets: function (t) {
+                    C.each(t, function (t, e, n) {
+                        C.bind("update", function () {
+                            C.setOutlet("." + p + "_" + n, t)
+                        })
+                    })
+                }, setOutlet: function (t, e) {
+                    var n = e.call(C, t);
+                    r(n, "object") && n.el ? C.$(t).html(" ").append(n) : a(n) || C.$(t).html(n)
+                }, bindInputs: function (t) {
+                    C.each(t, function (t) {
+                        C.setInput("." + p + "_" + t.selector, t.event, t.callback)
+                    })
+                }, setInput: function (t, e, n) {
+                    C.$(t).live(e, n)
+                }
+            }), C.ELEMENT = function (t) {
+                this.create(t), this.selector = t || null
+            }, C.extend(m, {
+                MooTools: {
+                    text: function (t) {
+                        return this.attr("text", t)
+                    }, html: function (t) {
+                        return this.attr("html", t)
+                    }, val: function (t) {
+                        return this.attr("value", t)
+                    }, attr: function (t, e) {
+                        return a(e) ? this.el[0] && this.el[0].get(t) : (this.el.set(t, e), this)
+                    }, remove: function () {
+                        return this.el.dispose(), null
+                    }, addClass: function (t) {
+                        return this.el.addClass(t), this
+                    }, removeClass: function (t) {
+                        return this.el.removeClass(t), this
+                    }, append: function (t) {
+                        return this.el.adopt(t.el), this
+                    }, each: function (t) {
+                        return i(t) && C.each(this.el, function (e, n, r) {
+                            t.call(n, n, e, r)
+                        }), this
+                    }, click: function (t) {
+                        return i(t) ? this.each(function (e) {
+                            e.addEvent("click", function (n) {
+                                t.call(e, n)
+                            })
+                        }) : a(t) && this.el.fireEvent("click"), this
+                    }, live: function (t, e) {
+                        var n = this.selector;
+                        i(e) && C.$("body").el.addEvent(t + ":relay(" + n + ")", function (t, n) {
+                            e.call(n, t)
+                        })
+                    }, match: function (t) {
+                        return this.el.match(t)
+                    }, parent: function () {
+                        return C.$(this.el.getParent())
+                    }, find: function (t) {
+                        return C.$(this.el.getElements(t))
+                    }, closest: function (t) {
+                        return C.$(this.el.getParent(t))
+                    }, descendants: function () {
+                        return this.find("*")
+                    }, tag: function () {
+                        return this.el[0].tagName
+                    }, submit: function () {
+                        return this.el[0].submit(), this
+                    }, create: function (t) {
+                        this.el = y(t)
+                    }
+                }, Prototype: {
+                    text: function (t) {
+                        return a(t) ? this.el[0].innerHTML : (this.each(function (e, n) {
+                            $(n).update(t)
+                        }), this)
+                    }, html: function (t) {
+                        return this.text(t)
+                    }, val: function (t) {
+                        return this.attr("value", t)
+                    }, attr: function (t, e) {
+                        return a(e) ? this.el[0].readAttribute(t) : (this.each(function (n, r) {
+                            $(r).writeAttribute(t, e)
+                        }), this)
+                    }, append: function (t) {
+                        return this.each(function (e, n) {
+                            t.el ? t.each(function (t, e) {
+                                $(n).appendChild(e)
+                            }) : o(t) && $(n).appendChild(t)
+                        }), this
+                    }, remove: function () {
+                        return this.each(function (t, e) {
+                            $(e).remove()
+                        }), this
+                    }, addClass: function (t) {
+                        return this.each(function (e, n) {
+                            $(n).addClassName(t)
+                        }), this
+                    }, removeClass: function (t) {
+                        return this.each(function (e, n) {
+                            $(n).removeClassName(t)
+                        }), this
+                    }, each: function (t) {
+                        return i(t) && C.each(this.el, function (e, n, r) {
+                            t.call(n, n, e, r)
+                        }), this
+                    }, click: function (t) {
+                        return i(t) ? this.each(function (e, n) {
+                            $(n).observe("click", function (e) {
+                                t.call(n, e)
+                            })
+                        }) : a(t) && this.each(function (t, e) {
+                            $(e).fire("click")
+                        }), this
+                    }, live: function (t, n) {
+                        if (i(n)) {
+                            var r = this.selector;
+                            e.observe(t, function (t, e) {
+                                e === y(t).findElement(r) && n.call(e, t)
+                            })
+                        }
+                    }, parent: function () {
+                        return C.$(this.el.up())
+                    }, find: function (t) {
+                        return C.$(this.el.getElementsBySelector(t))
+                    }, closest: function (t) {
+                        return C.$(this.el.up(t))
+                    }, descendants: function () {
+                        return C.$(this.el.descendants())
+                    }, tag: function () {
+                        return this.el.tagName
+                    }, submit: function () {
+                        this.el[0].submit()
+                    }, create: function (t) {
+                        r(t, n) ? this.el = y(t) : o(t) && (this.el = [t])
+                    }
+                }, jQuery: {
+                    passthrough: function (t, e) {
+                        return a(e) ? this.el[t]() : (this.el[t](e), this)
+                    }, text: function (t) {
+                        return this.passthrough("text", t)
+                    }, html: function (t) {
+                        return this.passthrough("html", t)
+                    }, val: function (t) {
+                        return this.passthrough("val", t)
+                    }, append: function (t) {
+                        return this.el.append(t.el || t), this
+                    }, attr: function (t, e) {
+                        return a(e) ? this.el.attr(t) : (this.el.attr(t, e), this)
+                    }, remove: function () {
+                        return this.el.remove(), this
+                    }, addClass: function (t) {
+                        return this.el.addClass(t), this
+                    }, removeClass: function (t) {
+                        return this.el.removeClass(t), this
+                    }, each: function (t) {
+                        return this.passthrough("each", t)
+                    }, click: function (t) {
+                        return this.passthrough("click", t)
+                    }, live: function (t, n) {
+                        return y(e).delegate(this.selector, t, n), this
+                    }, parent: function () {
+                        return C.$(this.el.parent())
+                    }, find: function (t) {
+                        return C.$(this.el.find(t))
+                    }, closest: function (t) {
+                        return C.$(this.el.closest(t))
+                    }, tag: function () {
+                        return this.el[0].tagName
+                    }, descendants: function () {
+                        return C.$(this.el.find("*"))
+                    }, submit: function () {
+                        return this.el.submit()
+                    }, create: function (t) {
+                        this.el = y(t)
+                    }
+                }
+            }), C.ELEMENT._ = C.ELEMENT.prototype, C.ready(C.setupViewTool), C.ready(function () {
+                C.bindOutlets({
+                    total: function () {
+                        return C.toCurrency(C.total())
+                    }, quantity: function () {
+                        return C.quantity()
+                    }, items: function (t) {
+                        C.writeCart(t)
+                    }, tax: function () {
+                        return C.toCurrency(C.tax())
+                    }, taxRate: function () {
+                        return C.taxRate().toFixed()
+                    }, shipping: function () {
+                        return C.toCurrency(C.shipping())
+                    }, grandTotal: function () {
+                        return C.toCurrency(C.grandTotal())
+                    }
+                }), C.bindInputs([{
+                    selector: "checkout", event: "click", callback: function () {
+                        C.checkout()
+                    }
+                }, {
+                    selector: "empty", event: "click", callback: function () {
+                        C.empty()
+                    }
+                }, {
+                    selector: "increment", event: "click", callback: function () {
+                        C.find(C.$(this).closest(".itemRow").attr("id").split("_")[1]).increment(), C.update()
+                    }
+                }, {
+                    selector: "decrement", event: "click", callback: function () {
+                        C.find(C.$(this).closest(".itemRow").attr("id").split("_")[1]).decrement(), C.update()
+                    }
+                }, {
+                    selector: "remove", event: "click", callback: function () {
+                        C.find(C.$(this).closest(".itemRow").attr("id").split("_")[1]).remove()
+                    }
+                }, {
+                    selector: "input", event: "change", callback: function () {
+                        var t = C.$(this), e = t.parent(), n = e.attr("class").split(" ");
+                        C.each(n, function (n) {
+                            n.match(/item-.+/i) && (n = n.split("-")[1], C.find(e.closest(".itemRow").attr("id").split("_")[1]).set(n, t.val()), C.update())
+                        })
+                    }
+                }, {
+                    selector: "shelfItem .item_add", event: "click", callback: function () {
+                        var t = {};
+                        C.$(this).closest("." + p + "_shelfItem").descendants().each(function (e, n) {
+                            var r = C.$(n);
+                            r.attr("class") && r.attr("class").match(/item_.+/) && !r.attr("class").match(/item_add/) && C.each(r.attr("class").split(" "), function (e) {
+                                var n, a;
+                                if (e.match(/item_.+/)) {
+                                    switch (e = e.split("_")[1], n = "", r.tag().toLowerCase()) {
+                                        case"input":
+                                        case"textarea":
+                                        case"select":
+                                            (a = r.attr("type")) && ("checkbox" !== a.toLowerCase() && "radio" !== a.toLowerCase() || !r.attr("checked")) && "text" !== a.toLowerCase() && "number" !== a.toLowerCase() || (n = r.val());
+                                            break;
+                                        case"img":
+                                            n = r.attr("src");
+                                            break;
+                                        default:
+                                            n = r.text()
+                                    }
+                                    null !== n && "" !== n && (t[e.toLowerCase()] = t[e.toLowerCase()] ? t[e.toLowerCase()] + ", " + n : n)
+                                }
+                            })
+                        }), C.add(t)
+                    }
+                }])
+            }), e.addEventListener ? t.DOMContentLoaded = function () {
+                e.removeEventListener("DOMContentLoaded", DOMContentLoaded, !1), C.init()
+            } : e.attachEvent && (t.DOMContentLoaded = function () {
+                "complete" === e.readyState && (e.detachEvent("onreadystatechange", DOMContentLoaded), C.init())
+            }), function () {
+                if ("complete" === e.readyState) return setTimeout(C.init, 1);
+                if (e.addEventListener) e.addEventListener("DOMContentLoaded", DOMContentLoaded, !1), t.addEventListener("load", C.init, !1); else if (e.attachEvent) {
+                    e.attachEvent("onreadystatechange", DOMContentLoaded), t.attachEvent("onload", C.init);
+                    var n = !1;
+                    try {
+                        n = null === t.frameElement
+                    } catch (t) {
+                    }
+                    e.documentElement.doScroll && n && l()
+                }
+            }(), C
+        };
+        t.simpleCart = c()
+    }(window, document), JSON || (JSON = {}), function () {
+        function p(t) {
+            return 10 > t ? "0" + t : t
+        }
+
+        function f(t) {
+            return e.lastIndex = 0, e.test(t) ? '"' + t.replace(e, function (t) {
+                var e = C[t];
+                return "string" == typeof e ? e : "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4)
+            }) + '"' : '"' + t + '"'
+        }
+
+        function s(t, e) {
+            var n, r, a, i, o, c = h, u = e[t];
+            switch (u && "object" == typeof u && "function" == typeof u.toJSON && (u = u.toJSON(t)), "function" == typeof q && (u = q.call(e, t, u)), typeof u) {
+                case"string":
+                    return f(u);
+                case"number":
+                    return isFinite(u) ? String(u) : "null";
+                case"boolean":
+                case"null":
+                    return String(u);
+                case"object":
+                    if (!u) return "null";
+                    if (h += y, o = [], "[object Array]" === Object.prototype.toString.apply(u)) {
+                        for (i = u.length, n = 0; n < i; n += 1) o[n] = s(n, u) || "null";
+                        return a = 0 === o.length ? "[]" : h ? "[\n" + h + o.join(",\n" + h) + "\n" + c + "]" : "[" + o.join(",") + "]", h = c, a
+                    }
+                    if (q && "object" == typeof q) for (i = q.length, n = 0; n < i; n += 1) "string" == typeof q[n] && (a = s(r = q[n], u)) && o.push(f(r) + (h ? ": " : ":") + a); else for (r in u) Object.prototype.hasOwnProperty.call(u, r) && (a = s(r, u)) && o.push(f(r) + (h ? ": " : ":") + a);
+                    return a = 0 === o.length ? "{}" : h ? "{\n" + h + o.join(",\n" + h) + "\n" + c + "}" : "{" + o.join(",") + "}", h = c, a
+            }
+        }
+
+        "function" != typeof Date.prototype.toJSON && (Date.prototype.toJSON = function () {
+            return isFinite(this.valueOf()) ? this.getUTCFullYear() + "-" + p(this.getUTCMonth() + 1) + "-" + p(this.getUTCDate()) + "T" + p(this.getUTCHours()) + ":" + p(this.getUTCMinutes()) + ":" + p(this.getUTCSeconds()) + "Z" : null
+        }, String.prototype.toJSON = Number.prototype.toJSON = Boolean.prototype.toJSON = function () {
+            return this.valueOf()
+        });
+        var k = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+            e = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+            h, y, C = {"\b": "\\b", "\t": "\\t", "\n": "\\n", "\f": "\\f", "\r": "\\r", '"': '\\"', "\\": "\\\\"}, q;
+        "function" != typeof JSON.stringify && (JSON.stringify = function (t, e, n) {
+            var r;
+            if (y = h = "", "number" == typeof n) for (r = 0; r < n; r += 1) y += " "; else "string" == typeof n && (y = n);
+            if ((q = e) && "function" != typeof e && ("object" != typeof e || "number" != typeof e.length)) throw Error("JSON.stringify");
+            return s("", {"": t})
+        }), "function" != typeof JSON.parse && (JSON.parse = function (e, f) {
+            function h(t, e) {
+                var n, r, a = t[e];
+                if (a && "object" == typeof a) for (n in a) Object.prototype.hasOwnProperty.call(a, n) && (void 0 !== (r = h(a, n)) ? a[n] = r : delete a[n]);
+                return f.call(t, e, a)
+            }
+
+            var n;
+            if (e = String(e), k.lastIndex = 0, k.test(e) && (e = e.replace(k, function (t) {
+                return "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4)
+            })), /^[\],:{}\s]*$/.test(e.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, "@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:\s*\[)+/g, ""))) return n = eval("(" + e + ")"), "function" == typeof f ? h({"": n}, "") : n;
+            throw new SyntaxError("JSON.parse")
+        })
+    }(), function () {
+        if (!this.localStorage) if (this.globalStorage) try {
+            this.localStorage = this.globalStorage
+        } catch (t) {
+        } else {
+            var t = document.createElement("div");
+            if (t.style.display = "none", document.getElementsByTagName("head")[0].appendChild(t), t.addBehavior) {
+                t.addBehavior("#default#userdata");
+                var e = this.localStorage = {
+                    length: 0, setItem: function (e, r) {
+                        t.load("localStorage"), e = n(e), t.getAttribute(e) || this.length++, t.setAttribute(e, r), t.save("localStorage")
+                    }, getItem: function (e) {
+                        return t.load("localStorage"), e = n(e), t.getAttribute(e)
+                    }, removeItem: function (e) {
+                        t.load("localStorage"), e = n(e), t.removeAttribute(e), t.save("localStorage"), this.length = 0
+                    }, clear: function () {
+                        t.load("localStorage");
+                        for (var e = 0; attr = t.XMLDocument.documentElement.attributes[e++];) t.removeAttribute(attr.name);
+                        t.save("localStorage"), this.length = 0
+                    }, key: function (e) {
+                        return t.load("localStorage"), t.XMLDocument.documentElement.attributes[e]
+                    }
+                }, n = function (t) {
+                    return t.replace(/[^-._0-9A-Za-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u37f-\u1fff\u200c-\u200d\u203f\u2040\u2070-\u218f]/g, "-")
+                };
+                t.load("localStorage"), e.length = t.XMLDocument.documentElement.attributes.length
+            }
+        }
+    }();
     //]]>
 </script>
 <script>
     //<![CDATA[
-    $(document).ajaxComplete(function() {
-        $(".item_add").click(function() {
-            $("#popupCartModal").modal('show');
-        }), $("#popupCartModal .close-window").click(function() {
-            $("#popupCartModal").removeClass("hide")
-        })
-    });
+    // $(document).ajaxComplete(function() {
+    //     $(".item_add").click(function() {
+    //         $("#popupCartModal").modal('show');
+    //     }),
+    //         $("#popupCartModal .close-window").click(function() {
+    //         $("#popupCartModal").removeClass("hide")
+    //     })
+    // });
+    //
+    // $(".item_add").click(function() {
+    //     $("#popupCartModal").modal('show');
+    // }), $("#popupCartModal .close-window").click(function() {
+    //     $("#popupCartModal").removeClass("hide")
+    // })
 
-    $(".item_add").click(function() {
-        $("#popupCartModal").modal('show');
-    }), $("#popupCartModal .close-window").click(function() {
-        $("#popupCartModal").removeClass("hide")
-    })
+    $(document).ready(function(){
+
+        $('.item_add').click(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            // AJAX request
+            var productid = $(this).data('id');
+            let url = "{!! route('add.to.cart') !!}"
+            // AJAX request
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: {
+                    id: productid
+                },
+                success: function (response) {
+                    // Add response in Modal body
+                    alert('success');
+                    $('.modal-body').html(response);
+                }
+            });
+        });
+    });
 
     //]]>
 </script>
@@ -396,7 +1210,7 @@
 <script type="text/javascript" src="/resouce/temp/www.blogger.com/static/v1/widgets/852648224-widgets.js"></script>
 <script type='text/javascript'>
     window['__wavt'] = 'AOuZoY4qA0wWFe6syI9hhw37VHMzc_XHxQ:1633272259668';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d5640853351965315871','index.html','5640853351965315871');
-    _WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '5640853351965315871', 'title': '2020 - Nula Cosmetic Premium', 'url': 'https://template-nula-cosmcleticok.blogspot.com/', 'canonicalUrl': 'https://template-nula-cosmcleticok.blogspot.com/', 'homepageUrl': 'https://template-nula-cosmcleticok.blogspot.com/', 'searchUrl': 'https://template-nula-cosmcleticok.blogspot.com/search', 'canonicalHomepageUrl': 'https://template-nula-cosmcleticok.blogspot.com/', 'blogspotFaviconUrl': 'https://template-nula-cosmcleticok.blogspot.com/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'vi', 'localeUnderscoreDelimited': 'vi', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'isDynamicViewsAvailable': true, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x222020 - Nula Cosmetic Premium - Atom\x22 href\x3d\x22https://template-nula-cosmcleticok.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x222020 - Nula Cosmetic Premium - RSS\x22 href\x3d\x22https://template-nula-cosmcleticok.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x222020 - Nula Cosmetic Premium - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/5640853351965315871/posts/default\x22 /\x3e\n', 'meTag': '', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'adsenseAutoAds': false, 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/b462e1ac90482d8d', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Nh\u1eadn \u0111\u01b0\u1eddng li\xean k\u1ebft', 'key': 'link', 'shareMessage': 'Nh\u1eadn \u0111\u01b0\u1eddng li\xean k\u1ebft', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Chia s\u1ebb v\u1edbi Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Chia s\u1ebb v\u1edbi Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Chia s\u1ebb v\u1edbi Pinterest', 'target': 'pinterest'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 0, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27vi\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': '\u0110\u1ecdc th\xeam', 'pageType': 'index', 'pageName': '', 'pageTitle': '2020 - Nula Cosmetic Premium'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Ch\u1ec9nh s\u1eeda', 'linkCopiedToClipboard': '\u0110\xe3 sao ch\xe9p \u0111\u01b0\u1eddng li\xean k\u1ebft v\xe0o b\u1ea3ng nh\u1edb t\u1ea1m!', 'ok': 'Ok', 'postLink': 'Li\xean k\u1ebft b\xe0i \u0111\u0103ng'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'T\xf9y ch\u1ec9nh', 'isResponsive': true, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': '2020 - Nula Cosmetic Premium', 'description': '', 'url': 'https://template-nula-cosmcleticok.blogspot.com/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}, {'name': 'widgets', 'data': [{'title': '2020 - Nula Cosmetic Premium (Ti\xeau \u0111\u1ec1)', 'type': 'Header', 'sectionId': 'logo-mobile', 'id': 'Header2'}, {'title': '2020 - Nula Cosmetic Premium (Ti\xeau \u0111\u1ec1)', 'type': 'Header', 'sectionId': 'id-lgdt', 'id': 'Header1'}, {'title': 'Menu 2 c\u1ea5p', 'type': 'LinkList', 'sectionId': 'idthanhmenu', 'id': 'LinkList6'}, {'title': 'S\u1ea3n ph\u1ea9m b\xe1n ch\u1ea1y', 'type': 'Image', 'sectionId': 'idbannersidebar', 'id': 'Image1'}, {'title': '', 'type': 'LinkList', 'sectionId': 'idsocial', 'id': 'LinkList7'}, {'title': '', 'type': 'LinkList', 'sectionId': 'idslider', 'id': 'LinkList1'}, {'title': 'Banner 1', 'type': 'HTML', 'sectionId': 'idbaner1', 'id': 'HTML2'}, {'title': 'Banner 2', 'type': 'HTML', 'sectionId': 'idbaner2', 'id': 'HTML3'}, {'title': 'H\xe0ng m\u1edbi v\u1ec1', 'type': 'HTML', 'sectionId': 'idsanphammoi', 'id': 'HTML1'}, {'title': 'M\u1ef9 ph\u1ea9m HOT', 'type': 'Image', 'sectionId': 'idbnngang', 'id': 'Image2'}, {'title': 'M\u1ef9 ph\u1ea7m n\u1eef', 'type': 'HTML', 'sectionId': 'id-sanpham-a', 'id': 'HTML15'}, {'title': 'T\u1ea5t c\u1ea3 S\u1ea3n ph\u1ea9m', 'type': 'HTML', 'sectionId': 'idbanchay', 'id': 'HTML4'}, {'title': 'NULA\x27S BLOG', 'type': 'HTML', 'sectionId': 'idtintuc', 'id': 'HTML5'}, {'title': 'B\xe0i \u0111\u0103ng tr\xean Blog', 'type': 'Blog', 'sectionId': 'content', 'id': 'Blog1', 'posts': [{'id': '7864884371695072172', 'title': 'Nh\u1eefng c\xf4ng d\u1ee5ng \u0111\u1eb7c bi\u1ec7t trong l\xe0m \u0111\u1eb9p da v\xe0 t\xf3c t\u1eeb n\u01b0\u1edbc vo g\u1ea1o', 'featuredImage': 'https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/s16000/g.jpg', 'showInlineAds': false}, {'id': '2896828535800466011', 'title': 'L\xe0m \u0111\u1eb9p da c\u1ef1c d\u1ec5 d\xe0ng n\u1ebfu n\xe0ng n\u1eafm \u0111\u01b0\u1ee3c 3 b\xed k\xedp', 'featuredImage': 'https://1.bp.blogspot.com/-CQC8lvO-P84/X1h0MD3NQEI/AAAAAAAAPnc/Y6-_oR6DM_se14oosxQ1Bdv5_FbYR62PQCLcBGAsYHQ/s16000/n.jpg', 'showInlineAds': false}, {'id': '7862403571886823204', 'title': 'Top 3 cushion ch\u1ed1ng n\u1eafng HOT nh\u1ea5t 2019 b\u1ea1n g\xe1i s\xe0nh \u0111i\u1ec7u', 'featuredImage': 'https://1.bp.blogspot.com/-9wFOVs0oPcM/X1g9EXQxiPI/AAAAAAAAPnQ/mVdoTDwVBeo4xJFYIbJG23aPPEOBUa4ewCLcBGAsYHQ/s16000/n.jpg', 'showInlineAds': false}, {'id': '407451766510416968', 'title': 'H\xe3y n\u1eafm v\u1eefng nh\u1eefng b\xed k\xedp n\xe0y \u0111\u1ec3 tr\xe1nh ch\u1ecdn sai m\u1ef9 ph\u1ea9m', 'featuredImage': 'https://1.bp.blogspot.com/-uE9lscOqj4Y/X1g80iAPCAI/AAAAAAAAPnI/fjeICJ1iSdkHUNVh7x2uQ1OvGRbVmWX-QCLcBGAsYHQ/s16000/h.jpg', 'showInlineAds': false}, {'id': '136115267525121503', 'title': 'L\xe0m \u0111\u1eb9p da c\u1ef1c d\u1ec5 d\xe0ng n\u1ebfu n\xe0ng n\u1eafm \u0111\u01b0\u1ee3c 3 b\xed k\xedp', 'featuredImage': 'https://1.bp.blogspot.com/-OHIf6BAGR4k/X1g6Zq9HtvI/AAAAAAAAPm8/t1Ut1Sc9yd45VXLKnamgUCj1PJ-1RjAlQCLcBGAsYHQ/s16000/1.jpg', 'showInlineAds': false}, {'id': '6661752426539792430', 'title': 'S\u1eefa t\u1eafm d\u01b0\u1ee1ng \u1ea9m cho da', 'featuredImage': 'https://1.bp.blogspot.com/-ZqUToAtkQ_s/X1g3Nz7N6vI/AAAAAAAAPms/VYHQd_I-x9wxs4U6QRaGxSdgCJfHUO2nACLcBGAsYHQ/s16000/12.jpg', 'showInlineAds': false}, {'id': '3550913523285221979', 'title': 'S\u1eefa t\u1eafm Sparkling Citrus l\xe0m m\u01b0\u1ee3t da', 'featuredImage': 'https://1.bp.blogspot.com/-7x0dC9wmucg/X1g21FpRYGI/AAAAAAAAPmk/x1Cd1fGJIhY3YwJM0Q8nVeScujgOqOibgCLcBGAsYHQ/s16000/l.jpg', 'showInlineAds': false}, {'id': '1215859088423404139', 'title': 'S\u1eefa t\u1eafm d\u1ea1ng kem Victoria\u2019s Secret', 'featuredImage': 'https://1.bp.blogspot.com/-BNFviLKChLc/X1g2awh7aBI/AAAAAAAAPmc/4iDVo8pZ9qEgN4oyDwNBcu5AsEqofF1eACLcBGAsYHQ/s16000/s.jpg', 'showInlineAds': false}, {'id': '7782244319877520973', 'title': 'Ph\u1ea5n n\u1ec1n bareMinerals Original', 'featuredImage': 'https://1.bp.blogspot.com/-_i526UPRwxg/X1g1_Rwa6iI/AAAAAAAAPmU/dcsbtTKLuNc969OU7PBQYbXljmdb6qgzwCLcBGAsYHQ/s16000/19.jpg', 'showInlineAds': false}, {'id': '408129878044513079', 'title': 'N\u01b0\u1edbc hoa Chlo\xe9 Eau de Parfum', 'featuredImage': 'https://1.bp.blogspot.com/-PB7q33woGfo/X1g1rRSqybI/AAAAAAAAPmM/ktJE8Q5zPA8Jm8mDSbQMJQQ5klcQKnHfgCLcBGAsYHQ/s16000/20.jpg', 'showInlineAds': false}], 'footerBylines': [{'regionName': 'footer1', 'items': [{'name': 'author', 'label': 'Ng\u01b0\u1eddi \u0111\u0103ng:'}, {'name': 'timestamp', 'label': 'v\xe0o l\xfac'}, {'name': 'comments', 'label': 'nh\u1eadn x\xe9t'}, {'name': 'icons', 'label': ''}]}, {'regionName': 'footer2', 'items': [{'name': 'labels', 'label': 'Nh\xe3n:'}]}, {'regionName': 'footer3', 'items': [{'name': 'location', 'label': 'Google Account Video Purchases'}]}], 'allBylineItems': [{'name': 'author', 'label': 'Ng\u01b0\u1eddi \u0111\u0103ng:'}, {'name': 'timestamp', 'label': 'v\xe0o l\xfac'}, {'name': 'comments', 'label': 'nh\u1eadn x\xe9t'}, {'name': 'icons', 'label': ''}, {'name': 'labels', 'label': 'Nh\xe3n:'}, {'name': 'location', 'label': 'Google Account Video Purchases'}]}, {'title': 'Nula Cosmetic', 'type': 'Image', 'sectionId': 'idlogofooter', 'id': 'Image3'}, {'title': 'V\u1ec0 CH\xdaNG T\xd4I', 'type': 'LinkList', 'sectionId': 'idvechungtoi', 'id': 'LinkList2'}, {'title': 'Th\xf4ng tin', 'type': 'LinkList', 'sectionId': 'idthongtin', 'id': 'LinkList3'}, {'title': 'H\u1ed7 tr\u1ee3', 'type': 'LinkList', 'sectionId': 'idthotro', 'id': 'LinkList4'}, {'title': 'Li\xean h\u1ec7', 'type': 'LinkList', 'sectionId': 'idlienhe', 'id': 'LinkList5'}, {'title': '\xa9 B\u1ea3n quy\u1ec1n thu\u1ed9c v\u1ec1', 'type': 'HTML', 'sectionId': 'idbanquyen', 'id': 'HTML7'}, {'title': 'Thi\u1ebft k\u1ebf b\u1edfi', 'type': 'HTML', 'sectionId': 'idcungcapboi', 'id': 'HTML8'}]}]);
+    _WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '5640853351965315871', 'title': '2021 - Nula Cosmetic', 'url': 'https://template-nula-cosmcleticok.blogspot.com/', 'canonicalUrl': 'https://template-nula-cosmcleticok.blogspot.com/', 'homepageUrl': 'https://template-nula-cosmcleticok.blogspot.com/', 'searchUrl': 'https://template-nula-cosmcleticok.blogspot.com/search', 'canonicalHomepageUrl': 'https://template-nula-cosmcleticok.blogspot.com/', 'blogspotFaviconUrl': 'https://template-nula-cosmcleticok.blogspot.com/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'vi', 'localeUnderscoreDelimited': 'vi', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'isDynamicViewsAvailable': true, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x222021 - Nula Cosmetic - Atom\x22 href\x3d\x22https://template-nula-cosmcleticok.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x222021 - Nula Cosmetic - RSS\x22 href\x3d\x22https://template-nula-cosmcleticok.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x222021 - Nula Cosmetic - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/5640853351965315871/posts/default\x22 /\x3e\n', 'meTag': '', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'adsenseAutoAds': false, 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/b462e1ac90482d8d', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Nh\u1eadn \u0111\u01b0\u1eddng li\xean k\u1ebft', 'key': 'link', 'shareMessage': 'Nh\u1eadn \u0111\u01b0\u1eddng li\xean k\u1ebft', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Chia s\u1ebb v\u1edbi Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Chia s\u1ebb v\u1edbi Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Chia s\u1ebb v\u1edbi Pinterest', 'target': 'pinterest'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 0, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27vi\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': '\u0110\u1ecdc th\xeam', 'pageType': 'index', 'pageName': '', 'pageTitle': '2021 - Nula Cosmetic'}}, {'name': 'features', 'data': {'sharing_get_link_dialog': 'true', 'sharing_native': 'false'}}, {'name': 'messages', 'data': {'edit': 'Ch\u1ec9nh s\u1eeda', 'linkCopiedToClipboard': '\u0110\xe3 sao ch\xe9p \u0111\u01b0\u1eddng li\xean k\u1ebft v\xe0o b\u1ea3ng nh\u1edb t\u1ea1m!', 'ok': 'Ok', 'postLink': 'Li\xean k\u1ebft b\xe0i \u0111\u0103ng'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'T\xf9y ch\u1ec9nh', 'isResponsive': true, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': '2021 - Nula Cosmetic', 'description': '', 'url': 'https://template-nula-cosmcleticok.blogspot.com/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}, {'name': 'widgets', 'data': [{'title': '2021 - Nula Cosmetic (Ti\xeau \u0111\u1ec1)', 'type': 'Header', 'sectionId': 'logo-mobile', 'id': 'Header2'}, {'title': '2021 - Nula Cosmetic (Ti\xeau \u0111\u1ec1)', 'type': 'Header', 'sectionId': 'id-lgdt', 'id': 'Header1'}, {'title': 'Menu 2 c\u1ea5p', 'type': 'LinkList', 'sectionId': 'idthanhmenu', 'id': 'LinkList6'}, {'title': 'S\u1ea3n ph\u1ea9m b\xe1n ch\u1ea1y', 'type': 'Image', 'sectionId': 'idbannersidebar', 'id': 'Image1'}, {'title': '', 'type': 'LinkList', 'sectionId': 'idsocial', 'id': 'LinkList7'}, {'title': '', 'type': 'LinkList', 'sectionId': 'idslider', 'id': 'LinkList1'}, {'title': 'Banner 1', 'type': 'HTML', 'sectionId': 'idbaner1', 'id': 'HTML2'}, {'title': 'Banner 2', 'type': 'HTML', 'sectionId': 'idbaner2', 'id': 'HTML3'}, {'title': 'H\xe0ng m\u1edbi v\u1ec1', 'type': 'HTML', 'sectionId': 'idsanphammoi', 'id': 'HTML1'}, {'title': 'M\u1ef9 ph\u1ea9m HOT', 'type': 'Image', 'sectionId': 'idbnngang', 'id': 'Image2'}, {'title': 'M\u1ef9 ph\u1ea7m n\u1eef', 'type': 'HTML', 'sectionId': 'id-sanpham-a', 'id': 'HTML15'}, {'title': 'T\u1ea5t c\u1ea3 S\u1ea3n ph\u1ea9m', 'type': 'HTML', 'sectionId': 'idbanchay', 'id': 'HTML4'}, {'title': 'NULA\x27S BLOG', 'type': 'HTML', 'sectionId': 'idtintuc', 'id': 'HTML5'}, {'title': 'B\xe0i \u0111\u0103ng tr\xean Blog', 'type': 'Blog', 'sectionId': 'content', 'id': 'Blog1', 'posts': [{'id': '7864884371695072172', 'title': 'Nh\u1eefng c\xf4ng d\u1ee5ng \u0111\u1eb7c bi\u1ec7t trong l\xe0m \u0111\u1eb9p da v\xe0 t\xf3c t\u1eeb n\u01b0\u1edbc vo g\u1ea1o', 'featuredImage': 'https://1.bp.blogspot.com/-OvEDCp-fV6o/X1h0isebtyI/AAAAAAAAPnk/pWVy1fgdpEUajdhka2Np-hU_-WTKA79fgCLcBGAsYHQ/s16000/g.jpg', 'showInlineAds': false}, {'id': '2896828535800466011', 'title': 'L\xe0m \u0111\u1eb9p da c\u1ef1c d\u1ec5 d\xe0ng n\u1ebfu n\xe0ng n\u1eafm \u0111\u01b0\u1ee3c 3 b\xed k\xedp', 'featuredImage': 'https://1.bp.blogspot.com/-CQC8lvO-P84/X1h0MD3NQEI/AAAAAAAAPnc/Y6-_oR6DM_se14oosxQ1Bdv5_FbYR62PQCLcBGAsYHQ/s16000/n.jpg', 'showInlineAds': false}, {'id': '7862403571886823204', 'title': 'Top 3 cushion ch\u1ed1ng n\u1eafng HOT nh\u1ea5t 2019 b\u1ea1n g\xe1i s\xe0nh \u0111i\u1ec7u', 'featuredImage': 'https://1.bp.blogspot.com/-9wFOVs0oPcM/X1g9EXQxiPI/AAAAAAAAPnQ/mVdoTDwVBeo4xJFYIbJG23aPPEOBUa4ewCLcBGAsYHQ/s16000/n.jpg', 'showInlineAds': false}, {'id': '407451766510416968', 'title': 'H\xe3y n\u1eafm v\u1eefng nh\u1eefng b\xed k\xedp n\xe0y \u0111\u1ec3 tr\xe1nh ch\u1ecdn sai m\u1ef9 ph\u1ea9m', 'featuredImage': 'https://1.bp.blogspot.com/-uE9lscOqj4Y/X1g80iAPCAI/AAAAAAAAPnI/fjeICJ1iSdkHUNVh7x2uQ1OvGRbVmWX-QCLcBGAsYHQ/s16000/h.jpg', 'showInlineAds': false}, {'id': '136115267525121503', 'title': 'L\xe0m \u0111\u1eb9p da c\u1ef1c d\u1ec5 d\xe0ng n\u1ebfu n\xe0ng n\u1eafm \u0111\u01b0\u1ee3c 3 b\xed k\xedp', 'featuredImage': 'https://1.bp.blogspot.com/-OHIf6BAGR4k/X1g6Zq9HtvI/AAAAAAAAPm8/t1Ut1Sc9yd45VXLKnamgUCj1PJ-1RjAlQCLcBGAsYHQ/s16000/1.jpg', 'showInlineAds': false}, {'id': '6661752426539792430', 'title': 'S\u1eefa t\u1eafm d\u01b0\u1ee1ng \u1ea9m cho da', 'featuredImage': 'https://1.bp.blogspot.com/-ZqUToAtkQ_s/X1g3Nz7N6vI/AAAAAAAAPms/VYHQd_I-x9wxs4U6QRaGxSdgCJfHUO2nACLcBGAsYHQ/s16000/12.jpg', 'showInlineAds': false}, {'id': '3550913523285221979', 'title': 'S\u1eefa t\u1eafm Sparkling Citrus l\xe0m m\u01b0\u1ee3t da', 'featuredImage': 'https://1.bp.blogspot.com/-7x0dC9wmucg/X1g21FpRYGI/AAAAAAAAPmk/x1Cd1fGJIhY3YwJM0Q8nVeScujgOqOibgCLcBGAsYHQ/s16000/l.jpg', 'showInlineAds': false}, {'id': '1215859088423404139', 'title': 'S\u1eefa t\u1eafm d\u1ea1ng kem Victoria\u2019s Secret', 'featuredImage': 'https://1.bp.blogspot.com/-BNFviLKChLc/X1g2awh7aBI/AAAAAAAAPmc/4iDVo8pZ9qEgN4oyDwNBcu5AsEqofF1eACLcBGAsYHQ/s16000/s.jpg', 'showInlineAds': false}, {'id': '7782244319877520973', 'title': 'Ph\u1ea5n n\u1ec1n bareMinerals Original', 'featuredImage': 'https://1.bp.blogspot.com/-_i526UPRwxg/X1g1_Rwa6iI/AAAAAAAAPmU/dcsbtTKLuNc969OU7PBQYbXljmdb6qgzwCLcBGAsYHQ/s16000/19.jpg', 'showInlineAds': false}, {'id': '408129878044513079', 'title': 'N\u01b0\u1edbc hoa Chlo\xe9 Eau de Parfum', 'featuredImage': 'https://1.bp.blogspot.com/-PB7q33woGfo/X1g1rRSqybI/AAAAAAAAPmM/ktJE8Q5zPA8Jm8mDSbQMJQQ5klcQKnHfgCLcBGAsYHQ/s16000/20.jpg', 'showInlineAds': false}], 'footerBylines': [{'regionName': 'footer1', 'items': [{'name': 'author', 'label': 'Ng\u01b0\u1eddi \u0111\u0103ng:'}, {'name': 'timestamp', 'label': 'v\xe0o l\xfac'}, {'name': 'comments', 'label': 'nh\u1eadn x\xe9t'}, {'name': 'icons', 'label': ''}]}, {'regionName': 'footer2', 'items': [{'name': 'labels', 'label': 'Nh\xe3n:'}]}, {'regionName': 'footer3', 'items': [{'name': 'location', 'label': 'Google Account Video Purchases'}]}], 'allBylineItems': [{'name': 'author', 'label': 'Ng\u01b0\u1eddi \u0111\u0103ng:'}, {'name': 'timestamp', 'label': 'v\xe0o l\xfac'}, {'name': 'comments', 'label': 'nh\u1eadn x\xe9t'}, {'name': 'icons', 'label': ''}, {'name': 'labels', 'label': 'Nh\xe3n:'}, {'name': 'location', 'label': 'Google Account Video Purchases'}]}, {'title': 'Nula Cosmetic', 'type': 'Image', 'sectionId': 'idlogofooter', 'id': 'Image3'}, {'title': 'V\u1ec0 CH\xdaNG T\xd4I', 'type': 'LinkList', 'sectionId': 'idvechungtoi', 'id': 'LinkList2'}, {'title': 'Th\xf4ng tin', 'type': 'LinkList', 'sectionId': 'idthongtin', 'id': 'LinkList3'}, {'title': 'H\u1ed7 tr\u1ee3', 'type': 'LinkList', 'sectionId': 'idthotro', 'id': 'LinkList4'}, {'title': 'Li\xean h\u1ec7', 'type': 'LinkList', 'sectionId': 'idlienhe', 'id': 'LinkList5'}, {'title': '\xa9 B\u1ea3n quy\u1ec1n thu\u1ed9c v\u1ec1', 'type': 'HTML', 'sectionId': 'idbanquyen', 'id': 'HTML7'}, {'title': 'Thi\u1ebft k\u1ebf b\u1edfi', 'type': 'HTML', 'sectionId': 'idcungcapboi', 'id': 'HTML8'}]}]);
     _WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header2', 'logo-mobile', document.getElementById('Header2'), {}, 'displayModeFull'));
     _WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'id-lgdt', document.getElementById('Header1'), {}, 'displayModeFull'));
     _WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList6', 'idthanhmenu', document.getElementById('LinkList6'), {}, 'displayModeFull'));
