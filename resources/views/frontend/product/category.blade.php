@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                             </section>
-                            <h1 class="title_page">Tất cả sản phẩm</h1>
+                            <h1 class="title_page">{{ $category->C_name }}</h1>
                         </div>
                     </div>
                 </div>

@@ -38,32 +38,42 @@
                                     <th class="text-center" style="width:15%">Số điện thoại</th>
                                     <th class="text-center" style="width:20%">Nội dung</th>
                                     <th class="text-center" style="width:15%">Trạng thái</th>
+                                    <th class="text-center" style="width:15%">Hành động</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($contacts as $value)
+                                @foreach ($contacts as $id => $value)
                                     <tr>
-                                        <td class="text-center">{{$value->id}}</td>
+                                        <td class="text-center">{{$id + 1}}</td>
                                         <td class="text-center">
-                                            {{$value->name}}
+                                            {{$value->username}}
                                         </td>
                                         <td class="text-center">
-                                            {{$value->phone}}
+                                            {{$value->email}}
                                         </td>
                                         <td class="text-center">
-                                            {{$value->message}}
+                                            {{$value->content}}
                                         </td>
                                         <td class="text-center">
-                                            @if($value->status == 0)
-                                                <a href="{{route('contact.changeStatus', $value->id)}}"
-                                                   class="btn btn-round btn-success btn-xs btnChangeStatus' . $value->id . '">Chưa trả lời
-                                                </a>
+                                            @if($value->status)
+                                                Đã trả lời
                                             @else
-                                                <a href="{{route('contact.changeStatus', $value->id)}}"
-                                                   class="btn btn-round btn-danger btn-xs btnChangeStatus' . $value->id . '">Đã trả lời
-                                                </a>
+                                                Chưa trả lời
                                             @endif
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{route('contacts.edit', $value->id)}}" style="min-width:100px;"
+                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                            <form action="{{route('contacts.destroy', $value->id)}}" method="post">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                {{csrf_field()}}
+                                                <button type="submit" onclick="return ConfirmDelete()"
+                                                        class="btn btn-danger btn-xs" name="actiondelete" value="1"
+                                                        style="min-width:100px;"><i
+                                                        class="fa fa-trash"></i> Xóa
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -117,5 +127,16 @@
             {orderable: true, targets: [0]}
         ]
     });
+</script>
+
+<script type="text/javascript">
+
+    function ConfirmDelete() {
+        var x = confirm("Bạn có muốn xóa liên hệ này?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
 </script>
 @endpush

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Categories;
-use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Mockery\Exception;
 
 class ContactsController extends Controller
 {
@@ -16,7 +16,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts = User::latest('created_at','desc')->get();
+        $contacts = Contact::get();
 
         return view('backend.contacts.index', compact('contacts'));
     }
@@ -61,7 +61,9 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::where('id', $id)->first();
+
+        return view('backend.contacts.edit', compact('contact'));
     }
 
     /**
@@ -73,7 +75,23 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            \DB::beginTransaction();
+            $contact = Contact::find($id);
+            if(!isset($contact)){
+                throw new Exception("Not found!");
+            }
+
+            $contact->status = $request->status;
+            $contact->save();
+
+            \DB::commit();
+            return redirect()->route('contacts.index');
+        } catch (Exception $e) {
+            \Log::error($e->getMessage());
+            \DB::rollback();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -84,7 +102,13 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+
+        if (empty($contact)) {
+            return redirect()->back();
+        }
+        $contact->delete();
+        return redirect()->back();
     }
 
     /**

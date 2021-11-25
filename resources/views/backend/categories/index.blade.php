@@ -55,9 +55,9 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach ($categories as $value)
+                                @foreach ($categories as $id => $value)
                                     <tr>
-                                        <td class="text-center">{{$value->id}}</td>
+                                        <td class="text-center">{{$id + 1}}</td>
                                         <td>
                                             {{$value->C_name}}
                                         </td>

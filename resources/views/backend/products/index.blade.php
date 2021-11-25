@@ -69,9 +69,9 @@
 
                                             <tbody>
                                             @php $count = 0; @endphp
-                                            @foreach ($products as $value)
+                                            @foreach ($products as $id => $value)
                                                     <tr>
-                                                        <td class="text-center">{{$count + 1}}</td>
+                                                        <td class="text-center">{{$id + 1}}</td>
                                                         <td class="text-center">
                                                             <a href="{{route('products.edit', $value->id)}}">
                                                                 <img

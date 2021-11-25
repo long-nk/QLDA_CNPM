@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Contact;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Mockery\Exception;
 
-class ContactController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $submitted = true;
-        return view('frontend.contact.index', compact('submitted'));
+        $data = Transaction::join('order', 'transaction.id', '=', 'order.Od_transaction_id')
+                ->join('product', 'product.id', '=', 'order.Od_product_id')
+                ->get();
+        return view('backend.checkouts.index', compact('data'));
     }
 
     /**
@@ -37,24 +40,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            \DB::beginTransaction();
-            $data = [
-                'username' => $request->name,
-                'email' => $request->email,
-                'content' => $request->content
-            ];
-
-            Contact::create($data);
-            \DB::commit();
-            $submitted = false;
-
-            return view('frontend.contact.index', compact('submitted'));
-        } catch (Exception $e) {
-            \Log::error($e->getMessage());
-
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -76,7 +62,8 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Transaction::find($id);
+        return view('backend.checkouts.edit', compact( 'data'));
     }
 
     /**
@@ -88,7 +75,22 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $trans = Transaction::find($id);
+            if(!isset($trans)){
+                throw new Exception("Not found!");
+            }
+
+            $trans->Tst_status = $request->status;
+            $trans->save();
+
+            \DB::commit();
+            return redirect()->route('checkouts.index');
+        } catch (Exception $e) {
+            \Log::error($e->getMessage());
+            \DB::rollback();
+            return redirect()->back();
+        }
     }
 
     /**
@@ -99,6 +101,14 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trans = Transaction::find($id);
+        $order = Order::find($id);
+
+        if (empty($trans) || empty($order)) {
+            return redirect()->back();
+        }
+        $trans->delete();
+        $order->delete();
+        return redirect()->back();
     }
 }

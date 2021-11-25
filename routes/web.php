@@ -11,7 +11,7 @@ Route::get('gioi-thieu', 'IntroController@index')->name('intro');
 
 Route::get('lien-he', 'ContactController@index')->name('contact');
 
-//Route::post('lien-he/gui-lien-he', 'ContactController@store')->name('contact.store');
+Route::post('lien-he/gui-lien-he', 'ContactController@store')->name('contact.store');
 
 Route::get('tin-tuc', 'NewsController@index')->name('news');
 Route::get('tin-tuc/{id}', 'NewsController@show')->name('news.detail');
@@ -42,11 +42,13 @@ Route::get('gio-hang', 'CartController@index')->name('cart.index');
 Route::post('add-to-cart/{id?}', 'CartController@addToCart')->name('add.to.cart');
 Route::patch('update-cart', 'CartController@update')->name('update.cart');
 Route::patch('update-product-cart', 'CartController@updateNumber')->name('update.number.cart');
+Route::patch('update-product-cart-checkout', 'CartController@updateNumberCheckout')->name('update.number.cart.checkout');
 Route::delete('remove-from-cart', 'CartController@remove')->name('remove.from.cart');
 Route::delete('remove-product-from-cart', 'CartController@removeProduct')->name('remove.product.from.cart');
+Route::delete('remove-product-from-checkout', 'CartController@removeProductCheckout')->name('remove.product.from.checkout');
 
 Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
-Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+Route::post('thanh-toan/xu-li-don', 'CheckoutController@store')->name('checkout.store');
 
 
 //---------Backend--------
@@ -60,6 +62,7 @@ Route::group(array('prefix' => 'admin/', 'namespace' => 'Admin', 'middleware' =>
     Route::get('products_list/{id}', 'ProductController@list_all')->name('products.list');
     Route::resource('contacts', 'ContactsController');
     Route::resource('news', 'NewsController');
+    Route::resource('checkouts', 'CheckoutController');
     Route::resource('categories', 'CategoriesController');
     Route::get('sitemap', 'CategoriesController@sitemap')->name('categories.sitemap');
     Route::resource('users', 'UsersController');

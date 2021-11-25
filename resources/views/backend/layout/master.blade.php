@@ -75,6 +75,9 @@
                             <li>
                                 <a href="{{route('contacts.index')}}"><i class="fa fa-user"></i> Quản lý liên hệ</a>
                             </li>
+                            <li>
+                                <a href="{{route('checkouts.index')}}"><i class="fa fa-table"></i> Quản lý đơn hàng</a>
+                            </li>
 
                         </ul>
                     </div>

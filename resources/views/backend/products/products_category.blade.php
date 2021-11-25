@@ -54,9 +54,9 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach ($products as $value)
+                                @foreach ($products as $id => $value)
                                     <tr>
-                                        <td class="text-center">{{$value->id}}</td>
+                                        <td class="text-center">{{$id + 1}}</td>
                                         <td class="text-center">
                                             <a href="{{route('products.edit', $value->id)}}"><img
                                                         src="{{url('/')}}/{{$value->Pro_avatar}}"

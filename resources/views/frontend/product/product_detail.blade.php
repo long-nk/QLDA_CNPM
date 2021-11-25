@@ -340,11 +340,9 @@ Trang chủ</span></a>
                                                                                                                                         href="{{route('product.detail', $p->id)}}"
                                                                                                                                         class="xem_nhanh btn-circle btn_view btn right-to quick-view hidden-xs hidden-sm hidden-md item_link"><i
                                                                                                                                             class="fas fa-hotdog"></i></a>
-                                                                                                                                    <button
-                                                                                                                                        class="btn-buy btn-cart btn btn-circle left-to item_add"
-                                                                                                                                        title="Thêm vào giỏ">
-                                                                                                                                        <i
-                                                                                                                                            class="fas fa-shopping-basket"></i>
+                                                                                                                                    <button class="btn-buy btn-cart btn btn-circle left-to item_add" title="Thêm vào giỏ hàng"
+                                                                                                                                            data-id="{{$p->id}}">
+                                                                                                                                        <i class="fas fa-shopping-basket"></i>
                                                                                                                                     </button>
                                                                                                                                 </div>
                                                                                                                             </form>

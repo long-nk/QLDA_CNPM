@@ -32,13 +32,12 @@
                                     <th class="text-center" width="15%">Tên đăng nhập</th>
                                     <th class="text-center" width="10%">Email</th>
                                     <th class="text-center" width="10%">Số điện thoại</th>
-                                    <th class="text-center" width="10%">Trạng thái</th>
                                     <th class="text-center" width="15%">Hành động</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                <?php foreach ($list_users as $value): ?>
+                                <?php foreach ($list_users as $id => $value): ?>
                                 <tr>
                                     <td class="text-center"><input type="checkbox" class="flat checkbox"
                                                                    name="table_records"></td>
@@ -47,27 +46,6 @@
                                     </td>
                                     <td class="text-center"><?php echo $value->email; ?></td>
                                     <td class="text-center"><?php echo $value->phone; ?></td>
-                                    <td class="text-center">
-                                        @if($value->status)
-                                            <form action="" method="post">
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="status" value="0">
-                                                <button type="submit"
-                                                        class="btn btn-round btn-success btn-xs">
-                                                    Đang hoạt động
-                                                </button>
-                                            </form>
-                                        @else
-                                            <form action="" method="post">
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="status" value="1">
-                                                <button type="submit"
-                                                        class="btn btn-round btn-danger btn-xs">
-                                                    Không hoạt động
-                                                </button>
-                                            </form>
-                                        @endif
-                                    </td>
                                     <td class="text-center">
                                         <a href="{{route('users.edit', $value->id)}}" style="min-width:100px;"
                                            class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
