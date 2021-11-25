@@ -80,26 +80,6 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">{{trans('pdh.backend.banners.type')}}--}}
-                                        {{--<span class="required">*</span>--}}
-                                    {{--</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="type" id="type" class="form-control" required>--}}
-                                            {{--<option value="1" {{old('type') == 1 ? "selected" : ""}}>{{trans('pdh.backend.banners.banner')}}</option>--}}
-                                            {{--<option value="2" {{old('type') == 2 ? "selected" : ""}}>{{trans('pdh.backend.banners.km')}}</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="is_popup">{{trans('pdh.backend.banners.is_popup')}}</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="is_popup" id="is_popup" class="form-control" required>--}}
-                                            {{--<option value="1" {{old('is_popup') == 0 ? "selected" : ""}}>{{trans('pdh.backend.banners.no')}}</option>--}}
-                                            {{--<option value="0" {{old('is_popup') == 1 ? "selected" : ""}}>{{trans('pdh.backend.banners.yes')}}</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort">
                                         Sắp xếp

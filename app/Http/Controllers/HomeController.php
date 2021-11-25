@@ -32,14 +32,13 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $keyWord = $request->search;
-        $category = Categories::where('C_name', 'like', "%" . $keyWord . "%")->first();
-        if($category != null){
-            $products = Product::where('Pro_category_id', $category->id)->orWhere('Pro_name', 'like', "%" .$keyWord . "%")->paginate(24);
-        } else {
-            $products = Product::where('Pro_name', 'like', "%" .$keyWord . "%")->paginate(24);
-        }
+
+        $products = Product::join('categories', 'categories.id', '=', 'product.Pro_category_id')
+            ->where('product.Pro_name', 'like' ,'%'.$keyWord.'%')
+            ->orWhere('categories.C_name', 'like' ,'%'.$keyWord.'%')
+            ->paginate(24);
 
 
-        return view('frontend.product.search', compact('products','category', 'keyWord'));
+        return view('frontend.product.search', compact('products', 'keyWord'));
     }
 }

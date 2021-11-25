@@ -55,9 +55,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($bannerList as $value)
+                                    @foreach ($bannerList as $id => $value)
                                         <tr>
-                                            <td class="text-center">{{$value->id}}</td>
+                                            <td class="text-center">{{$id + 1}}</td>
                                             <td class="text-left">
                                                 {{$value->Sd_title}}
                                             </td>
@@ -144,7 +144,7 @@
         ]
     });
     function ConfirmDelete() {
-        var x = confirm("Bạn có muốn xóa bài viết này?");
+        var x = confirm("Bạn có muốn xóa banner này?");
         if (x)
             return true;
         else

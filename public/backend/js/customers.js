@@ -20,7 +20,7 @@ myApp.controller('customers', function ($scope, $apply, $timeout, $sce) {
                 alert('Thao tác thành công!');
                 $('#addNewModal').modal('hide');
                 window.location.reload();
-                
+
             } else {
                 alert('Thao tác thất bại, vui lòng kiểm tra lại!');
             }
@@ -28,7 +28,7 @@ myApp.controller('customers', function ($scope, $apply, $timeout, $sce) {
     };
     $scope.updateCustomerInfo = function(){
         var id = $('#frmUpdateCustomer').find('button.btnUpdateCustomer').attr('data-id');
-        var data = $('#frmUpdateCustomer').serialize(); 
+        var data = $('#frmUpdateCustomer').serialize();
         sv.data.updateCustomerInfo(id, data, function(response){
            if (response.status == "success") {
                alert("Thao tác thành công!");
@@ -54,7 +54,7 @@ myApp.controller('customers', function ($scope, $apply, $timeout, $sce) {
         }else {
             url += id;
             deleteCustomers(url, _token);
-        } 
+        }
     };
     function deleteCustomers(url, _token) {
         sv.data.deleteCustomer(url, _token, function (response) {

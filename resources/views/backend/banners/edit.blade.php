@@ -81,17 +81,6 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">{{trans('pdh.backend.banners.type')}}--}}
-                                        {{--<span class="required">*</span>--}}
-                                    {{--</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="type" id="type" class="form-control" required>--}}
-                                            {{--<option value="1" {{$banner->type == 1 ? "selected" : ""}}>{{trans('pdh.backend.banners.banner')}}</option>--}}
-                                            {{--<option value="2" {{$banner->type == 2 ? "selected" : ""}}>{{trans('pdh.backend.banners.km')}}</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort">
                                         Sắp xếp
@@ -107,15 +96,6 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--<div class="item form-group">--}}
-                                    {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="is_popup">Trạng thái hiển thị</label>--}}
-                                    {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
-                                        {{--<select name="is_popup" id="is_popup" class="form-control" required>--}}
-                                            {{--<option value="0" {{$banner->is_popup == 0 ? "selected" : ""}}>Không hiển thị</option>--}}
-                                            {{--<option value="1" {{$banner->is_popup == 1 ? "selected" : ""}}>Hiển thị</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Trạng thái hiển thị
                                         <span class="required">*</span>

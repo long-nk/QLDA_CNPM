@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
+use App\Models\Order;
+use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -34,7 +37,38 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $trans = Transaction::create([
+                'Tst_user_id' => $request->user_id,
+                'Tst_email' => $request->email,
+                'Tst_name' => $request->fullname,
+                'Tst_address' => $request->address_ship,
+                'Tst_phone' => $request->phone,
+                'Tst_note' => $request->note,
+                'Tst_payment' => $request->payment_type,
+                'Tst_total_money' => $request->total_money
+            ]);
+
+            // Insert into order_product table
+            foreach (session('cart') as $id => $item) {
+                $order =  Order::create([
+                    'Od_transaction_id' => $trans->id,
+                    'Od_Product_id' => $id,
+                    'Od_qty' => $item['quantity'],
+                    'Od_Sale' => $item['price']
+                ]);
+            }
+
+            $cart = Order::join('product', 'product.id', '=', 'order.Od_product_id')
+                            ->where('order.Od_transaction_id', '=', $order->Od_transaction_id)
+                            ->get();
+
+            session()->forget('cart');
+
+            return view('frontend.checkout.checkout_success', compact('trans', 'cart'));
+        } catch (\Exception $e){
+            dd($e);
+        }
     }
 
     /**
@@ -81,36 +115,4 @@ class CheckoutController extends Controller
     {
         //
     }
-
-    protected function addToOrdersTables($request, $error)
-    {
-        // Insert into orders table
-        $order = Order::create([
-            'user_id' => auth()->user() ? auth()->user()->id : null,
-            'billing_email' => $request->email,
-            'billing_name' => $request->name,
-            'billing_address' => $request->address,
-            'billing_city' => $request->city,
-            'billing_province' => $request->province,
-            'billing_postalcode' => $request->postalcode,
-            'billing_phone' => $request->phone,
-            'billing_name_on_card' => $request->name_on_card,
-            'billing_discount' => getNumbers()->get('discount'),
-            'billing_discount_code' => getNumbers()->get('code'),
-            'billing_subtotal' => getNumbers()->get('newSubtotal'),
-            'billing_tax' => getNumbers()->get('newTax'),
-            'billing_total' => getNumbers()->get('newTotal'),
-            'error' => $error,
-        ]);
-
-        // Insert into order_product table
-        foreach (Cart::content() as $item) {
-            OrderProduct::create([
-                'order_id' => $order->id,
-                'product_id' => $item->model->id,
-                'quantity' => $item->qty,
-            ]);
-        }
-
-        return $order;
-    }
+}

@@ -123,9 +123,23 @@ class CartController extends Controller
             $cart = session()->get('cart');
             $cart[$id]["quantity"] = $quantity;
             session()->put('cart', $cart);
-            return view('frontend.cart.index');
+            return view('frontend.cart.cart_product_list');
         }
     }
+
+    public function updateNumberCheckout(Request $request)
+    {
+        $id = $request->id;
+        $quantity = $request->quantity;
+
+        if($id && $quantity){
+            $cart = session()->get('cart');
+            $cart[$id]["quantity"] = $quantity;
+            session()->put('cart', $cart);
+            return view('frontend.checkout.cart_list');
+        }
+    }
+
 
 
     /**
@@ -155,7 +169,22 @@ class CartController extends Controller
                 unset($cart[$id]);
                 session()->put('cart', $cart);
             }
-            return view('frontend.cart.cart_list');
+
+            return view('frontend.cart.cart_product_list');
+        }
+    }
+
+    public function removeProductCheckout(Request $request)
+    {
+        $id = $request->id;
+        if($id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$id])) {
+                unset($cart[$id]);
+                session()->put('cart', $cart);
+            }
+
+            return view('frontend.checkout.cart_list');
         }
     }
 

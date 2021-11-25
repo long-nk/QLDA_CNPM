@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Categories::where('C_active', '=', 1)->orderBy('id')->get();
+        $categories = Categories::where('C_active', '=', 1)->orderByDesc("id")->get();
         return view('backend.categories.index', compact('categories'));
     }
 
@@ -84,7 +84,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Categories::where('id', $id)->first();
+        $category = Categories::where('id', $id)->orderBy("id", "desc")
+            ->get();
 
         return view('backend.categories.edit', compact('category'));
     }

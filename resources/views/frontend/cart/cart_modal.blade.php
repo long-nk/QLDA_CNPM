@@ -35,7 +35,7 @@
                                                 </a>
                                             </div>
                                             <div class="item-total item_total_{{$id}}">{{number_format(floatval($details['price'] * $details['quantity']), 0, ',', '.') . "đ"}}</div>
-                                            <div class="item-remove item-remove-from-cart" data-id="{{$id}}">
+                                            <div class="item-remove item-remove-from-cart-modal" data-id="{{$id}}">
                                                 <a class="remove-from-cart remove_product" href="#">
                                                     <i class="fa fa-times"></i>
                                                 </a>

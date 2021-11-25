@@ -8,15 +8,25 @@ class Transaction extends Model
 {
     protected $table = 'transaction';
 
+    public $timestamps = false;
+
+    const WIDTH_THUMBS = 450;
+
     protected $fillable = [
-        'Id',
-        'Tsl_user_id',
-        'Tsl_total_money',
-        'Tsl_name',
-        'Tsl_email',
-        'Tsl_phone',
-        'Tsl_admin_id',
-        'Tsl_note',
-        'Tsl_status'
+        'id',
+        'Tst_user_id',
+        'Tst_total_money',
+        'Tst_name',
+        'Tst_address',
+        'Tst_payment',
+        'Tst_email',
+        'Tst_phone',
+        'Tst_note',
+        'Tst_status'
     ];
+
+    public function order(){
+        return $this->belongsTo('App\Models\Order');
+    }
+
 }
