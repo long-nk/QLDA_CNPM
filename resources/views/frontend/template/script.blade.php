@@ -57,6 +57,7 @@
                     success: function (response) {
                         $('div#cart_modal').html(response);
                         $("#popupCartModal").modal('show');
+                        $('.product_in_cart').text(parseInt($('.product_in_cart').text()) - 1);
                     },
                 });
             }
@@ -246,11 +247,28 @@
 
         });
 
-
+        $("body").on('click', ".destroy_checkout", function(){
+            var id = $(this).data('id');
+            var reason = $("#reason_destroy").val();
+            if(confirm("Bạn có chắc chắn muốn hủy đơn hàng này?")) {
+                $.ajax({
+                    url: '{{ route('checkout.destroy') }}',
+                    method: "GET",
+                    data: {
+                        id: id,
+                        reason: reason,
+                    },
+                    success: function (response) {
+                        $('div.checkout_info').html(response);
+                    },
+                });
+            }
+        });
 
     });
 
 </script>
+
 <script>
     //<![CDATA[
     function awe_lazyloadImage() {

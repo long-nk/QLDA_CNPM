@@ -83,7 +83,7 @@
                         </button>
                     @elseif(!Auth::check())
                         <button class="btn btn-primary btn-full" onclick="window.location.href='{{route('customer.login')}}'"
-                                title="Tiến hành thanh toán"
+                                title="Đăng nhập để thanh toán"
                                 type="button">Đăng nhập để thanh toán
                         </button>
                     @endif

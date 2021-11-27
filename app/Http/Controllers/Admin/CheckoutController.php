@@ -102,13 +102,13 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         $trans = Transaction::find($id);
-        $order = Order::find($id);
+        $order = Order::where('Od_transaction_id', '=', $id);
 
         if (empty($trans) || empty($order)) {
             return redirect()->back();
         }
         $trans->delete();
         $order->delete();
-        return redirect()->back();
+        return view('frontend.checkout.checkout_destroy');
     }
 }

@@ -61,6 +61,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', $categories);
             $view->with('product_news', $product_news);
         });
+
+
     }
 
     /**

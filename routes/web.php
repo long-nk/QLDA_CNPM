@@ -49,7 +49,7 @@ Route::delete('remove-product-from-checkout', 'CartController@removeProductCheck
 
 Route::get('thanh-toan', 'CheckoutController@index')->name('checkout.index');
 Route::post('thanh-toan/xu-li-don', 'CheckoutController@store')->name('checkout.store');
-
+Route::get('thanh-toan/huy-don/{id?}', 'CheckoutController@destroy')->name('checkout.destroy');
 
 //---------Backend--------
 Auth::routes();
