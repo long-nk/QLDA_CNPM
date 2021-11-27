@@ -22,7 +22,8 @@ class Transaction extends Model
         'Tst_email',
         'Tst_phone',
         'Tst_note',
-        'Tst_status'
+        'Tst_status',
+        'Tst_reason'
     ];
 
     public function order(){

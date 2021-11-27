@@ -57,9 +57,13 @@
                                         </td>
                                         <td class="text-center">
                                             @if($value->status)
-                                                Đã trả lời
+                                                <button type="button"
+                                                        class="btn btn-round btn-success btn-xs btnChangeStatus">Đã trả lời
+                                                </button>
                                             @else
-                                                Chưa trả lời
+                                                <button type="button"
+                                                        class="btn btn-round btn-danger btn-xs btnChangeStatus">Chưa trả lời
+                                                </button>
                                             @endif
                                         </td>
                                         <td class="text-center">

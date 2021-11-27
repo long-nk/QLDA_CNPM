@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="col-lg-10 col-lg-fix10">
+    <div class="col-lg-10 col-lg-fix10 checkout_info">
         <div class="block_right">
             <div class="wrapmain wrap_body_calc">
                 <section class="signup search-main wrap_background background_white section_base">
@@ -82,7 +82,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <th scope="row" style="text-align: left; font-weight: bold;"">Email</th>
-                                                                            <td style="text-align: left;">{{$trans->Tst_email}}</td>
+                                                                            <td style="text-align: left;" disabled>{{$trans->Tst_email}}</td>
 
                                                                         </tr>
                                                                         <tr>
@@ -103,10 +103,13 @@
                                                                         </tbody>
                                                                     </table>
                                                                     <div class="field">
-                                                                        <div class="field-input-wrapper"><a
-                                                                                href="{{route('product.index')}}"><i
-                                                                                    aria-hidden="true"
-                                                                                    class="fa fa-angle-left"></i> Tiếp tục mua sắm</a></div>
+                                                                            <button type="button" class="btn">
+                                                                                <a href="{{route('product.index')}}"> Tiếp tục mua sắm</a>
+                                                                            </button>
+                                                                            <button type="button" class="btn" data-toggle="modal" data-target="#huydon">
+                                                                                <a href="#">Hủy đơn hàng</a>
+                                                                            </button>
+
                                                                     </div>
                                                                 </div>
                                                                 <div
@@ -233,6 +236,29 @@
                     </div>
                 </section>
             </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="huydon" tabindex="-1" role="dialog" aria-labelledby="huydon" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="huydon">Lí do hủy đơn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="reason" id="reason_destroy" cols="5" rows="5" style="width: 100%;" value="1"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-secondary destroy_checkout" data-id="{{$trans->id}}">
+                                Lưu
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+@stop
 
-        :</div>@stop

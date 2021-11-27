@@ -83,19 +83,30 @@
                                             {{$value->Tst_payment}}
                                         </td>
                                         <td class="text-center">
-                                            @if($value->Tst_status)
+                                            @if($value->Tst_status == 1)
                                                 <button type="button"
                                                         class="btn btn-round btn-success btn-xs btnChangeStatus">Đã xử lí
                                                 </button>
-                                            @else
+                                            @elseif($value->Tst_status == 0)
                                                 <button type="button"
                                                         class="btn btn-round btn-danger btn-xs btnChangeStatus">Chưa xử lí
+                                                </button>
+                                            @else
+                                                <button type="button"
+                                                        class="btn btn-round btn btn-warning btn-xs btnChangeStatus">Đơn hàng bị hủy
                                                 </button>
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{route('checkouts.edit', $value->Od_transaction_id)}}" style="min-width:100px;"
-                                               class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                            @if($value->Tst_status == 1)
+                                                <a href="{{route('checkouts.edit', $value->Od_transaction_id)}}" style="min-width:100px;"
+                                                   class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                            @elseif($value->Tst_status == 0)
+                                                <a href="{{route('checkouts.edit', $value->Od_transaction_id)}}" style="min-width:100px;"
+                                                   class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Cập nhật</a>
+                                            @else
+                                               <p>Lí do hủy: {{$value->Tst_reason}}</p>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
